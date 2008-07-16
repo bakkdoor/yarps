@@ -1,9 +1,9 @@
 <div class="headline"><%= l :teams_by_letter %></div>
 
 <div class="alphabet_search">
-<% alphabet_letters.each do |l| %>
-    <%= link_to "#{l}&nbsp;", :controller => "search", :action => "teams", :id => l %>
-<% end %>
+  <% alphabet_letters.each do |letter| %>
+      <%= link_to "#{letter}", :controller => "search", :action => "teams", :id => letter %>
+  <% end %>
 </div>
 
 <div class="headline"><%= l :my_teams %></div>

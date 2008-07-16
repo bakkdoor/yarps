@@ -66,3 +66,5 @@ welcome_message: Willkommen bei yarps!
 you_currently_have_a_user_status_of: Du hast derzeit einen User-Status als
 your_options: Deine Optionen
 your_profile_page: Deine Profilseite
+is_not_a_letter: "ist kein Buchstabe."
+teams_beginning_with: "Teams beginnend mit"

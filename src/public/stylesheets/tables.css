@@ -27,5 +27,10 @@
 .alphabet_search{
     padding-left:20%;
     padding-right:20%;
-    padding-bottom:2em
+    padding-bottom:2em;
+    font-weight: bold;
+}
+
+.alphabet_search a{
+  padding-right: 0.6ex;
 }

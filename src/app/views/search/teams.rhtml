@@ -1,8 +1,8 @@
-<div class="headline"><%= "#{l :teams_with_letter} <b><i>#{params[:id]}</i></b>" %></div>
+<div class="headline"><%= "#{l :teams_beginning_with} <b><i>#{params[:id]}</i></b>" %></div>
 
 <div class="alphabet_search">
-<% alphabet_letters.each do |l| %>
-    <%= link_to "#{l}&nbsp;", :controller => "search", :action => "teams", :id => l %>
+<% alphabet_letters.each do |letter| %>
+    <%= link_to "#{letter}", :controller => "search", :action => "teams", :id => letter %>
 <% end %>
 </div>
 
@@ -17,14 +17,12 @@
 
 <% for team in @teams %>
   <tr>
-    <td><%=h team.name %></td>
+    <td><%=link_to (h team.name), team %></td>
     <td><%=textilize (h team.description) %></td>
     <td><%=h team.website %></td>
     <td><%=h team.public %></td>
     <td><%=h team.invite_only %></td>
-    <td><%= link_to (l :show), team %></td>
-    <td><%= link_to (l :edit), edit_team_path(team) %></td>
-    <td><%= link_to (l :destroy), team, :confirm => (l :are_you_sure), :method => :delete %></td>
+    <td><%=  %></td>
   </tr>
 <% end %>
 </table>
