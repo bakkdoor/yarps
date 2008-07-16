@@ -1,4 +1,5 @@
 ActionController::Routing::Routes.draw do |map|
+    
   # The priority is based upon order of creation: first created -> highest priority.
 
   # Sample of regular route:
@@ -38,7 +39,8 @@ ActionController::Routing::Routes.draw do |map|
   # Install the default routes as the lowest priority.
   
   map.resources 'teams'
-  
+  map.resources 'team_memberships'
+
   map.connect '/de', :controller => 'home', :action => 'index', :language => 'de'
   map.connect '/en', :controller => 'home', :action => 'index', :language => 'en'
   map.connect '/', :controller => 'home', :action => 'index'
