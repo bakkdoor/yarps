@@ -19,7 +19,8 @@ german: German
 here_you_can_create_a_new_account: Here you can create a new account
 home: Home
 invite_only: Invite only
-language: English
+language: Language
+set_language: English
 last_login: Last login
 logged_in_as: You are logged in as
 login: Login

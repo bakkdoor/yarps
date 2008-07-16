@@ -18,6 +18,11 @@
       <p>
         <%= f.label :password_confirmation, (l :confirm_password) %><br />
         <%= f.password_field :password_confirmation %>
+      </p> 
+      <p>
+        <%= f.label :language, (l :language) %><br />
+        
+        <%= collection_select(:user, :language, Language.list, :to_s, :to_s, {:prompt => true}) %>
       </p>
       <p>
         <%= f.submit (l :update) %>

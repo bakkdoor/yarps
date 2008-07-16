@@ -18,5 +18,9 @@
         <td class="title"><%= l :member_since %></td>
         <td class="value"><%= current_user.created_at.german(:long_clock) %></td>
     </tr>
+    <tr>
+        <td class="title"><%= l :language %></td>
+        <td class="value"><%= current_user.language.lang_word %></td>
+    </tr>
 </table>
 </div>

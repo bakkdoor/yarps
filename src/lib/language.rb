@@ -6,4 +6,8 @@ class Language
     "en"
   end
   
+  def self.list
+    ["en", "de"]
+  end
+  
 end

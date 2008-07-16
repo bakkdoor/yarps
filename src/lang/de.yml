@@ -19,7 +19,8 @@ german: Deutsch
 here_you_can_create_a_new_account: Hier kannst du ein neues Profil anlegen
 home: Start
 invite_only: "Nur via Einladung"
-language: Deutsch
+language: Sprache
+set_language: Deutsch
 last_login: Letzter login am
 logged_in_as: Du bist eingeloggt als
 login: Einloggen
