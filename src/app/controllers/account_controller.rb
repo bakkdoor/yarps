@@ -23,11 +23,26 @@ class AccountController < ApplicationController
       @teams = current_user.teams
   end
   
+  # GET /account/edit
+  def edit
+      @user = current_user
+  end
   
-  
-  
-  
-  
+  # PUT /account/
+  def update
+    @user = current_user
+
+    respond_to do |format|
+      if @user.update_attributes(params[:user])
+        flash[:notice] = (l :account_successful_update_notice)
+        format.html { redirect_to :action => "index" }
+        format.xml  { head :ok }
+      else
+        format.html { render :action => "edit" }
+        format.xml  { render :xml => @user.errors, :status => :unprocessable_entity }
+      end
+    end
+  end
   
   #######################################
   # => Login/logout spezifische actions #

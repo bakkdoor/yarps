@@ -1,9 +1,25 @@
+.profile{
+    text-align:left;
+}
+
 .profile table{
-  width: 100%;
+  width: 80%;
 }
 
 .profile .title{
   font-weight: bold;
   text-align: left;
-  padding-right: 3em;
+  padding-left: 30%;
+  width: 40%;
+}
+
+.profile .value{
+    font-weight: normal;
+    text-align: left;
+    padding-left: 5em;
+    width: 60%;
+}
+
+.edit_form{
+    text-align: center;
 }

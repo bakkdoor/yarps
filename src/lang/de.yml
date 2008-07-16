@@ -48,7 +48,7 @@ show: Anzeigen
 sign_up: Anmelden
 signup_successful_notice: "Danke für deine Anmeldung!"
 team: Team
-team_successful_create_notice: "Team was successfully created."
+team_successful_create_notice: "Team wurde erfolgreich erstellt."
 team_successful_update_notice: "Team wurde erfolgreich bearbeitet."
 teams: Teams
 this_is_the_profile_of: Das hier ist das Profil von
@@ -62,3 +62,5 @@ welcome_message: Willkommen bei yarps!
 you_currently_have_a_user_status_of: Du hast derzeit einen User-Status als
 your_options: Deine Optionen
 your_profile_page: Deine Profilseite
+account_successful_update_notice: "Profil wurde erfolgreich bearbeitet."
+confirm_password: "Passwort bestätigen"

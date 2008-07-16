@@ -55,9 +55,11 @@
                         yield :layout
                     %>
             </div>
+            <% if logged_in? %>
             <div id="right" class="menu-right">
                 <%= render :file => "layouts/_submenu" %>
             </div>
+            <% end %>
             
         </div>
     </body>

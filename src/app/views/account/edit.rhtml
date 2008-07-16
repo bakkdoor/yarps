@@ -1,0 +1,29 @@
+<div class="headline"><%= "#{l :edit}: #{l :account}" %></div>
+
+<div class="edit_form">
+    <% form_for :user, :url => { :action => "update" } do |f| %>
+        <%= f.error_messages %>
+      <p>
+        <%= f.label :login, (l :login) %><br />
+        <%= f.text_field :login %>
+      </p>  
+      <p>
+        <%= f.label :email, (l :email) %><br />
+        <%= f.text_field :email %>
+      </p> 
+      <p>
+        <%= f.label :password, (l :password) %><br />
+        <%= f.password_field :password %>
+      </p> 
+      <p>
+        <%= f.label :password_confirmation, (l :confirm_password) %><br />
+        <%= f.password_field :password_confirmation %>
+      </p>
+      <p>
+        <%= f.submit (l :update) %>
+      </p>
+    <% end %>
+    
+    <%= link_to (l :show), :action => "settings" %> |
+    <%= link_to (l :back), :action => "settings" %>
+</div>
