@@ -1,12 +1,10 @@
-<div class="headline"><%= l :teams_by_letter %></div>
+<div class="headline"><%= "#{l :teams_with_letter} <b><i>#{params[:id]}</i></b>" %></div>
 
 <div class="alphabet_search">
 <% alphabet_letters.each do |l| %>
     <%= link_to "#{l}&nbsp;", :controller => "search", :action => "teams", :id => l %>
 <% end %>
 </div>
-
-<div class="headline"><%= l :my_teams %></div>
 
 <table>
   <tr>
@@ -30,7 +28,3 @@
   </tr>
 <% end %>
 </table>
-
-<br />
-
-<%= link_to (l :new_team), new_team_path %>

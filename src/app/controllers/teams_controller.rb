@@ -87,4 +87,5 @@ class TeamsController < ApplicationController
   def my
       @team_memberships = current_user.team_memberships
   end
+  
 end

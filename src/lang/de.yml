@@ -1,9 +1,11 @@
 about: "Über uns"
 account: Profil
+account_successful_update_notice: "Profil wurde erfolgreich bearbeitet."
 adress: Adresse
 all_profiles: Alle Profile
 are_you_sure: "Sind Sie sicher?"
 back: "Zurück"
+confirm_password: "Passwort bestätigen"
 confirm_password: Passwort bestätigen
 contact: Kontakt
 create: Erstellen
@@ -51,6 +53,8 @@ team: Team
 team_successful_create_notice: "Team wurde erfolgreich erstellt."
 team_successful_update_notice: "Team wurde erfolgreich bearbeitet."
 teams: Teams
+teams_by_letter: "Teams nach Buchstaben"
+teams_with_letter: "Teams mit Buchstaben"
 this_is_the_profile_of: Das hier ist das Profil von
 update: Aktualisieren
 user: Benutzer
@@ -62,5 +66,3 @@ welcome_message: Willkommen bei yarps!
 you_currently_have_a_user_status_of: Du hast derzeit einen User-Status als
 your_options: Deine Optionen
 your_profile_page: Deine Profilseite
-account_successful_update_notice: "Profil wurde erfolgreich bearbeitet."
-confirm_password: "Passwort bestätigen"

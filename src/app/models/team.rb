@@ -13,4 +13,12 @@ class Team < ActiveRecord::Base
          find(:all)
        end
     end
+    
+    def self.search_first_letter(letter)
+        if letter
+            find(:all, :conditions => ["name LIKE ?", "#{letter}%"])
+        else
+            []
+        end
+    end
 end

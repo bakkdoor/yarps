@@ -7,8 +7,12 @@ module ApplicationHelper
 	end
 	
 	def yarps_version
-	    0.3
+	    0.1
 	end
+	
+	def alphabet_letters
+        ("a".."z").to_a
+    end
 	
 end
 

@@ -6,4 +6,8 @@ class SearchController < ApplicationController
     @teams = Team.search(params[:search_query])
   end
   
+  def teams
+      @teams = Team.search_first_letter(params[:id])
+  end
+  
 end

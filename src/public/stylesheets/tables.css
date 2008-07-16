@@ -23,3 +23,9 @@
 .edit_form{
     text-align: center;
 }
+
+.alphabet_search{
+    padding-left:20%;
+    padding-right:20%;
+    padding-bottom:2em
+}
