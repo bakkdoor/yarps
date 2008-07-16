@@ -1,0 +1,20 @@
+<div class="headline"><%= l :my_settings %> - <%= link_to (l :edit).downcase, :action => :edit %></div>
+
+<table class="profile">
+    <tr>
+        <td class="title"><%= "#{l :user}-#{l :name}" %></td>
+        <td><%= current_user.login %></td>
+    </tr>
+    <tr>
+        <td class="title"><%= l :email %></td>
+        <td><%= current_user.email %></td>
+    </tr>
+    <tr>
+        <td class="title"><%= l :user_level %></td>
+        <td><%= User.level_name(current_user.user_level).capitalize %></td>
+    </tr>
+    <tr>
+        <td class="title"><%= l :member_since %></td>
+        <td><%= current_user.created_at.german(:long_clock) %></td>
+    </tr>
+</table>

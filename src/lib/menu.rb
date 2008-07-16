@@ -31,7 +31,7 @@ class Menu
 	            ["tasks", (l :my_tasks)],
 	            ["teams", (l :my_teams)],
 	            ["projects", (l :my_projects)],
-	            ["settings", (l :my_settings)]
+	            ["account/settings", (l :my_settings)]
             ]
             
         # lauf durch alle einträge (jeweils arrays) im array und pack in ein hash

@@ -15,7 +15,24 @@ class AccountController < ApplicationController
       #TODO hier evtl. dann daten rausholen, die sich seit letztem login geändert haben (Posts, Aufgaben usw...)
     @team_memberships = current_user.team_memberships
   end
-
+  
+  
+  # account settings
+  def settings
+      @team_memberships = current_user.team_memberships
+      @teams = current_user.teams
+  end
+  
+  
+  
+  
+  
+  
+  
+  #######################################
+  # => Login/logout spezifische actions #
+  #######################################
+  
   def login
     if User.count == 0
       redirect_to :action => "signup"
