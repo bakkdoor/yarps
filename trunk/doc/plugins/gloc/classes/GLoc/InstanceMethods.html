@@ -1,0 +1,323 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: GLoc::InstanceMethods</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">GLoc::InstanceMethods</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../../files/lib/gloc_rb.html">
+                lib/gloc.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+This module will be included in both instances and classes of <a
+href="../GLoc.html">GLoc</a> includees. It is also included as class
+methods in the <a href="../GLoc.html">GLoc</a> module itself.
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000100">l</a>&nbsp;&nbsp;
+      <a href="#M000108">l_has_string?</a>&nbsp;&nbsp;
+      <a href="#M000101">l_without_args</a>&nbsp;&nbsp;
+      <a href="#M000102">ll</a>&nbsp;&nbsp;
+      <a href="#M000103">ll_without_args</a>&nbsp;&nbsp;
+      <a href="#M000104">ltry</a>&nbsp;&nbsp;
+      <a href="#M000105">ltry_without_args</a>&nbsp;&nbsp;
+      <a href="#M000106">lwr</a>&nbsp;&nbsp;
+      <a href="#M000107">lwr_</a>&nbsp;&nbsp;
+      <a href="#M000109">set_language_if_valid</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="Helpers.html">Helpers</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+
+
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Instance methods</h3>
+
+      <div id="method-M000100" class="method-detail">
+        <a name="M000100"></a>
+
+        <div class="method-heading">
+          <a href="InstanceMethods.src/M000100.html" target="Code" class="method-signature"
+            onclick="popupCode('InstanceMethods.src/M000100.html');return false;">
+          <span class="method-name">l</span><span class="method-args">(symbol, *arguments)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a localized string.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000108" class="method-detail">
+        <a name="M000108"></a>
+
+        <div class="method-heading">
+          <a href="InstanceMethods.src/M000108.html" target="Code" class="method-signature"
+            onclick="popupCode('InstanceMethods.src/M000108.html');return false;">
+          <span class="method-name">l_has_string?</span><span class="method-args">(symbol)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns <tt>true</tt> if a localized string with the specified key exists.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000101" class="method-detail">
+        <a name="M000101"></a>
+
+        <div class="method-heading">
+          <a href="InstanceMethods.src/M000101.html" target="Code" class="method-signature"
+            onclick="popupCode('InstanceMethods.src/M000101.html');return false;">
+          <span class="method-name">l_without_args</span><span class="method-args">(symbol)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a raw localized value without applying arguments to it.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000102" class="method-detail">
+        <a name="M000102"></a>
+
+        <div class="method-heading">
+          <a href="InstanceMethods.src/M000102.html" target="Code" class="method-signature"
+            onclick="popupCode('InstanceMethods.src/M000102.html');return false;">
+          <span class="method-name">ll</span><span class="method-args">(lang, symbol, *arguments)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a localized string in a specified language. This does not effect
+<tt>current_language</tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000103" class="method-detail">
+        <a name="M000103"></a>
+
+        <div class="method-heading">
+          <a href="InstanceMethods.src/M000103.html" target="Code" class="method-signature"
+            onclick="popupCode('InstanceMethods.src/M000103.html');return false;">
+          <span class="method-name">ll_without_args</span><span class="method-args">(lang, symbol)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a raw localized value in a specified language without applying
+arguments to it. This does not effect <tt>current_language</tt>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000104" class="method-detail">
+        <a name="M000104"></a>
+
+        <div class="method-heading">
+          <a href="InstanceMethods.src/M000104.html" target="Code" class="method-signature"
+            onclick="popupCode('InstanceMethods.src/M000104.html');return false;">
+          <span class="method-name">ltry</span><span class="method-args">(possible_key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a localized string if the argument is a Symbol, else just returns
+the argument.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000105" class="method-detail">
+        <a name="M000105"></a>
+
+        <div class="method-heading">
+          <a href="InstanceMethods.src/M000105.html" target="Code" class="method-signature"
+            onclick="popupCode('InstanceMethods.src/M000105.html');return false;">
+          <span class="method-name">ltry_without_args</span><span class="method-args">(possible_key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+If the argument is a symbol, this returns a raw localized value without
+applying arguments to it. Else it just returns the argument.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000106" class="method-detail">
+        <a name="M000106"></a>
+
+        <div class="method-heading">
+          <a href="InstanceMethods.src/M000106.html" target="Code" class="method-signature"
+            onclick="popupCode('InstanceMethods.src/M000106.html');return false;">
+          <span class="method-name">lwr</span><span class="method-args">(symbol, *arguments)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Uses the default <a href="../GLoc.html">GLoc</a> rule to return a localized
+string. See <a href="InstanceMethods.html#M000107">lwr_</a>() for more
+info.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000107" class="method-detail">
+        <a name="M000107"></a>
+
+        <div class="method-heading">
+          <a href="InstanceMethods.src/M000107.html" target="Code" class="method-signature"
+            onclick="popupCode('InstanceMethods.src/M000107.html');return false;">
+          <span class="method-name">lwr_</span><span class="method-args">(rule, symbol, *arguments)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Uses a <em>rule</em> to return a localized string. A rule is a function
+that uses specified arguments to return a localization key prefix. The
+prefix is appended to the localization key originally specified, to create
+a new key which is then used to lookup a localized string.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000109" class="method-detail">
+        <a name="M000109"></a>
+
+        <div class="method-heading">
+          <a href="InstanceMethods.src/M000109.html" target="Code" class="method-signature"
+            onclick="popupCode('InstanceMethods.src/M000109.html');return false;">
+          <span class="method-name">set_language_if_valid</span><span class="method-args">(language)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the current language if the language passed is a valid language. If
+the language was valid, this method returns <tt>true</tt> else it will
+return <tt>false</tt>. Note that <tt>nil</tt> is not a valid language. See
+set_language(language) for more info.
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

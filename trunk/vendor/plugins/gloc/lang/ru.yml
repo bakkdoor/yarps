@@ -1,0 +1,45 @@
+_gloc_rule_default: '|n| n10=n%10; n100=n%100; (n10==1 && n100!=11) ? "_1" : (n10>=2 && n10<=4 && (n100<10 || n100>=20) ? "_2" : "_5") '
+actionview_datehelper_date_select_order: [:day, :month, :year]
+actionview_datehelper_select_day_suffix:
+actionview_datehelper_select_month_suffix:
+actionview_datehelper_select_year_suffix:
+actionview_datehelper_time_in_words_day: 1 день
+actionview_datehelper_time_in_words_day_1: %d день
+actionview_datehelper_time_in_words_day_2: %d дня
+actionview_datehelper_time_in_words_day_5: %d дней
+actionview_datehelper_time_in_words_hour_about_1: около %d часа
+actionview_datehelper_time_in_words_hour_about_2: около %d часов
+actionview_datehelper_time_in_words_hour_about_5: около %d часов
+actionview_datehelper_time_in_words_hour_about_single: около часа
+actionview_datehelper_time_in_words_minute_1: %d минута
+actionview_datehelper_time_in_words_minute_2: %d минуты
+actionview_datehelper_time_in_words_minute_5: %d минут
+actionview_datehelper_time_in_words_minute_half: полминуты
+actionview_datehelper_time_in_words_minute_less_than: меньше минуты
+actionview_datehelper_time_in_words_minute_single: 1 минуту
+actionview_datehelper_time_in_words_month_1: %d месяц
+actionview_datehelper_time_in_words_month_2: %d месяца
+actionview_datehelper_time_in_words_month_5: %d месяцев
+actionview_datehelper_time_in_words_month_about: около 1 месяц
+actionview_datehelper_time_in_words_second_less_than_1: менее %d секунды
+actionview_datehelper_time_in_words_second_less_than_2: менее %d секунд
+actionview_datehelper_time_in_words_second_less_than_5: менее %d секунд
+actionview_datehelper_time_in_words_year_about: около 1 год
+actionview_datehelper_time_in_words_year_over_1: более %d год
+actionview_datehelper_time_in_words_year_over_2: более %d года
+actionview_datehelper_time_in_words_year_over_5: более %d лет
+actionview_instancetag_blank_option: Пожалуйста, выберите
+general_fmt_age_1: %d год
+general_fmt_age_2: %d года
+general_fmt_age_5: %d лет
+general_fmt_date: !!datetime_fmt '%d.%m.%Y'
+general_fmt_datetime: !!datetime_fmt '%d.%m.%Y %H:%M'
+general_fmt_time: !!datetime_fmt '%H:%M'
+general_text_No: Нет
+general_text_Yes: Да
+general_text_day_names: [Воскресенье, Понедельник, Вторник, Среда, Четверг, Пятница, Суббота]
+general_text_day_names_abbr: [Вс, Пн, Вт, Ср, Чт, Пт, Сб]
+general_text_month_names: [Январь, Февраль, Март, Апрель, Май, Июнь, Июль, Август, Сентябрь, Октябрь, Ноябрь, Декабрь]
+general_text_month_names_abbr: [Янв, Фев, Мар, Апр, Май, Июн, Июл, Авг, Сен, Окт, Ноя, Дек]
+general_text_no: нет
+general_text_yes: да

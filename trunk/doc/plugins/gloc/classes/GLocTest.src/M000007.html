@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_class_set_language (GLocTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_test.rb, line 148</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_class_set_language</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">load_localized_strings</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>),<span class="ruby-value str">'lang'</span>)
+    
+    <span class="ruby-ivar">@l1</span> = <span class="ruby-constant">LClass_ja</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@l2</span> = <span class="ruby-constant">LClass_en</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@l3</span> = <span class="ruby-constant">LClass_en</span>.<span class="ruby-identifier">new</span>
+    
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-ivar">@l1</span>, <span class="ruby-value str">'enにもjaにもある'</span>, <span class="ruby-identifier">:in_both_langs</span>
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-ivar">@l2</span>, <span class="ruby-value str">'This is in en+ja'</span>, <span class="ruby-identifier">:in_both_langs</span>
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-ivar">@l3</span>, <span class="ruby-value str">'This is in en+ja'</span>, <span class="ruby-identifier">:in_both_langs</span>
+
+    <span class="ruby-ivar">@l3</span>.<span class="ruby-identifier">set_language</span> <span class="ruby-value str">'en_AU'</span>
+    
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-ivar">@l1</span>, <span class="ruby-value str">'enにもjaにもある'</span>, <span class="ruby-identifier">:in_both_langs</span>
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-ivar">@l2</span>, <span class="ruby-value str">'This is in en+ja'</span>, <span class="ruby-identifier">:in_both_langs</span>
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-ivar">@l3</span>, <span class="ruby-value str">&quot;Thiz in en 'n' ja&quot;</span>, <span class="ruby-identifier">:in_both_langs</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

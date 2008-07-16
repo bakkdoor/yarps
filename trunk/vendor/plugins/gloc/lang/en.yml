@@ -1,0 +1,37 @@
+_gloc_rule_default: '|n| n==1 ? "" : "_plural" '
+actionview_datehelper_date_select_order: [:month, :day, :year]
+actionview_datehelper_select_day_suffix:
+actionview_datehelper_select_month_suffix:
+actionview_datehelper_select_year_suffix:
+actionview_datehelper_time_in_words_day: 1 day
+actionview_datehelper_time_in_words_day_plural: %d days
+actionview_datehelper_time_in_words_hour_about: about an hour
+actionview_datehelper_time_in_words_hour_about_plural: about %d hours
+actionview_datehelper_time_in_words_hour_about_single: about an hour
+actionview_datehelper_time_in_words_minute: 1 minute
+actionview_datehelper_time_in_words_minute_half: half a minute
+actionview_datehelper_time_in_words_minute_less_than: less than a minute
+actionview_datehelper_time_in_words_minute_plural: %d minutes
+actionview_datehelper_time_in_words_minute_single: 1 minute
+actionview_datehelper_time_in_words_month: 1 month
+actionview_datehelper_time_in_words_month_about: about 1 month
+actionview_datehelper_time_in_words_month_plural: %d months
+actionview_datehelper_time_in_words_second_less_than: less than a second
+actionview_datehelper_time_in_words_second_less_than_plural: less than %d seconds
+actionview_datehelper_time_in_words_year_about: about 1 year
+actionview_datehelper_time_in_words_year_over: over 1 year
+actionview_datehelper_time_in_words_year_over_plural: over %d years
+actionview_instancetag_blank_option: Please select
+general_fmt_age: %d yr
+general_fmt_age_plural: %d yrs
+general_fmt_date: !!datetime_fmt '%b %d, %Y (%a)'
+general_fmt_datetime: !!datetime_fmt '%b %d, %Y (%a), %I:%M %p'
+general_fmt_time: !!datetime_fmt '%I:%M %p'
+general_text_No: 'No'
+general_text_Yes: 'Yes'
+general_text_day_names: [Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, Saturday]
+general_text_day_names_abbr: [Sun, Mon, Tue, Wed, Thu, Fri, Sat]
+general_text_month_names: [January, February, March, April, May, June, July, August, September, October, November, December]
+general_text_month_names_abbr: [Jan, Feb, Mar, Apr, May, Jun, Jul, Aug, Sep, Oct, Nov, Dec]
+general_text_no: 'no'
+general_text_yes: 'yes'

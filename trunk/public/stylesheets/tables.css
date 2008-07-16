@@ -1,0 +1,9 @@
+.profile td{
+  width: 50%;
+}
+
+.profile .title{
+  font-weight: bold;
+  text-align: left;
+  padding-right: 2em;
+}

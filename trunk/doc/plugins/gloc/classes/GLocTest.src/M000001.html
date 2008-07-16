@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>setup (GLocTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_test.rb, line 38</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">setup</span>
+    <span class="ruby-ivar">@l1</span> = <span class="ruby-constant">LClass</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@l2</span> = <span class="ruby-constant">LClass</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@l3</span> = <span class="ruby-constant">LClass</span>.<span class="ruby-identifier">new</span>
+    <span class="ruby-ivar">@l1</span>.<span class="ruby-identifier">set_language</span> <span class="ruby-identifier">:ja</span>
+    <span class="ruby-ivar">@l2</span>.<span class="ruby-identifier">set_language</span> <span class="ruby-identifier">:en</span>
+    <span class="ruby-ivar">@l3</span>.<span class="ruby-identifier">set_language</span> <span class="ruby-value str">'en_AU'</span>
+    <span class="ruby-ivar">@gloc_state</span>= <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">backup_state</span> <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">GLoc</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>.<span class="ruby-identifier">merge!</span>({
+      <span class="ruby-identifier">:default_param_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'lang'</span>,
+      <span class="ruby-identifier">:default_cookie_name</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'lang'</span>,
+      <span class="ruby-identifier">:default_language</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">:ja</span>,
+      <span class="ruby-identifier">:raise_string_not_found_errors</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>,
+      <span class="ruby-identifier">:verbose</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">false</span>,
+    })
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

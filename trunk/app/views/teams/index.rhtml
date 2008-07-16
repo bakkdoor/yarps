@@ -1,0 +1,28 @@
+<h1>Listing teams</h1>
+
+<table>
+  <tr>
+    <th><%= l :name %></th>
+    <th><%= l :description %></th>
+    <th><%= l :website %></th>
+    <th><%= l :public %></th>
+    <th><%= l :invite_only %></th>
+  </tr>
+
+<% for team in @teams %>
+  <tr>
+    <td><%=h team.name %></td>
+    <td><%=textilize (h team.description) %></td>
+    <td><%=h team.website %></td>
+    <td><%=h team.public %></td>
+    <td><%=h team.invite_only %></td>
+    <td><%= link_to (l :show), team %></td>
+    <td><%= link_to (l :edit), edit_team_path(team) %></td>
+    <td><%= link_to (l :destroy), team, :confirm => (l :are_you_sure), :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to (l :new_team), new_team_path %>

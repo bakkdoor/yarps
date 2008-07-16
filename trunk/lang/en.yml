@@ -1,0 +1,64 @@
+about: About us
+account: Account
+adress: Adress
+all_profiles: All profiles
+are_you_sure: "Are you sure?"
+back: Back
+confirm_password: Confirm Password
+contact: Contact
+create: Create
+description: Description
+destroy: Delete
+edit: Edit
+email: Email
+english: English
+failed_logins: Failed logins
+german: German
+here_you_can_create_a_new_account: Here you can create a new account
+home: Home
+invite_only: Invite only
+language: English
+last_login: Last login
+logged_in_as: You are logged in as
+login: Login
+login_failed_error: "Login failed - Please try again"
+login_successful_notice: Logged in successfully
+logout_successful_notice: "You have been logged out."
+member_since: Member since
+my_projects: My projects
+my_settings: My Settings
+my_tasks: My tasks
+my_teams: My teams
+name: Name
+new_team: Create a new team
+news: News
+no_teams_found: No teams found
+no_users_found: No users found
+not_sufficient_rights: "You don't have sufficient rights for this operation."
+password: Password
+personal_menu: Personal menu
+please_enter_a_name: Please enter a name
+please_enter_your_login_data: Please enter your login data
+profile: profile
+project: Project
+projects: Projects
+public: Public
+search_results_for: Search results for
+show: Show
+sign_up: Sign up
+signup_successful_notice: "Thanks for signing up!"
+team: Team
+team_successful_create_notice: "Team was successfully created."
+team_successful_update_notice: "Team was successfully updated."
+teams: Teams
+this_is_the_profile_of: This is the profile of
+update: Update
+user: User
+user_level: User level
+username: Username
+users: Users
+website: Website
+welcome_message: Welcome to yarps!
+you_currently_have_a_user_status_of: You currently have a user status of
+your_options: Your options
+your_profile_page: Your profile page

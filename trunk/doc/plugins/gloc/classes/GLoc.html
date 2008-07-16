@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+  <title>Module: GLoc</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <meta http-equiv="Content-Script-Type" content="text/javascript" />
+  <link rel="stylesheet" href=".././rdoc-style.css" type="text/css" media="screen" />
+  <script type="text/javascript">
+  // <![CDATA[
+
+  function popupCode( url ) {
+    window.open(url, "Code", "resizable=yes,scrollbars=yes,toolbar=no,status=no,height=150,width=400")
+  }
+
+  function toggleCode( id ) {
+    if ( document.getElementById )
+      elem = document.getElementById( id );
+    else if ( document.all )
+      elem = eval( "document.all." + id );
+    else
+      return false;
+
+    elemStyle = elem.style;
+    
+    if ( elemStyle.display != "block" ) {
+      elemStyle.display = "block"
+    } else {
+      elemStyle.display = "none"
+    }
+
+    return true;
+  }
+  
+  // Make codeblocks hidden by default
+  document.writeln( "<style type=\"text/css\">div.method-source-code { display: none }</style>" )
+  
+  // ]]>
+  </script>
+
+</head>
+<body>
+
+
+
+    <div id="classHeader">
+        <table class="header-table">
+        <tr class="top-aligned-row">
+          <td><strong>Module</strong></td>
+          <td class="class-name-in-header">GLoc</td>
+        </tr>
+        <tr class="top-aligned-row">
+            <td><strong>In:</strong></td>
+            <td>
+                <a href="../files/lib/gloc-constants_rb.html">
+                lib/gloc-constants.rb
+                </a>
+        <br />
+                <a href="../files/lib/gloc-custom_types_rb.html">
+                lib/gloc-custom_types.rb
+                </a>
+        <br />
+                <a href="../files/lib/gloc-dev_rb.html">
+                lib/gloc-dev.rb
+                </a>
+        <br />
+                <a href="../files/lib/gloc-helpers_rb.html">
+                lib/gloc-helpers.rb
+                </a>
+        <br />
+                <a href="../files/lib/gloc-internal_rb.html">
+                lib/gloc-internal.rb
+                </a>
+        <br />
+                <a href="../files/lib/gloc-modes_rb.html">
+                lib/gloc-modes.rb
+                </a>
+        <br />
+                <a href="../files/lib/gloc-version_rb.html">
+                lib/gloc-version.rb
+                </a>
+        <br />
+                <a href="../files/lib/gloc_rb.html">
+                lib/gloc.rb
+                </a>
+        <br />
+            </td>
+        </tr>
+
+        </table>
+    </div>
+  <!-- banner header -->
+
+  <div id="bodyContent">
+
+
+
+  <div id="contextContent">
+
+    <div id="description">
+      <p>
+Copyright (c) 2005-2007 David Barri
+</p>
+
+    </div>
+
+
+   </div>
+
+    <div id="method-list">
+      <h3 class="section-bar">Methods</h3>
+
+      <div class="name-list">
+      <a href="#M000072">add_localized_strings</a>&nbsp;&nbsp;
+      <a href="#M000077">add_localized_strings</a>&nbsp;&nbsp;
+      <a href="#M000078">backup_state</a>&nbsp;&nbsp;
+      <a href="#M000074">clear_strings</a>&nbsp;&nbsp;
+      <a href="#M000079">clear_strings</a>&nbsp;&nbsp;
+      <a href="#M000075">clear_strings_except</a>&nbsp;&nbsp;
+      <a href="#M000080">clear_strings_except</a>&nbsp;&nbsp;
+      <a href="#M000081">get_charset</a>&nbsp;&nbsp;
+      <a href="#M000082">get_config</a>&nbsp;&nbsp;
+      <a href="#M000083">load_gloc_default_localized_strings</a>&nbsp;&nbsp;
+      <a href="#M000084">load_localized_strings</a>&nbsp;&nbsp;
+      <a href="#M000073">load_localized_strings</a>&nbsp;&nbsp;
+      <a href="#M000085">restore_state</a>&nbsp;&nbsp;
+      <a href="#M000086">set_charset</a>&nbsp;&nbsp;
+      <a href="#M000087">set_config</a>&nbsp;&nbsp;
+      <a href="#M000088">set_kcode</a>&nbsp;&nbsp;
+      <a href="#M000076">set_language_mode</a>&nbsp;&nbsp;
+      <a href="#M000089">similar_language</a>&nbsp;&nbsp;
+      <a href="#M000091">valid_language?</a>&nbsp;&nbsp;
+      <a href="#M000090">valid_languages</a>&nbsp;&nbsp;
+      </div>
+    </div>
+
+  </div>
+
+
+    <!-- if includes -->
+    <div id="includes">
+      <h3 class="section-bar">Included Modules</h3>
+
+      <div id="includes-list">
+        <span class="include-name"><a href="GLoc/Constants.html">::GLoc::Constants</a></span>
+        <span class="include-name"><a href="GLoc/InstanceMethods.html">::GLoc::InstanceMethods</a></span>
+        <span class="include-name"><a href="GLoc/Constants.html">::GLoc::Constants</a></span>
+        <span class="include-name"><a href="GLoc/InstanceMethods.html">::GLoc::InstanceMethods</a></span>
+      </div>
+    </div>
+
+    <div id="section">
+
+    <div id="class-list">
+      <h3 class="section-bar">Classes and Modules</h3>
+
+      Module <a href="GLoc/ClassMethods.html" class="link">GLoc::ClassMethods</a><br />
+Module <a href="GLoc/Constants.html" class="link">GLoc::Constants</a><br />
+Module <a href="GLoc/Helpers.html" class="link">GLoc::Helpers</a><br />
+Module <a href="GLoc/InstanceMethods.html" class="link">GLoc::InstanceMethods</a><br />
+Class <a href="GLoc/CustomType.html" class="link">GLoc::CustomType</a><br />
+
+    </div>
+
+    <div id="constants-list">
+      <h3 class="section-bar">Constants</h3>
+
+      <div class="name-list">
+        <table summary="Constants">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">STATE</td>
+          <td>=</td>
+          <td class="context-item-value">[]</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">FILES</td>
+          <td>=</td>
+          <td class="context-item-value">{}</td>
+        </tr>
+        </table>
+      </div>
+    </div>
+
+    <div id="aliases-list">
+      <h3 class="section-bar">External Aliases</h3>
+
+      <div class="name-list">
+                        <table summary="aliases">
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">add_localized_strings</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">actual_add_localized_strings</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">load_localized_strings</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">actual_load_localized_strings</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">clear_strings</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">actual_clear_strings</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">clear_strings_except</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">actual_clear_strings_except</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">_get_internal_state_vars</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">super_get_internal_state_vars</td>
+        </tr>
+        <tr class="top-aligned-row context-row">
+          <td class="context-item-name">clear_strings</td>
+          <td>-&gt;</td>
+          <td class="context-item-value">_clear_strings</td>
+        </tr>
+                        </table>
+      </div>
+    </div>
+
+
+      
+
+
+    <!-- if method_list -->
+    <div id="methods">
+      <h3 class="section-bar">Public Class methods</h3>
+
+      <div id="method-M000072" class="method-detail">
+        <a name="M000072"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000072.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000072.html');return false;">
+          <span class="method-name">add_localized_strings</span><span class="method-args">(lang, symbol_hash, override=true, strings_charset=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000077" class="method-detail">
+        <a name="M000077"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000077.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000077.html');return false;">
+          <span class="method-name">add_localized_strings</span><span class="method-args">(lang, symbol_hash, override=true, strings_charset=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Adds a collection of localized strings to the in-memory string store.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000078" class="method-detail">
+        <a name="M000078"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000078.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000078.html');return false;">
+          <span class="method-name">backup_state</span><span class="method-args">(clear=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Creates a backup of the internal state of <a href="GLoc.html">GLoc</a> (ie.
+strings, langs, rules, config) and optionally clears everything.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000074" class="method-detail">
+        <a name="M000074"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000074.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000074.html');return false;">
+          <span class="method-name">clear_strings</span><span class="method-args">(*languages)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000079" class="method-detail">
+        <a name="M000079"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000079.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000079.html');return false;">
+          <span class="method-name">clear_strings</span><span class="method-args">(*languages)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Removes all localized strings from memory, either of a certain language (or
+languages), or entirely.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000075" class="method-detail">
+        <a name="M000075"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000075.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000075.html');return false;">
+          <span class="method-name">clear_strings_except</span><span class="method-args">(*languages)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000080" class="method-detail">
+        <a name="M000080"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000080.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000080.html');return false;">
+          <span class="method-name">clear_strings_except</span><span class="method-args">(*languages)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Removes all localized strings from memory, except for those of certain
+specified languages.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000081" class="method-detail">
+        <a name="M000081"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000081.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000081.html');return false;">
+          <span class="method-name">get_charset</span><span class="method-args">(lang)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns the charset used to store localized strings in memory.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000082" class="method-detail">
+        <a name="M000082"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000082.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000082.html');return false;">
+          <span class="method-name">get_config</span><span class="method-args">(key)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns a <a href="GLoc.html">GLoc</a> configuration value.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000083" class="method-detail">
+        <a name="M000083"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000083.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000083.html');return false;">
+          <span class="method-name">load_gloc_default_localized_strings</span><span class="method-args">(override=false)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Loads the localized strings that are included in the <a
+href="GLoc.html">GLoc</a> library.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000084" class="method-detail">
+        <a name="M000084"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000084.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000084.html');return false;">
+          <span class="method-name">load_localized_strings</span><span class="method-args">(dir=nil, override=true)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Loads localized strings from all yml files in the specifed directory.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000073" class="method-detail">
+        <a name="M000073"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000073.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000073.html');return false;">
+          <span class="method-name">load_localized_strings</span><span class="method-args">(dir=nil, override=true)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+        </div>
+      </div>
+
+      <div id="method-M000085" class="method-detail">
+        <a name="M000085"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000085.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000085.html');return false;">
+          <span class="method-name">restore_state</span><span class="method-args">(state)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Restores a backup of <a href="GLoc.html">GLoc</a>&#8216;s internal state
+that was made with <a href="GLoc.html#M000078">backup_state</a>.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000086" class="method-detail">
+        <a name="M000086"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000086.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000086.html');return false;">
+          <span class="method-name">set_charset</span><span class="method-args">(new_charset, *langs)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the charset used to internally store localized strings. You can set
+the charset to use for a specific language or languages, or if none are
+specified the charset for ALL localized strings will be set.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000087" class="method-detail">
+        <a name="M000087"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000087.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000087.html');return false;">
+          <span class="method-name">set_config</span><span class="method-args">(hash)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets <a href="GLoc.html">GLoc</a> configuration values.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000088" class="method-detail">
+        <a name="M000088"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000088.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000088.html');return false;">
+          <span class="method-name">set_kcode</span><span class="method-args">(charset=nil)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Sets the $KCODE global variable according to a specified charset, or else
+the current default charset for the default language.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000076" class="method-detail">
+        <a name="M000076"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000076.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000076.html');return false;">
+          <span class="method-name">set_language_mode</span><span class="method-args">(mode)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Changes the way in which <tt>current_language</tt> and
+<tt>set_language</tt> work. The available modes are <tt>:simple</tt> and
+<tt>:cascading</tt>.
+</p>
+<p>
+In simple mode, the current language setting is global (which is fine for
+99% of all apps and situations).
+</p>
+<p>
+In cascading mode, everything that includes the <a
+href="GLoc.html">GLoc</a> module (instances, classes + modules) have their
+own language setting. The language is determined as such: instance -&gt;
+class -&gt; global setting. This was the way the <a
+href="GLoc.html">GLoc</a> worked up until v1.2.0.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000089" class="method-detail">
+        <a name="M000089"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000089.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000089.html');return false;">
+          <span class="method-name">similar_language</span><span class="method-args">(lang)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Tries to find a valid language that is similar to the argument passed. Eg.
+:en, :en_au, :EN_US are all similar languages. Returns <tt>nil</tt> if no
+similar languages are found.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000091" class="method-detail">
+        <a name="M000091"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000091.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000091.html');return false;">
+          <span class="method-name">valid_language?</span><span class="method-args">(language)</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns <tt>true</tt> if there are any localized strings for a specified
+language. Note that although <tt>set_langauge nil</tt> is perfectly valid,
+<tt>nil</tt> is not a valid language.
+</p>
+        </div>
+      </div>
+
+      <div id="method-M000090" class="method-detail">
+        <a name="M000090"></a>
+
+        <div class="method-heading">
+          <a href="GLoc.src/M000090.html" target="Code" class="method-signature"
+            onclick="popupCode('GLoc.src/M000090.html');return false;">
+          <span class="method-name">valid_languages</span><span class="method-args">()</span>
+          </a>
+        </div>
+      
+        <div class="method-description">
+          <p>
+Returns an array of (currently) valid languages (ie. languages for which
+localized data exists).
+</p>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+
+<div id="validator-badges">
+  <p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+</div>
+
+</body>
+</html>

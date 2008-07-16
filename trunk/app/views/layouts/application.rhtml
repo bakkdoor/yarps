@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"
+    "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+    <head>
+        <meta http-equiv="Content-type" content="text/html; charset=utf-8">
+        <title>yarps (v<%= yarps_version %>) <%= ":: #{controller.controller_name.capitalize} / #{controller.action_name.capitalize}" %></title>
+        <%= stylesheet_link_tag "layout.css", :media => "all" %>
+        <%= stylesheet_link_tag "loginout.css", :media => "all" %>
+        <%= stylesheet_link_tag "menu.css", :media => "all" %>
+        <%= stylesheet_link_tag "tables.css", :media => "all" %>
+		<%= javascript_include_tag :defaults %>
+    </head>
+    <body id="application" onload="">
+        <div id="header">
+            <span style="position:absolute; left:0; top:0"><%= link_to "<img src=/images/logo.gif border=0>", :controller => "home", :language => params[:language] %></span>
+            <div id="loginlogout" class="loginlogout">
+            <% if logged_in? %>
+                <%= l(:logged_in_as) %> <%= link_to current_user.login, :controller => "account" %> 
+                | <%= link_to "Logout", :controller => "account", :action => "logout" %>
+            <% else %>
+                <%= link_to l(:sign_up), :controller => "account", :action => "signup" %> | 
+                <%= link_to l(:login), :controller => "account", :action => "login" %>
+            <% end %>
+            </div>
+            <div id="menu" class="menu">
+                <%= render :file => "layouts/_menu" %>
+            </div>
+        </div>
+        <div class="search">
+            <% form_tag "/search", :method => 'get' do -%>
+                <%= text_field_tag :search_query, params[:search_query] -%>
+                <%= submit_tag 'Search', :name => nil -%>
+            <% end -%>
+        </div>
+        <div id="main" class="colums">
+            <div id="left" class="content">
+
+                <div id="flash">
+                <% if flash[:notice] %>
+                    <div class="notice">
+                        <%= flash[:notice] %>
+                    </div>
+                <% end %>
+                <% if flash[:error] %>
+                    <div class="error">
+                        <%= flash[:error] %>
+                    </div>
+                <% end %>
+                </div>
+
+                 <!--
+                        TODO hier evtl noch n bisschen anders...
+                    -->
+                    <%= 
+                        yield :layout
+                    %>
+            </div>
+            <div id="right" class="menu-right">
+                <%= render :file => "layouts/_submenu" %>
+            </div>
+            
+        </div>
+    </body>
+</html>

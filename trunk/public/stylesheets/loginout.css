@@ -1,0 +1,26 @@
+.loginlogout{
+  text-align: right;
+  color: #fff;
+  padding-right: 3em;
+  font-size: 95%;
+}
+
+.loginlogout a{
+  color: #fff;
+  
+  border-left: 5px;
+	border-right: 5px;
+	
+  text-decoration: none;
+}
+
+.loginlogout a:hover{
+  color: #000;
+  text-decoration: none;
+}
+
+
+.loginarea{
+  text-align: center;
+  float: middle;
+}

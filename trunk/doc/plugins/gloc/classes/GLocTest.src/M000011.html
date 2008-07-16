@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_distance_in_words (GLocTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_test.rb, line 215</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_distance_in_words</span>
+    <span class="ruby-identifier">load_default_strings</span>
+    [
+      [<span class="ruby-value">20</span>.<span class="ruby-identifier">seconds</span>, <span class="ruby-value str">'less than a minute'</span>, <span class="ruby-value str">'1分以内'</span>, <span class="ruby-value str">'меньше минуты'</span>],
+      [<span class="ruby-value">80</span>.<span class="ruby-identifier">seconds</span>, <span class="ruby-value str">'1 minute'</span>, <span class="ruby-value str">'1分'</span>, <span class="ruby-value str">'1 минуту'</span>],
+      [<span class="ruby-value">3</span>.<span class="ruby-identifier">seconds</span>, <span class="ruby-value str">'less than 5 seconds'</span>, <span class="ruby-value str">'5秒以内'</span>, <span class="ruby-value str">'менее 5 секунд'</span>, <span class="ruby-keyword kw">true</span>],
+      [<span class="ruby-value">9</span>.<span class="ruby-identifier">seconds</span>, <span class="ruby-value str">'less than 10 seconds'</span>, <span class="ruby-value str">'10秒以内'</span>, <span class="ruby-value str">'менее 10 секунд'</span>, <span class="ruby-keyword kw">true</span>],
+      [<span class="ruby-value">16</span>.<span class="ruby-identifier">seconds</span>, <span class="ruby-value str">'less than 20 seconds'</span>, <span class="ruby-value str">'20秒以内'</span>, <span class="ruby-value str">'менее 20 секунд'</span>, <span class="ruby-keyword kw">true</span>],
+      [<span class="ruby-value">35</span>.<span class="ruby-identifier">seconds</span>, <span class="ruby-value str">'half a minute'</span>, <span class="ruby-value str">'約30秒'</span>, <span class="ruby-value str">'полминуты'</span>, <span class="ruby-keyword kw">true</span>],
+      [<span class="ruby-value">50</span>.<span class="ruby-identifier">seconds</span>, <span class="ruby-value str">'less than a minute'</span>, <span class="ruby-value str">'1分以内'</span>, <span class="ruby-value str">'меньше минуты'</span>, <span class="ruby-keyword kw">true</span>],
+      [<span class="ruby-value">1.1</span>.<span class="ruby-identifier">minutes</span>, <span class="ruby-value str">'1 minute'</span>, <span class="ruby-value str">'1分'</span>, <span class="ruby-value str">'1 минуту'</span>],
+      [<span class="ruby-value">2.1</span>.<span class="ruby-identifier">minutes</span>, <span class="ruby-value str">'2 minutes'</span>, <span class="ruby-value str">'2分'</span>, <span class="ruby-value str">'2 минуты'</span>],
+      [<span class="ruby-value">4.1</span>.<span class="ruby-identifier">minutes</span>, <span class="ruby-value str">'4 minutes'</span>, <span class="ruby-value str">'4分'</span>, <span class="ruby-value str">'4 минуты'</span>],
+      [<span class="ruby-value">5.1</span>.<span class="ruby-identifier">minutes</span>, <span class="ruby-value str">'5 minutes'</span>, <span class="ruby-value str">'5分'</span>, <span class="ruby-value str">'5 минут'</span>],
+      [<span class="ruby-value">1.1</span>.<span class="ruby-identifier">hours</span>, <span class="ruby-value str">'about an hour'</span>, <span class="ruby-value str">'約1時間'</span>, <span class="ruby-value str">'около часа'</span>],
+      [<span class="ruby-value">3.1</span>.<span class="ruby-identifier">hours</span>, <span class="ruby-value str">'about 3 hours'</span>, <span class="ruby-value str">'約3時間'</span>, <span class="ruby-value str">'около 3 часов'</span>],
+      [<span class="ruby-value">9.1</span>.<span class="ruby-identifier">hours</span>, <span class="ruby-value str">'about 9 hours'</span>, <span class="ruby-value str">'約9時間'</span>, <span class="ruby-value str">'около 9 часов'</span>],
+      [<span class="ruby-value">1.1</span>.<span class="ruby-identifier">days</span>, <span class="ruby-value str">'1 day'</span>, <span class="ruby-value str">'1日間'</span>, <span class="ruby-value str">'1 день'</span>],
+      [<span class="ruby-value">2.1</span>.<span class="ruby-identifier">days</span>, <span class="ruby-value str">'2 days'</span>, <span class="ruby-value str">'2日間'</span>, <span class="ruby-value str">'2 дня'</span>],
+      [<span class="ruby-value">4</span>.<span class="ruby-identifier">days</span>, <span class="ruby-value str">'4 days'</span>, <span class="ruby-value str">'4日間'</span>, <span class="ruby-value str">'4 дня'</span>],
+      [<span class="ruby-value">6</span>.<span class="ruby-identifier">days</span>, <span class="ruby-value str">'6 days'</span>, <span class="ruby-value str">'6日間'</span>, <span class="ruby-value str">'6 дней'</span>],
+      [<span class="ruby-value">11</span>.<span class="ruby-identifier">days</span>, <span class="ruby-value str">'11 days'</span>, <span class="ruby-value str">'11日間'</span>, <span class="ruby-value str">'11 дней'</span>],
+      [<span class="ruby-value">12</span>.<span class="ruby-identifier">days</span>, <span class="ruby-value str">'12 days'</span>, <span class="ruby-value str">'12日間'</span>, <span class="ruby-value str">'12 дней'</span>],
+      [<span class="ruby-value">15</span>.<span class="ruby-identifier">days</span>, <span class="ruby-value str">'15 days'</span>, <span class="ruby-value str">'15日間'</span>, <span class="ruby-value str">'15 дней'</span>],
+      [<span class="ruby-value">20</span>.<span class="ruby-identifier">days</span>, <span class="ruby-value str">'20 days'</span>, <span class="ruby-value str">'20日間'</span>, <span class="ruby-value str">'20 дней'</span>],
+      [<span class="ruby-value">21</span>.<span class="ruby-identifier">days</span>, <span class="ruby-value str">'21 days'</span>, <span class="ruby-value str">'21日間'</span>, <span class="ruby-value str">'21 день'</span>],
+      [<span class="ruby-value">22</span>.<span class="ruby-identifier">days</span>, <span class="ruby-value str">'22 days'</span>, <span class="ruby-value str">'22日間'</span>, <span class="ruby-value str">'22 дня'</span>],
+      [<span class="ruby-value">25</span>.<span class="ruby-identifier">days</span>, <span class="ruby-value str">'25 days'</span>, <span class="ruby-value str">'25日間'</span>, <span class="ruby-value str">'25 дней'</span>],
+    ].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">a</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">t</span>, <span class="ruby-identifier">en</span>, <span class="ruby-identifier">ja</span>, <span class="ruby-identifier">ru</span> = <span class="ruby-identifier">a</span>
+      <span class="ruby-identifier">inc_sec</span>= (<span class="ruby-identifier">a</span>.<span class="ruby-identifier">size</span> <span class="ruby-operator">==</span> <span class="ruby-value">5</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">a</span>[<span class="ruby-value">-1</span>] <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>
+      <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">:en</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">en</span>, <span class="ruby-identifier">distance_of_time_in_words</span>(<span class="ruby-identifier">t</span>,<span class="ruby-value">0</span>,<span class="ruby-identifier">inc_sec</span>)
+      <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">:ja</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">ja</span>, <span class="ruby-identifier">distance_of_time_in_words</span>(<span class="ruby-identifier">t</span>,<span class="ruby-value">0</span>,<span class="ruby-identifier">inc_sec</span>)
+      <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">:ru</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">ru</span>, <span class="ruby-identifier">distance_of_time_in_words</span>(<span class="ruby-identifier">t</span>,<span class="ruby-value">0</span>,<span class="ruby-identifier">inc_sec</span>)
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

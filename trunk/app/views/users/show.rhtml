@@ -1,0 +1,29 @@
+<div class="headline">
+    <%= @profile_user.login.his_her %> <%= l :profile %>
+</div>
+
+<% if logged_in? %>
+    Hi there, <%= current_user.login %>!<br>
+<% end %>
+<%= l(:this_is_the_profile_of) %> <%= @profile_user.login %>.<br>
+<br>
+<br><br>
+
+<table class="profile">
+    <tr>
+        <td class="title"><%= "#{l :user}-#{l :name}" %></td>
+        <td><%= @profile_user.login %></td>
+    </tr>
+    <tr>
+        <td class="title"><%= l :email %></td>
+        <td><%= @profile_user.email %></td>
+    </tr>
+    <tr>
+        <td class="title"><%= l :user_level %></td>
+        <td><%= User.level_name(@profile_user.user_level).capitalize %></td>
+    </tr>
+    <tr>
+        <td class="title"><%= l :member_since %></td>
+        <td><%= @profile_user.created_at.german(:long_clock) %></td>
+    </tr>
+</table>

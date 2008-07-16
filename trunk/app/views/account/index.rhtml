@@ -1,0 +1,11 @@
+<div class="headline"><%= l :account %>: <%= current_user.login %> - <%= l :last_login %>: <%= @last_login.german(:long_clock) %></div>
+<%= l :you_currently_have_a_user_status_of %>: <%= User.level_name(current_user.user_level).capitalize %><br>
+<br>
+<%= l :your_options %>:
+<ul>
+    <li>
+        <%= link_to l(:your_profile_page), :controller => "users", :action => "show", :username => current_user.login %>
+    </li>
+</ul>
+
+<br><br>

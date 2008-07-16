@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_procs_and_lambdas (GLocTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_test.rb, line 430</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_procs_and_lambdas</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">load_localized_strings</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>),<span class="ruby-value str">'lang'</span>)
+    
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'There are 7 birds'</span>, <span class="ruby-identifier">ll</span>(<span class="ruby-identifier">:en</span>, <span class="ruby-identifier">:proc_test</span>, <span class="ruby-value">7</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'鳥が7羽いる'</span>, <span class="ruby-identifier">ll</span>(<span class="ruby-identifier">:ja</span>, <span class="ruby-identifier">:proc_test</span>, <span class="ruby-value">7</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'My name is Golly. I am 25 years old.'</span>, <span class="ruby-identifier">ll</span>(<span class="ruby-identifier">:en</span>, <span class="ruby-identifier">:lambda_test</span>, <span class="ruby-value str">'Golly'</span>, <span class="ruby-value">25</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'25才のGollyです。'</span>, <span class="ruby-identifier">ll</span>(<span class="ruby-identifier">:ja</span>, <span class="ruby-identifier">:lambda_test</span>, <span class="ruby-value str">'Golly'</span>, <span class="ruby-value">25</span>)
+    <span class="ruby-comment cmt"># Lambdas REQUIRE exact number of args</span>
+    <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">ArgumentError</span>) {<span class="ruby-identifier">ll</span>(<span class="ruby-identifier">:en</span>, <span class="ruby-identifier">:lambda_test</span>, <span class="ruby-value str">'Golly'</span>)}
+    <span class="ruby-identifier">assert_raises</span>(<span class="ruby-constant">ArgumentError</span>) {<span class="ruby-identifier">ll</span>(<span class="ruby-identifier">:ja</span>, <span class="ruby-identifier">:lambda_test</span>, <span class="ruby-value str">'Golly'</span>, <span class="ruby-value">25</span>, <span class="ruby-value">4</span>)}
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

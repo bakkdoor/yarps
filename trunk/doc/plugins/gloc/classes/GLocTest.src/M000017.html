@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_lang_name (GLocTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_test.rb, line 337</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_lang_name</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-identifier">:en</span>, <span class="ruby-identifier">:general_lang_en</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'English'</span>, <span class="ruby-identifier">:general_lang_ja</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'Japanese'</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-identifier">:ja</span>, <span class="ruby-identifier">:general_lang_en</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'英語'</span>, <span class="ruby-identifier">:general_lang_ja</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'日本語'</span>
+    <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">:en</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'Japanese'</span>, <span class="ruby-identifier">l_lang_name</span>(<span class="ruby-identifier">:ja</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'English'</span>, <span class="ruby-identifier">l_lang_name</span>(<span class="ruby-value str">'en'</span>)
+    <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">:ja</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'日本語'</span>, <span class="ruby-identifier">l_lang_name</span>(<span class="ruby-value str">'ja'</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'英語'</span>, <span class="ruby-identifier">l_lang_name</span>(<span class="ruby-identifier">:en</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

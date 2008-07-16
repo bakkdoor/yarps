@@ -1,0 +1,28 @@
+<p>
+  <b><%= l :name %>:</b>
+  <%=h @team.name %>
+</p>
+
+<p>
+  <b><%= l :description %>:</b>
+  <%=h @team.description %>
+</p>
+
+<p>
+  <b><%= l :website %>:</b>
+  <%=h @team.website %>
+</p>
+
+<p>
+  <b><%= l :public %>:</b>
+  <%=h @team.public %>
+</p>
+
+<p>
+  <b><%= l :invite_only %>:</b>
+  <%=h @team.invite_only %>
+</p>
+
+
+<%= link_to (l :edit), edit_team_path(@team) %> |
+<%= link_to (l :back), teams_path %>

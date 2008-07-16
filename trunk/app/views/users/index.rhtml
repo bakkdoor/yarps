@@ -1,0 +1,7 @@
+<%= l :all_profiles %><br><br>
+
+<ul>
+    <% User.find(:all).each do |user| %>
+    <li><%= link_to user.login, :action => "show", :username => user.login %></li>
+    <% end %>
+</ul>

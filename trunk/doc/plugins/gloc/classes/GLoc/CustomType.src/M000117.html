@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>datetime_fmt_set_value (GLoc::CustomType)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/gloc-custom_types.rb, line 66</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">datetime_fmt_set_value</span>(<span class="ruby-identifier">v</span>)
+      <span class="ruby-identifier">v2</span>= <span class="ruby-identifier">v</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">'%%'</span>,<span class="ruby-value str">&quot;\0&quot;</span>)
+      <span class="ruby-identifier">subs</span>= {
+          <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">v2</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">'%a'</span>),
+          <span class="ruby-identifier">:A</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">v2</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">'%A'</span>),
+          <span class="ruby-identifier">:b</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">v2</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">'%b'</span>),
+          <span class="ruby-identifier">:B</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">v2</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-value str">'%B'</span>),
+        }
+      <span class="ruby-identifier">x</span>= <span class="ruby-keyword kw">nil</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">subs</span>.<span class="ruby-identifier">values</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-keyword kw">true</span>)
+        <span class="ruby-identifier">x</span>= <span class="ruby-node">&quot;v= #{v2.inspect};&quot;</span>
+        <span class="ruby-identifier">x</span><span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;v.gsub! '%a', GLoc.ll(@lang,:general_text_day_names_abbr  )[d.wday];&quot;</span>    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">subs</span>[<span class="ruby-identifier">:a</span>]
+        <span class="ruby-identifier">x</span><span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;v.gsub! '%A', GLoc.ll(@lang,:general_text_day_names       )[d.wday];&quot;</span>    <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">subs</span>[<span class="ruby-identifier">:A</span>]
+        <span class="ruby-identifier">x</span><span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;v.gsub! '%b', GLoc.ll(@lang,:general_text_month_names_abbr)[d.month-1];&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">subs</span>[<span class="ruby-identifier">:b</span>]
+        <span class="ruby-identifier">x</span><span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;v.gsub! '%B', GLoc.ll(@lang,:general_text_month_names     )[d.month-1];&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">subs</span>[<span class="ruby-identifier">:B</span>]
+        <span class="ruby-identifier">x</span><span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">%[v.gsub! &quot;\0&quot;, '%%';]</span>
+        <span class="ruby-identifier">x</span><span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'d.strftime v'</span>
+      <span class="ruby-keyword kw">else</span>
+        <span class="ruby-identifier">x</span>= <span class="ruby-node">&quot;d.strftime #{v.inspect}&quot;</span>
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-ivar">@value</span>= <span class="ruby-identifier">eval</span> <span class="ruby-node">&quot;lambda do |d| #{x} end&quot;</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

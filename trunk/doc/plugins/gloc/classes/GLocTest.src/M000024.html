@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_arrays_and_charset_change (GLocTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_test.rb, line 471</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_arrays_and_charset_change</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">load_localized_strings</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>),<span class="ruby-value str">'lang'</span>)
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">valid_languages</span> <span class="ruby-comment cmt"># Force refresh if in dev mode</span>
+    <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">:ja</span>
+    <span class="ruby-identifier">clear_strings</span> <span class="ruby-identifier">:ja</span>, <span class="ruby-identifier">:proc_test</span>, <span class="ruby-identifier">:lambda_test</span>, <span class="ruby-identifier">:hash_test</span>
+    
+    <span class="ruby-identifier">v</span>= <span class="ruby-identifier">l</span>(<span class="ruby-identifier">:array_test</span>)
+    <span class="ruby-identifier">assert_equal</span> [<span class="ruby-identifier">:yay</span>, <span class="ruby-value str">'はい'</span>, [<span class="ruby-value">1</span>,<span class="ruby-value">2</span>,<span class="ruby-value str">'いいえ'</span>,<span class="ruby-value">3</span>]], <span class="ruby-identifier">v</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;E381AFE38184&quot;</span>, <span class="ruby-identifier">v</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'H*'</span>)[<span class="ruby-value">0</span>].<span class="ruby-identifier">upcase</span>
+
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">set_charset</span> <span class="ruby-value str">'sjis'</span>
+    <span class="ruby-identifier">v</span>= <span class="ruby-identifier">l</span>(<span class="ruby-identifier">:array_test</span>)
+    <span class="ruby-identifier">assert_kind_of</span> <span class="ruby-constant">Array</span>, <span class="ruby-identifier">v</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">3</span>, <span class="ruby-identifier">v</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:yay</span>, <span class="ruby-identifier">v</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;82CD82A2&quot;</span>, <span class="ruby-identifier">v</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'H*'</span>)[<span class="ruby-value">0</span>].<span class="ruby-identifier">upcase</span>
+    <span class="ruby-identifier">v</span>= <span class="ruby-identifier">v</span>[<span class="ruby-value">2</span>]
+    <span class="ruby-identifier">assert_kind_of</span> <span class="ruby-constant">Array</span>, <span class="ruby-identifier">v</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">4</span>, <span class="ruby-identifier">v</span>.<span class="ruby-identifier">size</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">1</span>, <span class="ruby-identifier">v</span>[<span class="ruby-value">0</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">2</span>, <span class="ruby-identifier">v</span>[<span class="ruby-value">1</span>]
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;82A282A282A6&quot;</span>, <span class="ruby-identifier">v</span>[<span class="ruby-value">2</span>].<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'H*'</span>)[<span class="ruby-value">0</span>].<span class="ruby-identifier">upcase</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value">3</span>, <span class="ruby-identifier">v</span>[<span class="ruby-value">3</span>]
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

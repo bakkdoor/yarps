@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>similar_language (GLoc)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/gloc.rb, line 264</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">similar_language</span>(<span class="ruby-identifier">lang</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">nil</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">lang</span>.<span class="ruby-identifier">nil?</span>
+      <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">lang</span>.<span class="ruby-identifier">to_sym</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">valid_language?</span>(<span class="ruby-identifier">lang</span>)
+      <span class="ruby-comment cmt"># Check lowercase without dashes</span>
+      <span class="ruby-identifier">lang</span>= <span class="ruby-identifier">lang</span>.<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">'-'</span>,<span class="ruby-value str">'_'</span>)
+      <span class="ruby-keyword kw">return</span> <span class="ruby-constant">LOWERCASE_LANGUAGES</span>[<span class="ruby-identifier">lang</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-constant">LOWERCASE_LANGUAGES</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">lang</span>)
+      <span class="ruby-comment cmt"># Check without dialect</span>
+      <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">lang</span>.<span class="ruby-identifier">to_s</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/^([a-z]+?)[^a-z].*/</span>
+        <span class="ruby-identifier">lang</span>= <span class="ruby-identifier">$1</span>
+        <span class="ruby-keyword kw">return</span> <span class="ruby-constant">LOWERCASE_LANGUAGES</span>[<span class="ruby-identifier">lang</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-constant">LOWERCASE_LANGUAGES</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">lang</span>)
+      <span class="ruby-keyword kw">end</span>
+      <span class="ruby-comment cmt"># Check other dialects</span>
+      <span class="ruby-identifier">lang</span>= <span class="ruby-node">&quot;#{lang}_&quot;</span>
+      <span class="ruby-constant">LOWERCASE_LANGUAGES</span>.<span class="ruby-identifier">keys</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">k</span><span class="ruby-operator">|</span> <span class="ruby-keyword kw">return</span> <span class="ruby-constant">LOWERCASE_LANGUAGES</span>[<span class="ruby-identifier">k</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">k</span>.<span class="ruby-identifier">starts_with?</span>(<span class="ruby-identifier">lang</span>)}
+      <span class="ruby-comment cmt"># Nothing found</span>
+      <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

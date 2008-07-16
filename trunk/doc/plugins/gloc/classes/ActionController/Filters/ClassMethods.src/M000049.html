@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>autodetect_language_filter (ActionController::Filters::ClassMethods)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../../../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/gloc-rails.rb, line 66</span>
+      <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">autodetect_language_filter</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>)
+        <span class="ruby-identifier">options</span>= <span class="ruby-identifier">args</span>.<span class="ruby-identifier">last</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Hash</span>) <span class="ruby-operator">?</span> <span class="ruby-identifier">args</span>.<span class="ruby-identifier">last</span> <span class="ruby-operator">:</span> {}
+        <span class="ruby-identifier">x</span>= <span class="ruby-value str">'Proc.new { |c| l= nil;'</span>
+        <span class="ruby-comment cmt"># :check_params</span>
+        <span class="ruby-keyword kw">unless</span> (<span class="ruby-identifier">v</span>= <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:check_params</span>)) <span class="ruby-operator">==</span> <span class="ruby-keyword kw">false</span>
+          <span class="ruby-identifier">name</span>= <span class="ruby-identifier">v</span> <span class="ruby-value">? </span><span class="ruby-node">&quot;:#{v}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">'GLoc.get_config(:default_param_name)'</span>
+          <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;l ||= GLoc.similar_language(c.params[#{name}]);&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-comment cmt"># :check_cookie</span>
+        <span class="ruby-keyword kw">unless</span> (<span class="ruby-identifier">v</span>= <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:check_cookie</span>)) <span class="ruby-operator">==</span> <span class="ruby-keyword kw">false</span>
+          <span class="ruby-identifier">name</span>= <span class="ruby-identifier">v</span> <span class="ruby-value">? </span><span class="ruby-node">&quot;:#{v}&quot;</span> <span class="ruby-operator">:</span> <span class="ruby-value str">'GLoc.get_config(:default_cookie_name)'</span>
+          <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;l ||= GLoc.similar_language(c.send(:cookies)[#{name}]);&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-comment cmt"># :check_accept_header</span>
+        <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">:check_accept_header</span>) <span class="ruby-operator">==</span> <span class="ruby-keyword kw">false</span>
+          <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">&quot;l ||= c.get_valid_lang_from_accept_header;&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-comment cmt"># Set language</span>
+        <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'ret= true;'</span>
+        <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'if l; c.set_language(l); c.headers[\'Content-Language\']= l.to_s; '</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">:on_set_lang</span>)
+          <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;ret= c.#{options.delete(:on_set_lang)}(l);&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">options</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">:on_no_lang</span>)
+          <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-node">&quot;else; ret= c.#{options.delete(:on_no_lang)};&quot;</span>
+        <span class="ruby-keyword kw">end</span>
+        <span class="ruby-identifier">x</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'end; ret }'</span>
+        
+        <span class="ruby-comment cmt"># Create filter</span>
+        <span class="ruby-identifier">block</span>= <span class="ruby-identifier">eval</span> <span class="ruby-identifier">x</span>
+        <span class="ruby-identifier">before_filter</span>(<span class="ruby-operator">*</span><span class="ruby-identifier">args</span>, <span class="ruby-operator">&amp;</span><span class="ruby-identifier">block</span>)
+      <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<div class="headline"><%= l :search_results_for %> <i><b><%= params[:search_query] %></b></i></div>
+
+<b><%= l :users %>:</b>
+<ul>
+<% if @users.size == 0 %>
+    <%= l :no_users_found %>.
+<% else %>
+    <% @users.each do |user| %>
+        <li><%= link_to user.login, :controller => "users", :action => "show", :login => user.login %></li>
+    <% end %>
+<% end %>
+</ul>
+<br>
+<b><%= l :teams %>:</b>
+<ul>
+<% if @teams.size == 0 %>
+    <%= l :no_teams_found %>.
+<% else %>
+    <% @teams.each do |team| %>
+        <li><%= link_to team.name, :controller => "teams", :action => "show", :id => team %></li>
+    <% end %>
+<% end %>
+</ul>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>load_localized_strings (GLoc)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File lib/gloc.rb, line 164</span>
+    <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">load_localized_strings</span>(<span class="ruby-identifier">dir</span>=<span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">override</span>=<span class="ruby-keyword kw">true</span>)
+      <span class="ruby-identifier">_charset_required</span>
+      <span class="ruby-identifier">_get_lang_file_list</span>(<span class="ruby-identifier">dir</span>).<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">filename</span><span class="ruby-operator">|</span>
+        
+        <span class="ruby-comment cmt"># Load file</span>
+        <span class="ruby-identifier">raw_hash</span>= <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">read</span>(<span class="ruby-identifier">filename</span>))
+        <span class="ruby-identifier">raw_hash</span>= {} <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">raw_hash</span>.<span class="ruby-identifier">kind_of?</span>(<span class="ruby-constant">Hash</span>)
+        <span class="ruby-identifier">filename</span> <span class="ruby-operator">=~</span> <span class="ruby-regexp re">/([^\/\\]+)\.ya?ml$/</span>
+        <span class="ruby-identifier">lang</span>= <span class="ruby-identifier">$1</span>.<span class="ruby-identifier">to_sym</span>
+        <span class="ruby-identifier">file_charset</span>= <span class="ruby-identifier">raw_hash</span>[<span class="ruby-value str">'file_charset'</span>] <span class="ruby-operator">||</span> <span class="ruby-constant">UTF_8</span>
+  
+        <span class="ruby-comment cmt"># Pre-process file data</span>
+        <span class="ruby-identifier">dest_charset</span>= <span class="ruby-identifier">get_charset</span>(<span class="ruby-identifier">lang</span>)
+        <span class="ruby-identifier">_verbose_msg</span> {<span class="ruby-node">&quot;Reading file #{filename} [charset: #{file_charset} --&gt; #{dest_charset}]&quot;</span>}
+        <span class="ruby-identifier">symbol_hash</span> = {}
+        <span class="ruby-constant">Iconv</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">dest_charset</span>, <span class="ruby-identifier">file_charset</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+          <span class="ruby-identifier">raw_hash</span>.<span class="ruby-identifier">each</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+            <span class="ruby-identifier">symbol_hash</span>[<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_sym</span>]= <span class="ruby-identifier">_set_value_charset</span>(<span class="ruby-identifier">_internalize_value</span>(<span class="ruby-identifier">value</span>, <span class="ruby-identifier">lang</span>, <span class="ruby-identifier">file_charset</span>), <span class="ruby-identifier">i</span>, <span class="ruby-identifier">dest_charset</span>)
+          }
+        <span class="ruby-keyword kw">end</span>
+  
+        <span class="ruby-comment cmt"># Add strings to repos</span>
+        <span class="ruby-identifier">_add_localized_strings</span>(<span class="ruby-identifier">lang</span>, <span class="ruby-identifier">symbol_hash</span>, <span class="ruby-identifier">override</span>)
+      }
+      <span class="ruby-identifier">_verbose_msg</span> <span class="ruby-identifier">:stats</span>
+    <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

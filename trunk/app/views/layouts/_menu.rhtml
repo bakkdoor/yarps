@@ -1,0 +1,7 @@
+<% Menu.main_menu_list.each do |item| %>
+    <% if item[:controller] ==  controller.controller_name %>
+        <span class="current"> <%= link_to item[:link_text], :controller => item[:controller] %> </span>
+    <% else %>
+        <span class="not_current"> <%= link_to item[:link_text], :controller => item[:controller] %> </span>
+    <% end %>
+<% end %>

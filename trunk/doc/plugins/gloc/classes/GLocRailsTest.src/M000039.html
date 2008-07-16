@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_autodetect_language (GLocRailsTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_rails_test.rb, line 42</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_autodetect_language</span>
+    <span class="ruby-constant">GLoc</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-identifier">:default_language</span>]= <span class="ruby-identifier">:def</span>
+    <span class="ruby-constant">GLoc</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-identifier">:default_param_name</span>] = <span class="ruby-value str">'plang'</span>
+    <span class="ruby-constant">GLoc</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-identifier">:default_cookie_name</span>] = <span class="ruby-value str">'clang'</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">clear_strings</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-identifier">:en</span>, <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'a'</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-identifier">:en_au</span>, <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'a'</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-identifier">:en_US</span>, <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'a'</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-identifier">:Ja</span>, <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'a'</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-identifier">:ZH_HK</span>, <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'a'</span>
+
+    <span class="ruby-comment cmt"># default</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:def</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:def</span>, <span class="ruby-value str">'its'</span>, <span class="ruby-value str">'all'</span>, <span class="ruby-value str">'bullshit,man;q=zxc'</span>
+    <span class="ruby-comment cmt"># simple</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:en_au</span>, <span class="ruby-value str">'en_au'</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:en_US</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'en_us'</span>, <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:Ja</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'ja'</span>
+    <span class="ruby-comment cmt"># priority</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:Ja</span>, <span class="ruby-value str">'ja'</span>, <span class="ruby-value str">'en_us'</span>, <span class="ruby-value str">'qwe_ja,zh,monkey_en;q=0.5'</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:en_US</span>, <span class="ruby-value str">'why'</span>, <span class="ruby-value str">'en_us'</span>, <span class="ruby-value str">'qwe_ja,zh,monkey_en;q=0.5'</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:Ja</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'qwe_en,JA,zh,monkey_en;q=0.5'</span>
+    <span class="ruby-comment cmt"># dashes to underscores in accept string</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:en_au</span>, <span class="ruby-value str">'monkey'</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'de,EN-Au'</span>
+    <span class="ruby-comment cmt"># remove dialect</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:en</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'en-bullshit'</span>, <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:en</span>, <span class="ruby-value str">'monkey'</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'de,EN-NZ,ja'</span>
+    <span class="ruby-comment cmt"># different dialect</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:ZH_HK</span>, <span class="ruby-value str">'zh'</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'de,EN-NZ,ja'</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:ZH_HK</span>, <span class="ruby-value str">'monkey'</span>, <span class="ruby-value str">'zh'</span>, <span class="ruby-value str">'de,EN-NZ,ja'</span>
+    
+    <span class="ruby-comment cmt"># Check param/cookie names use defaults</span>
+    <span class="ruby-constant">GLoc</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-identifier">:default_param_name</span>] = <span class="ruby-value str">'p_lang'</span>
+    <span class="ruby-constant">GLoc</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-identifier">:default_cookie_name</span>] = <span class="ruby-value str">'c_lang'</span>
+    <span class="ruby-comment cmt"># :check_params</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:def</span>, <span class="ruby-value str">'en_au'</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:en_au</span>, {<span class="ruby-identifier">:p_lang</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'en_au'</span>}, <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-comment cmt"># :check_cookie</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:def</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'en_us'</span>, <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:en_US</span>, <span class="ruby-keyword kw">nil</span>, {<span class="ruby-identifier">:c_lang</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'en_us'</span>}, <span class="ruby-keyword kw">nil</span>
+    <span class="ruby-constant">GLoc</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-identifier">:default_param_name</span>] = <span class="ruby-value str">'plang'</span>
+    <span class="ruby-constant">GLoc</span><span class="ruby-operator">::</span><span class="ruby-constant">CONFIG</span>[<span class="ruby-identifier">:default_cookie_name</span>] = <span class="ruby-value str">'clang'</span>
+
+    <span class="ruby-comment cmt"># autodetect_language_filter :only =&gt; :auto2, :check_accept_header =&gt; false, :check_params =&gt; 'xx'</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:def</span>, <span class="ruby-value str">'ja'</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'en_US'</span>, <span class="ruby-identifier">:auto2</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:Ja</span>, {<span class="ruby-identifier">:xx</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'ja'</span>}, <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'en_US'</span>, <span class="ruby-identifier">:auto2</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:en_au</span>, <span class="ruby-value str">'ja'</span>, <span class="ruby-value str">'en_au'</span>, <span class="ruby-value str">'en_US'</span>, <span class="ruby-identifier">:auto2</span>
+    
+    <span class="ruby-comment cmt"># autodetect_language_filter :only =&gt; :auto3, :check_cookie =&gt; false</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:Ja</span>, <span class="ruby-value str">'ja'</span>, <span class="ruby-value str">'en_us'</span>, <span class="ruby-value str">'qwe_ja,zh,monkey_en;q=0.5'</span>, <span class="ruby-identifier">:auto3</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:ZH_HK</span>, <span class="ruby-value str">'hehe'</span>, <span class="ruby-value str">'en_us'</span>, <span class="ruby-value str">'qwe_ja,zh,monkey_en;q=0.5'</span>, <span class="ruby-identifier">:auto3</span>
+    
+    <span class="ruby-comment cmt"># autodetect_language_filter :only =&gt; :auto4, :check_cookie =&gt; 'qwe', :check_params =&gt; false</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:def</span>, <span class="ruby-value str">'ja'</span>, <span class="ruby-value str">'en_us'</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">:auto4</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:ZH_HK</span>, <span class="ruby-value str">'ja'</span>, <span class="ruby-value str">'en_us'</span>, <span class="ruby-value str">'qwe_ja,zh,monkey_en;q=0.5'</span>, <span class="ruby-identifier">:auto4</span>
+    <span class="ruby-identifier">subtest_autodetect_language</span> <span class="ruby-identifier">:en_US</span>, <span class="ruby-value str">'ja'</span>, {<span class="ruby-identifier">:qwe</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'en_us'</span>}, <span class="ruby-value str">'ja'</span>, <span class="ruby-identifier">:auto4</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

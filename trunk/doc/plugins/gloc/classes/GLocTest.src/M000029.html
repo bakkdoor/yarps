@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_sameas (GLocTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_test.rb, line 569</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_sameas</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">load_localized_strings</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>),<span class="ruby-value str">'lang'</span>)
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">valid_languages</span> <span class="ruby-comment cmt"># Force refresh if in dev mode</span>
+    <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">:ja</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">clear_strings_except</span> <span class="ruby-identifier">:ja</span>
+    
+    <span class="ruby-identifier">test</span>= <span class="ruby-identifier">lambda</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">charset</span><span class="ruby-operator">|</span>
+      <span class="ruby-constant">Iconv</span>.<span class="ruby-identifier">open</span>(<span class="ruby-identifier">charset</span>,<span class="ruby-value str">'utf-8'</span>) <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">i</span><span class="ruby-operator">|</span>
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">iconv</span>(<span class="ruby-value str">'日本語のみ'</span>), <span class="ruby-identifier">l</span>(<span class="ruby-identifier">:sameas_test2</span>)
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">iconv</span>(<span class="ruby-value str">'日本語のみ'</span>), <span class="ruby-identifier">l</span>(<span class="ruby-identifier">:sameas_test1</span>)
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">iconv</span>(<span class="ruby-value str">'鳥が142羽いる'</span>), <span class="ruby-identifier">l</span>(<span class="ruby-identifier">:sameas_test3</span>,<span class="ruby-value">142</span>)
+        <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">i</span>.<span class="ruby-identifier">iconv</span>(<span class="ruby-value str">'鳥が654羽いる'</span>), <span class="ruby-identifier">l</span>(<span class="ruby-identifier">:sameas_test3</span>,<span class="ruby-value">654</span>)
+      <span class="ruby-keyword kw">end</span>
+    <span class="ruby-keyword kw">end</span>
+    
+    <span class="ruby-identifier">test</span>.<span class="ruby-identifier">call</span> <span class="ruby-value str">'utf-8'</span>
+    <span class="ruby-identifier">test</span>.<span class="ruby-identifier">call</span> <span class="ruby-value str">'utf-8'</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">set_charset</span> <span class="ruby-value str">'sjis'</span>
+    <span class="ruby-identifier">test</span>.<span class="ruby-identifier">call</span> <span class="ruby-value str">'sjis'</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">set_charset</span> <span class="ruby-value str">'utf-8'</span>
+    <span class="ruby-identifier">test</span>.<span class="ruby-identifier">call</span> <span class="ruby-value str">'utf-8'</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,109 @@
+.menu-right{
+    float:right;
+    width:20%;
+	  background-color: #eee;
+	  padding-right: 0em;
+	  
+	  right: 2.5em;
+	  position: absolute;
+}
+
+.menu{
+  text-align: right;
+  line-height: 103px;   /* direkt unten am menu_bg */
+  padding-right: 2em;
+  font-family: Arial, sans-serif;
+  font-size: 100%;
+}
+
+.private_current a{
+    color: #2C3D62;
+    font-variant: small-caps;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.private_menu{
+    color: #2C3D62;
+    font-variant: small-caps;
+    font-weight: bold;
+}
+
+.private_menu a{
+    text-decoration: none;
+    color: #2C3D62;
+    font-variant: small-caps;
+    font-weight: normal;
+}
+
+.private_menu a:hover{
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+.not_current a{
+  color: #fff;
+  text-decoration: none;
+  
+  border-left: 10px solid transparent;
+	border-right: 10px solid transparent;
+}
+
+.not_current a:hover{
+  color: #555;
+	background: #fff;
+	-moz-border-radius-topleft: 3px;
+	-khtml-border-top-left-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+	border-top-left-radius: 3px;
+	-moz-border-radius-topright: 3px;
+	-khtml-border-top-right-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	border-top-right-radius: 3px;
+	border-top: 3px solid #fff;
+	border-bottom: 5px solid #fff;
+	border-left: 10px solid #fff;
+	border-right: 10px solid #fff;
+	
+	
+	filter:alpha(opacity=60);
+  -moz-opacity: 0.60;
+  opacity: 0.60;
+  
+}
+
+.current a{
+  color: #000;
+ 	background: #fff;
+ 	-moz-border-radius-topleft: 3px;
+ 	-khtml-border-top-left-radius: 3px;
+ 	-webkit-border-top-left-radius: 3px;
+ 	border-top-left-radius: 3px;
+ 	-moz-border-radius-topright: 3px;
+ 	-khtml-border-top-right-radius: 3px;
+ 	-webkit-border-top-right-radius: 3px;
+ 	border-top-right-radius: 3px;
+ 	border-top: 7px solid #fff;
+ 	border-bottom: 5px solid #fff;
+ 	border-left: 10px solid #fff;
+ 	border-right: 10px solid #fff;
+	text-decoration: none;
+}
+
+.current a:hover;{
+	text-decoration: none;
+    color: #000;
+ 	background: #fff;
+ 	-moz-border-radius-topleft: 3px;
+ 	-khtml-border-top-left-radius: 3px;
+ 	-webkit-border-top-left-radius: 3px;
+ 	border-top-left-radius: 3px;
+ 	-moz-border-radius-topright: 3px;
+ 	-khtml-border-top-right-radius: 3px;
+ 	-webkit-border-top-right-radius: 3px;
+ 	border-top-right-radius: 3px;
+ 	border-top: 7px solid #fff;
+ 	border-bottom: 5px solid #fff;
+ 	border-left: 10px solid #fff;
+ 	border-right: 10px solid #fff;
+}

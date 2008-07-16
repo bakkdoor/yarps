@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_pluralization (GLocTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_test.rb, line 197</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_pluralization</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-identifier">:en</span>, <span class="ruby-identifier">:_gloc_rule_default</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">%[|n| case n; when 0 then '_none'; when 1 then '_single'; else '_many'; end]</span>, <span class="ruby-identifier">:a_single</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'%d man'</span>, <span class="ruby-identifier">:a_many</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'%d men'</span>, <span class="ruby-identifier">:a_none</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'No men'</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-identifier">:en</span>, <span class="ruby-identifier">:_gloc_rule_asd</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">%[|n| n&lt;10 ? '_few' : '_heaps']</span>, <span class="ruby-identifier">:a_few</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'a few men (%d)'</span>, <span class="ruby-identifier">:a_heaps=</span><span class="ruby-operator">&gt;</span> <span class="ruby-value str">'soo many men'</span>
+    <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">:en</span>
+
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'No men'</span>, <span class="ruby-identifier">lwr</span>(<span class="ruby-identifier">:a</span>, <span class="ruby-value">0</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'1 man'</span>, <span class="ruby-identifier">lwr</span>(<span class="ruby-identifier">:a</span>, <span class="ruby-value">1</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'3 men'</span>, <span class="ruby-identifier">lwr</span>(<span class="ruby-identifier">:a</span>, <span class="ruby-value">3</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'20 men'</span>, <span class="ruby-identifier">lwr</span>(<span class="ruby-identifier">:a</span>, <span class="ruby-value">20</span>)
+
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'a few men (0)'</span>, <span class="ruby-identifier">lwr_</span>(<span class="ruby-identifier">:asd</span>, <span class="ruby-identifier">:a</span>, <span class="ruby-value">0</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'a few men (1)'</span>, <span class="ruby-identifier">lwr_</span>(<span class="ruby-identifier">:asd</span>, <span class="ruby-identifier">:a</span>, <span class="ruby-value">1</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'a few men (3)'</span>, <span class="ruby-identifier">lwr_</span>(<span class="ruby-identifier">:asd</span>, <span class="ruby-identifier">:a</span>, <span class="ruby-value">3</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'soo many men'</span>, <span class="ruby-identifier">lwr_</span>(<span class="ruby-identifier">:asd</span>, <span class="ruby-identifier">:a</span>, <span class="ruby-value">12</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'soo many men'</span>, <span class="ruby-identifier">lwr_</span>(<span class="ruby-identifier">:asd</span>, <span class="ruby-identifier">:a</span>, <span class="ruby-value">20</span>)
+    
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

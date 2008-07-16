@@ -1,0 +1,5 @@
+meine teams:<br><br>
+<% @team_memberships.each do |membership| %>
+    name: <%= membership.team.name %><br>
+    dabei seit: <%= membership.created_at %>
+<% end %>

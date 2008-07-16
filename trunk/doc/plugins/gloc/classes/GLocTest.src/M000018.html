@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_charset_change_all (GLocTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_test.rb, line 348</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_charset_change_all</span>
+    <span class="ruby-identifier">load_default_strings</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">clear_strings_except</span> <span class="ruby-identifier">:en</span>, <span class="ruby-identifier">:ja</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-identifier">:ja2</span>, <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'a'</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">valid_languages</span> <span class="ruby-comment cmt"># Force refresh if in dev mode</span>
+    <span class="ruby-constant">GLoc</span><span class="ruby-operator">::</span><span class="ruby-constant">Constants</span>.<span class="ruby-identifier">class_eval</span> <span class="ruby-value str">'LOCALIZED_STRINGS[:ja2]= LOCALIZED_STRINGS[:ja].clone'</span>
+
+    [<span class="ruby-identifier">:ja</span>, <span class="ruby-identifier">:ja2</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">l</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'はい'</span>, <span class="ruby-identifier">l_yesno</span>(<span class="ruby-keyword kw">true</span>)
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;E381AFE38184&quot;</span>, <span class="ruby-identifier">l_yesno</span>(<span class="ruby-keyword kw">true</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'H*'</span>)[<span class="ruby-value">0</span>].<span class="ruby-identifier">upcase</span>
+    <span class="ruby-keyword kw">end</span>
+
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">set_charset</span> <span class="ruby-value str">'sjis'</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'sjis'</span>, <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">get_charset</span>(<span class="ruby-identifier">:ja</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'sjis'</span>, <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">get_charset</span>(<span class="ruby-identifier">:ja2</span>)
+    
+    [<span class="ruby-identifier">:ja</span>, <span class="ruby-identifier">:ja2</span>].<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">l</span>
+      <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">&quot;82CD82A2&quot;</span>, <span class="ruby-identifier">l_yesno</span>(<span class="ruby-keyword kw">true</span>).<span class="ruby-identifier">unpack</span>(<span class="ruby-value str">'H*'</span>)[<span class="ruby-value">0</span>].<span class="ruby-identifier">upcase</span>
+    <span class="ruby-keyword kw">end</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

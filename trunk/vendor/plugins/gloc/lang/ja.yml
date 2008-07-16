@@ -1,0 +1,30 @@
+_gloc_rule_default:
+actionview_datehelper_date_select_order: [:year, :month, :day]
+actionview_datehelper_select_day_suffix: 日
+actionview_datehelper_select_month_suffix: 月
+actionview_datehelper_select_year_suffix: 年
+actionview_datehelper_time_in_words_day: %d日間
+actionview_datehelper_time_in_words_hour_about: 約%d時間
+actionview_datehelper_time_in_words_hour_about_single: 約1時間
+actionview_datehelper_time_in_words_minute: %d分
+actionview_datehelper_time_in_words_minute_half: 約30秒
+actionview_datehelper_time_in_words_minute_less_than: 1分以内
+actionview_datehelper_time_in_words_minute_single: 1分
+actionview_datehelper_time_in_words_month: %dヶ月間
+actionview_datehelper_time_in_words_month_about: 約1ヶ月間
+actionview_datehelper_time_in_words_second_less_than: %d秒以内
+actionview_datehelper_time_in_words_year_about: 約1年間
+actionview_datehelper_time_in_words_year_over: %d年間以上
+actionview_instancetag_blank_option: 選んでください
+general_fmt_age: %d歳
+general_fmt_date: !!datetime_fmt '%Y年%m月%d日'
+general_fmt_datetime: !!datetime_fmt '%Y年%m月%d日 %H:%M'
+general_fmt_time: !!datetime_fmt '%H:%M'
+general_text_No: いいえ
+general_text_Yes: はい
+general_text_day_names: [日曜日, 月曜日, 火曜日, 水曜日, 木曜日, 金曜日, 土曜日]
+general_text_day_names_abbr: [日, 月, 火, 水, 木, 金, 土]
+general_text_month_names: [1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+general_text_month_names_abbr: [1月, 2月, 3月, 4月, 5月, 6月, 7月, 8月, 9月, 10月, 11月, 12月]
+general_text_no: いいえ
+general_text_yes: はい

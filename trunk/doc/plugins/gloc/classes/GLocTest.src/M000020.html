@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_set_language_if_valid (GLocTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_test.rb, line 410</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_set_language_if_valid</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-identifier">:en</span>, <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'a'</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-identifier">:zh_tw</span>, <span class="ruby-identifier">:a</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'a'</span>
+
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">set_language_if_valid</span>(<span class="ruby-value str">'en'</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:en</span>, <span class="ruby-identifier">current_language</span>
+
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">set_language_if_valid</span>(<span class="ruby-value str">'zh_tw'</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:zh_tw</span>, <span class="ruby-identifier">current_language</span>
+
+    <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">set_language_if_valid</span>(<span class="ruby-keyword kw">nil</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:zh_tw</span>, <span class="ruby-identifier">current_language</span>
+
+    <span class="ruby-identifier">assert</span> <span class="ruby-operator">!</span><span class="ruby-identifier">set_language_if_valid</span>(<span class="ruby-value str">'ja'</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:zh_tw</span>, <span class="ruby-identifier">current_language</span>
+
+    <span class="ruby-identifier">assert</span> <span class="ruby-identifier">set_language_if_valid</span>(<span class="ruby-identifier">:en</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-identifier">:en</span>, <span class="ruby-identifier">current_language</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

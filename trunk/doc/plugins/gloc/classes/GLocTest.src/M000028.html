@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_datetime_formats (GLocTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_test.rb, line 549</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_datetime_formats</span>
+    <span class="ruby-identifier">load_default_strings</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">valid_languages</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">l</span><span class="ruby-operator">|</span>
+      <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">l</span>
+      <span class="ruby-identifier">assert_array</span> <span class="ruby-identifier">l</span>(<span class="ruby-identifier">:general_text_month_names</span>), <span class="ruby-value">12</span>, <span class="ruby-keyword kw">true</span>, <span class="ruby-constant">String</span>
+      <span class="ruby-identifier">assert_array</span> <span class="ruby-identifier">l</span>(<span class="ruby-identifier">:general_text_month_names_abbr</span>), <span class="ruby-value">12</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-constant">String</span>
+      <span class="ruby-identifier">assert_array</span> <span class="ruby-identifier">l</span>(<span class="ruby-identifier">:general_text_day_names</span>), <span class="ruby-value">7</span>, <span class="ruby-keyword kw">true</span>, <span class="ruby-constant">String</span>
+      <span class="ruby-identifier">assert_array</span> <span class="ruby-identifier">l</span>(<span class="ruby-identifier">:general_text_day_names_abbr</span>), <span class="ruby-value">7</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-constant">String</span>
+    <span class="ruby-keyword kw">end</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">load_localized_strings</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>),<span class="ruby-value str">'lang'</span>)
+    <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">:ru</span>
+    <span class="ruby-identifier">t</span>= <span class="ruby-constant">Time</span>.<span class="ruby-identifier">local</span>(<span class="ruby-value">2006</span>,<span class="ruby-value">10</span>,<span class="ruby-value">13</span>,<span class="ruby-value">23</span>,<span class="ruby-value">58</span>) <span class="ruby-comment cmt"># fri</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'%b 13/Октябрь/2006 %b'</span>, <span class="ruby-identifier">l_date</span>(<span class="ruby-identifier">t</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'Окт 13 _%b:%Октябрь (2006) 11:58 PM'</span>, <span class="ruby-identifier">l_datetime</span>(<span class="ruby-identifier">t</span>)
+    <span class="ruby-identifier">set_language</span> <span class="ruby-identifier">:ja</span>
+    <span class="ruby-identifier">t</span>= <span class="ruby-constant">Time</span>.<span class="ruby-identifier">local</span>(<span class="ruby-value">2005</span>,<span class="ruby-value">1</span>,<span class="ruby-value">18</span>,<span class="ruby-value">10</span>,<span class="ruby-value">05</span>) <span class="ruby-comment cmt"># tue</span>
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'18/1月 火'</span>, <span class="ruby-identifier">l_date</span>(<span class="ruby-identifier">t</span>)
+    <span class="ruby-identifier">assert_equal</span> <span class="ruby-value str">'10:05 AM (2005) 18/1月 火曜日'</span>, <span class="ruby-identifier">l_datetime</span>(<span class="ruby-identifier">t</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_add_localized_strings (GLocTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/gloc_test.rb, line 130</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_add_localized_strings</span>
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">:add</span>
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">:ja_only</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">load_localized_strings</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">join</span>(<span class="ruby-constant">File</span>.<span class="ruby-identifier">dirname</span>(<span class="ruby-keyword kw">__FILE__</span>),<span class="ruby-value str">'lang'</span>)
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">:add</span>
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'日本語のみ'</span>, <span class="ruby-identifier">:ja_only</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-value str">'en'</span>, {<span class="ruby-identifier">:ja_only</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'bullshit'</span>}, <span class="ruby-keyword kw">true</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-value str">'en'</span>, {<span class="ruby-identifier">:ja_only</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'bullshit'</span>}, <span class="ruby-keyword kw">false</span>
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-keyword kw">nil</span>, <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">:add</span>
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'日本語のみ'</span>, <span class="ruby-identifier">:ja_only</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-value str">'ja'</span>, {<span class="ruby-identifier">:ja_only</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'bullshit'</span>, <span class="ruby-identifier">:add</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'123'</span>}, <span class="ruby-keyword kw">false</span>
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'123'</span>, <span class="ruby-identifier">:add</span>
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'日本語のみ'</span>, <span class="ruby-identifier">:ja_only</span>
+    <span class="ruby-constant">GLoc</span>.<span class="ruby-identifier">add_localized_strings</span> <span class="ruby-value str">'ja'</span>, {<span class="ruby-identifier">:ja_only</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'bullshit'</span>, <span class="ruby-identifier">:add</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'234'</span>}
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'234'</span>, <span class="ruby-identifier">:add</span>
+    <span class="ruby-identifier">assert_localized_value</span> <span class="ruby-keyword kw">nil</span>, <span class="ruby-value str">'bullshit'</span>, <span class="ruby-identifier">:ja_only</span>
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>

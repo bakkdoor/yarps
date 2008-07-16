@@ -1,0 +1,64 @@
+about: "Über uns"
+account: Profil
+adress: Adresse
+all_profiles: Alle Profile
+are_you_sure: "Sind Sie sicher?"
+back: "Zurück"
+confirm_password: Passwort bestätigen
+contact: Kontakt
+create: Erstellen
+description: Beschreibung
+destroy: Löschen
+edit: Bearbeiten
+email: Email
+english: Englisch
+failed_logins: Fehlgeschlagene Logins
+german: Deutsch
+here_you_can_create_a_new_account: Hier kannst du ein neues Profil anlegen
+home: Start
+invite_only: "Nur via Einladung"
+language: Deutsch
+last_login: Letzter login am
+logged_in_as: Du bist eingeloggt als
+login: Einloggen
+login_failed_error: "Login fehlgeschlagen - Bitte erneut versuchen"
+login_successful_notice: Erfolgreich eingeloggt
+logout_successful_notice: "Sie wurden ausgeloggt."
+member_since: Mitglied seit
+my_projects: Meine Projekte
+my_settings: Meine Einstellungen
+my_tasks: Meine Aufgaben
+my_teams: Meine Teams
+name: Name
+new_team: Neues Team erstellen
+news: Neuigkeiten
+no_teams_found: Keine Teams gefunden
+no_users_found: Keine Benutzer gefunden
+not_sufficient_rights: "Sie haben nicht die benötigten Rechte für diese Operation."
+password: Passwort
+personal_menu: Persönliches Menü
+please_enter_a_name: Bitte geben Sie einen Namen an
+please_enter_your_login_data: Bitte geben Sie ihre Logindaten ein
+profile: Profil
+project: Projekt
+projects: Projekte
+public: "Öffentlich"
+search_results_for: Suchergebnisse für
+show: Anzeigen
+sign_up: Anmelden
+signup_successful_notice: "Danke für deine Anmeldung!"
+team: Team
+team_successful_create_notice: "Team was successfully created."
+team_successful_update_notice: "Team wurde erfolgreich bearbeitet."
+teams: Teams
+this_is_the_profile_of: Das hier ist das Profil von
+update: Aktualisieren
+user: Benutzer
+user_level: Benutzerstatus
+username: Benutzername
+users: Benutzer
+website: Webseite
+welcome_message: Willkommen bei yarps!
+you_currently_have_a_user_status_of: Du hast derzeit einen User-Status als
+your_options: Deine Optionen
+your_profile_page: Deine Profilseite

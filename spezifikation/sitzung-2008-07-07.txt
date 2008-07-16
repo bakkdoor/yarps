@@ -1,0 +1,68 @@
+                    Ruby: Project-Management-System
+
+Name
+    yarps (yet another ruby projectmanagement system)
+
+Slogan: 
+Man muss dem Leben immer einen Whiskey voraus sein. - Humphrey Bogart
+
+Design
+ 1. Menu (http://calltopower.ca.funpic.de/yarps/)
+    a.  - Nr. 1
+        - Nr. 2
+        - Nr. 3
+        - Nr. 4
+    b. Links im Menu
+ 2. Anordnung der Fenster
+ 3. Seiten
+
+Grundlegende Features
+ 1. Team
+    a. Eins oder mehrere Projekte pro Team
+    b. Bestandteile des Teams: 
+        - Administrator
+        - Moderator
+        - Mitglieder / Entwickler
+        - Tester
+    c. Profilseiten
+        - Profilseite des Teams
+        - Profilseite des Projekts (wenn gewünscht)
+        - Profilseite des einzelnen Entwicklers
+    d. Mitglieder können mehreren Teams/Projekten angehören
+ 
+ 2. Projekt
+    a. Projekte nicht standardmäßig öffentlich (kann zusätzlich aber eingestellt werden)
+    b. Forum (für Diskussion von Bugreports, Fragen)
+    c. "Roadmap" = Entwicklungsplan des Projektes / Bisherige & Zukünftige Versionen (siehe http://dev.flasht.de)
+        I.  besteht aus Auflistung von Aufgaben / Unterprojekten des Projektes, Zeitplan und sonstigen Notizen
+    d. Aufgaben, "To-Do"-Liste
+        I.  für einzelnen Entwickler
+        II. für gesamtes Projekt
+    e. Aufgaben-Vorlagen
+        I.  Oft wiederkehrende Aufgaben lassen sich in Profilen speichern, auf die man bei neuen Projekten/Unterprojekten reinladen kann
+        
+    f. Zeitrahmen-Angabe
+    
+    [Zusatz für später: Subversion-Server-Version + normale Version]
+    
+ 3. Forum
+    a. (evtl. öffentliche) Bugreports
+    b. Diskussionen
+    c. Austausch
+    d. Ankändigungen unsererseits
+
+Service
+ 1. (persönliche) Einstellungen der Website
+    a. universelle
+    b. persönliche
+        I.    Themes
+        II.   Menü
+        III.  (evtl. öffentliche) Bugreporter
+ 2. (persönliche) Einstellungen der einzelnen Projekte
+    a. (evtl. öffentlich) Bugreporter
+ 3. (persönliche) Einstellungen der einzelnen Teammitglieder
+
+Verschiedenes
+
+Notizen
+
