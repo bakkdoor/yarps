@@ -1,0 +1,28 @@
+<h1>Listing team_memberships</h1>
+
+<table>
+  <tr>
+    <th>user</th>
+    <th>team</th>
+    <th>user_level</th>
+    <th>created_at</th>
+    <th>updated_at</th>
+  </tr>
+
+<% for team_membership in @team_memberships %>
+  <tr>
+    <td><%=h team_membership.user.login %></td>
+    <td><%=h team_membership.team.name %></td>
+    <td><%=h team_membership.user_level %></td>
+    <td><%=h team_membership.created_at.german :long_clock %></td>
+    <td><%=h team_membership.updated_at.german :long_clock %></td>
+    <td><%= link_to 'Show', team_membership %></td>
+    <td><%= link_to 'Edit', edit_team_membership_path(team_membership) %></td>
+    <td><%= link_to 'Destroy', team_membership, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New team_membership', new_team_membership_path %>
