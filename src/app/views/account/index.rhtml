@@ -4,7 +4,7 @@
 <%= l :your_options %>:
 <ul>
     <li>
-        <%= link_to l(:your_profile_page), :controller => "users", :action => "show", :username => current_user.login %>
+        <%= link_to l(:your_profile_page), :controller => "users", :action => "show", :id => current_user %>
     </li>
 </ul>
 

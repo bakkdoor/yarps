@@ -1,7 +1,11 @@
+<div style="text-align:center;padding-bottom:1em">
+  Suche: <%= text_field_with_auto_complete :user, :login, {}, {:method => :get, :skip_style => true} %>
+</div>
+
 <%= l :all_profiles %><br><br>
 
 <ul>
-    <% User.find(:all).each do |user| %>
-    <li><%= link_to user.login, :action => "show", :username => user.login %></li>
+    <% @users.each do |user| %>
+    <li><%= link_to user.login, :action => "show", :id => user %></li>
     <% end %>
 </ul>

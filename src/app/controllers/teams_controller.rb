@@ -1,4 +1,7 @@
 class TeamsController < ApplicationController
+  
+  auto_complete_for :team, :name
+  
   # GET /teams
   # GET /teams.xml
   def index
@@ -86,6 +89,15 @@ class TeamsController < ApplicationController
   # personal teams...
   def my
       @team_memberships = current_user.team_memberships
+  end
+  
+  def auto_complete_for_team_name
+    @teams = Team.find(:all, 
+      :conditions => [ 'LOWER(name) LIKE ?',
+      '%' + params[:team][:name].downcase + '%' ], 
+      :order => 'name ASC',
+      :limit => 10)
+    render :partial => 'auto_complete_results'
   end
   
 end
