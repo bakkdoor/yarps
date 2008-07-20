@@ -40,9 +40,10 @@ ActionController::Routing::Routes.draw do |map|
 
   # Install the default routes as the lowest priority.
   
-  #map.resources 'teams'
-  map.resources :teams, :collection => {:auto_complete_for_team_name => :get }
-  map.resources 'team_memberships'
+  map.resources :projects, :collection => {:auto_complete_for_project_name => :get }
+  #map.connect '/projects/list', :controller => 'projects', :action => 'list'
+  
+  map.resources 'project_memberships'
   
   map.resources :users, :collection => {:auto_complete_for_user_login => :get }
   

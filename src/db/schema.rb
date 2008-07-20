@@ -11,26 +11,26 @@
 
 ActiveRecord::Schema.define(:version => 20080720171103) do
 
-  create_table "tags", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "team_memberships", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "team_id"
+  create_table "project_memberships", :force => true do |t|
+    t.integer  "user_id",                   :null => false
+    t.integer  "project_id",                :null => false
     t.integer  "user_level", :default => 0
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  create_table "teams", :force => true do |t|
+  create_table "projects", :force => true do |t|
     t.string   "name",                          :null => false
     t.text     "description"
     t.string   "website"
     t.boolean  "public",      :default => true
     t.boolean  "invite_only", :default => true
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "tags", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

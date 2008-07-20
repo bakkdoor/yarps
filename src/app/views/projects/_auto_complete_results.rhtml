@@ -1,8 +1,8 @@
-<ul class="teams">
-<% for team in @teams do -%>
-  <li class="team">
-    <div style="text-align:left"><%= link_to (h team.name), :action => "show", :id => team %></div>
-    <div style="text-align:left"><%= h team.description %></div>
+<ul class="project">
+<% for project in @projects do -%>
+  <li class="project">
+    <div style="text-align:left"><%= link_to (h project.name), :action => "show", :id => project %></div>
+    <div style="text-align:left"><%= h project.description %></div>
   </li>
 <% end -%>
 </ul>

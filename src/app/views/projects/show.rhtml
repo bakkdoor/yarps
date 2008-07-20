@@ -1,28 +1,28 @@
 <p>
   <b><%= l :name %>:</b>
-  <%=h @team.name %>
+  <%=h @project.name %>
 </p>
 
 <p>
   <b><%= l :description %>:</b>
-  <%=h @team.description %>
+  <%=h @project.description %>
 </p>
 
 <p>
   <b><%= l :website %>:</b>
-  <%=h @team.website %>
+  <%=h @project.website %>
 </p>
 
 <p>
   <b><%= l :public %>:</b>
-  <%=h @team.public %>
+  <%=h @project.public %>
 </p>
 
 <p>
   <b><%= l :invite_only %>:</b>
-  <%=h @team.invite_only %>
+  <%=h @project.invite_only %>
 </p>
 
 
-<%= link_to (l :edit), edit_team_path(@team) %> |
-<%= link_to (l :back), teams_path %>
+<%= link_to (l :edit), edit_project_path(@project) %> |
+<%= link_to (l :back), projects_path %>

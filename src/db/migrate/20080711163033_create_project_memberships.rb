@@ -1,8 +1,8 @@
-class CreateTeamMemberships < ActiveRecord::Migration
+class CreateProjectMemberships < ActiveRecord::Migration
   def self.up
-    create_table :team_memberships do |t|
+    create_table :project_memberships do |t|
       t.integer :user_id, :null => false
-      t.integer :team_id, :null => false
+      t.integer :project_id, :null => false
       t.integer :user_level, :default => User.level_code(:waitin_for_auth)
 
       t.timestamps
@@ -10,6 +10,6 @@ class CreateTeamMemberships < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :team_memberships
+    drop_table :project_memberships
   end
 end

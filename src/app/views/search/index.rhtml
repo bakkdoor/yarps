@@ -6,18 +6,18 @@
     <%= l :no_users_found %>.
 <% else %>
     <% @users.each do |user| %>
-        <li><%= link_to user.login, :controller => "users", :action => "show", :login => user.login %></li>
+        <li><%= link_to user.login, :controller => "users", :action => "show", :id => user %></li>
     <% end %>
 <% end %>
 </ul>
 <br>
-<b><%= l :teams %>:</b>
+<b><%= l :projects %>:</b>
 <ul>
-<% if @teams.size == 0 %>
-    <%= l :no_teams_found %>.
+<% if @projects.size == 0 %>
+    <%= l :no_projects_found %>.
 <% else %>
-    <% @teams.each do |team| %>
-        <li><%= link_to team.name, :controller => "teams", :action => "show", :id => team %></li>
+    <% @projects.each do |project| %>
+        <li><%= link_to project.name, :controller => "projects", :action => "show", :id => project %></li>
     <% end %>
 <% end %>
 </ul>

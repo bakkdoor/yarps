@@ -1,2 +1,2 @@
-module TeamMembershipsHelper
+module ProjectMembershipsHelper
 end

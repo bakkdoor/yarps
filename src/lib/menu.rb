@@ -11,7 +11,6 @@ class Menu
 	            ["account", (l :account)],
 	            ["users", (l :users)],
 	            ["projects", (l :projects)],
-	            ["teams", (l :teams)],
 	            ["about", (l :about)],
 	            ["contact", (l :contact)]
             ]
@@ -29,7 +28,6 @@ class Menu
 	    menu_items = [ 
 	            ["news",(l :news)], 
 	            ["tasks", (l :my_tasks)],
-	            ["teams", (l :my_teams)],
 	            ["projects", (l :my_projects)],
 	            ["account/settings", (l :my_settings)]
             ]

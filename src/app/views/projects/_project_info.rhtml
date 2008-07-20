@@ -1,0 +1,38 @@
+<div class="project_info">
+  <h4>Projektinformationen:</h4>
+  <div>
+      <table>
+          <tr>
+              <td class="title"><%= l :project %></td>
+              <td class="value"><%= @project.name %></td>
+          </tr>
+          <tr>
+              <td class="title"><%= l :description %></td>
+              <td class="value"><%= @project.description %></td>
+          </tr>
+          <tr>
+              <td class="title"><%= l :created_at %></td>
+              <td class="value"><%= @project.created_at.german %></td>
+          </tr>
+          <tr>
+              <td class="title"><%= l :updated_at %></td>
+              <td class="value"><%= @project.updated_at.german %></td>
+          </tr>
+          <tr>
+              <td class="title"><%= l :project_members %></td>
+              <td class="value">
+                <ul>
+                  <% @project.users.each do |member| %>
+                    <li>
+                      <%= link_to member.login,
+                                  :controller => :users,
+                                  :action => :show,
+                                  :id => member.id %>
+                    </li>
+                  <% end %>
+                </ul>
+              </td>
+          </tr>
+      </table>
+  </div>
+</div>

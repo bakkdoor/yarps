@@ -1,6 +1,6 @@
-class CreateTeams < ActiveRecord::Migration
+class CreateProjects < ActiveRecord::Migration
   def self.up
-    create_table :teams do |t|
+    create_table :projects do |t|
       t.string  :name,          :null => false
       t.text    :description
       t.string  :website
@@ -12,6 +12,6 @@ class CreateTeams < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :teams
+    drop_table :projects
   end
 end

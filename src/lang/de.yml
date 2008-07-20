@@ -31,11 +31,11 @@ member_since: Mitglied seit
 my_projects: Meine Projekte
 my_settings: Meine Einstellungen
 my_tasks: Meine Aufgaben
-my_teams: Meine Teams
+my_projects: Meine Projekte
 name: Name
-new_team: Neues Team erstellen
+new_project: Neues Projekt erstellen
 news: Neuigkeiten
-no_teams_found: Keine Teams gefunden
+no_projects_found: Keine Projekte gefunden
 no_users_found: Keine Benutzer gefunden
 not_sufficient_rights: "Sie haben nicht die benötigten Rechte für diese Operation."
 password: Passwort
@@ -50,12 +50,12 @@ search_results_for: Suchergebnisse für
 show: Anzeigen
 sign_up: Anmelden
 signup_successful_notice: "Danke für deine Anmeldung!"
-team: Team
-team_successful_create_notice: "Team wurde erfolgreich erstellt."
-team_successful_update_notice: "Team wurde erfolgreich bearbeitet."
-teams: Teams
-teams_by_letter: "Teams nach Buchstaben"
-teams_with_letter: "Teams mit Buchstaben"
+project: Projekt
+project_successful_create_notice: "Projekt wurde erfolgreich erstellt."
+project_successful_update_notice: "Projekt wurde erfolgreich bearbeitet."
+projects: Projekte
+projects_by_letter: "Projekte nach Buchstaben"
+projects_with_letter: "Projekte mit Buchstaben"
 this_is_the_profile_of: Das hier ist das Profil von
 update: Aktualisieren
 user: Benutzer
@@ -68,4 +68,9 @@ you_currently_have_a_user_status_of: Du hast derzeit einen User-Status als
 your_options: Deine Optionen
 your_profile_page: Deine Profilseite
 is_not_a_letter: "ist kein Buchstabe."
-teams_beginning_with: "Teams beginnend mit"
+projects_beginning_with: "Projekte beginnend mit"
+administration: Administration
+are_you_sure?: "Sind Sie sicher?"
+created_at: "Erstellt am"
+updated_at: "Aktualisiert am"
+project_members: "Projekt Mitglieder"

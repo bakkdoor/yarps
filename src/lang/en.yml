@@ -31,11 +31,11 @@ member_since: Member since
 my_projects: My projects
 my_settings: My Settings
 my_tasks: My tasks
-my_teams: My teams
+my_projects: My projects
 name: Name
-new_team: Create a new team
+new_project: Create a new project
 news: News
-no_teams_found: No teams found
+no_projects_found: No projects found
 no_users_found: No users found
 not_sufficient_rights: "You don't have sufficient rights for this operation."
 password: Password
@@ -50,12 +50,12 @@ search_results_for: Search results for
 show: Show
 sign_up: Sign up
 signup_successful_notice: "Thanks for signing up!"
-team: Team
-team_successful_create_notice: "Team was successfully created."
-team_successful_update_notice: "Team was successfully updated."
-teams: Teams
-teams_by_letter: "Teams by letter"
-teams_with_letter: "Teams with letter"
+project: Project
+project_successful_create_notice: "Project was successfully created."
+project_successful_update_notice: "Project was successfully updated."
+projects: Projects
+projects_by_letter: "Projects by letter"
+projects_with_letter: "Projects with letter"
 this_is_the_profile_of: This is the profile of
 update: Update
 user: User
@@ -68,4 +68,9 @@ you_currently_have_a_user_status_of: You currently have a user status of
 your_options: Your options
 your_profile_page: Your profile page
 is_not_a_letter: "is not a letter."
-teams_beginning_with: "Teams beginning with"
+projects_beginning_with: "Projects beginning with"
+administration: Administration
+are_you_sure?: "Are you sure?"
+created_at: "Created at"
+updated_at: "Updated at"
+project_members: "Project members"

@@ -13,14 +13,14 @@ class AccountController < ApplicationController
     @last_login = session[:last_login] ? session[:last_login] : Time.now
       
       #TODO hier evtl. dann daten rausholen, die sich seit letztem login geändert haben (Posts, Aufgaben usw...)
-    @team_memberships = current_user.team_memberships
+    @project_memberships = current_user.project_memberships
   end
   
   
   # account settings
   def settings
-      @team_memberships = current_user.team_memberships
-      @teams = current_user.teams
+      @project_memberships = current_user.project_memberships
+      @projects = current_user.projects
   end
   
   # GET /account/edit

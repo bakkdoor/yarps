@@ -1,8 +1,8 @@
 require 'digest/sha1'
 class User < ActiveRecord::Base
   
-  has_many :team_memberships
-  has_many :teams, :through => :team_memberships
+  has_many :project_memberships
+  has_many :projects, :through => :project_memberships
   
   # Virtual attribute for the unencrypted password
   attr_accessor :password
@@ -54,6 +54,16 @@ class User < ActiveRecord::Base
     save(false)
   end
   
+  def is_a_project_admin?
+    self.project_memberships.each do |m|
+      if m.user_level == User.level_code(:project_admin)
+        return true
+      end
+    end
+      
+    false
+  end
+  
   # searching for users
   def self.search(query)
     if query
@@ -71,9 +81,11 @@ class User < ActiveRecord::Base
       100
     when :moderator
       90
+    when :project_admin
+      85
     when :projectmanager
       80
-    when :user
+    when :project_member
       10
     when :bugreporter
       8
@@ -96,10 +108,12 @@ class User < ActiveRecord::Base
       "Admin"
     when 90
       "Moderator"
+    when 85
+      "Project-Admin"
     when 80
-      "Projectmanager"
+      "Project-Manager"
     when 10
-      "User"
+      "Project member"
     when 8
       "Bugreporter"
     when 5

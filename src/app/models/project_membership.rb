@@ -1,13 +1,13 @@
-class TeamMembership < ActiveRecord::Base
+class ProjectMembership < ActiveRecord::Base
     belongs_to :user
-    belongs_to :team
+    belongs_to :project
     
     validates_presence_of :user_id
-    validates_presence_of :team_id
+    validates_presence_of :project_id
     validates_presence_of :user_level
     
-    def team
-      Team.find(self.team_id)
+    def project
+      Project.find(self.project_id)
     end
     
     def user

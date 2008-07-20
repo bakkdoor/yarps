@@ -1,25 +1,40 @@
+<div class="headline"><%= l :my_projects %></div>
+<%= link_to (l :new_project), new_project_path %>
+<div class="my_projects">
+  <table>
+    <th><%= l :name %></th>
+    <th><%= l :member_since %></th>
+    <% if current_user.is_a_project_admin? %>
+      <th class="admin"><%= l :administration %></th>
+    <% end %>
+    <% current_user.project_memberships.each do |membership| %>
+      <tr class="<%= cycle("even", "odd") %>">
+        <td><%= link_to (h membership.project.name), :action => :show, :id => membership.project.id %></td>
+        <td><%= h membership.created_at.german(:short) %></td>
+        <td class="admin">
+          <%= link_to_remote  (l :show), 
+                              :update => "membership_info",
+                              :url => { :controller => "project_memberships", 
+                                        :action => "membership_info", :id => membership.id } %>
+          <% if membership.user_level == User.level_code(:project_admin) %>
+            <%= link_to (l :edit), edit_project_path(membership.project) %> 
+            <%= link_to 'Destroy', membership.project, :confirm => (l :are_you_sure?), :method => :delete %>
+          <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<div id="membership_info">    
+</div>
+<br/>
+
 <div class="headline"><%= l :projects_by_letter %></div>
 <div class="alphabet_search">
   <% alphabet_letters.each do |letter| %>
-      <%= link_to "#{letter}", :controller => "search", :action => "projects", :id => letter %>
+      <%= link_to "#{letter}", :controller => :search, :action => :projects, :id => letter %>
   <% end %>
 </div>
 <div style="text-align:center;padding-bottom:1em">
   Suche: <%= text_field_with_auto_complete :project, :name, {}, {:method => :get} %>
 </div>
-<div class="headline"><%= l :my_projects %></div>
-
-<div class="my_projects">
-  <table>
-    <th><%= l :name %></th>
-    <th><%= l :member_since %></th>
-    <% current_user.project_memberships.each do |membership| %>
-      <tr class="<%= cycle("even", "odd") %>">
-        <td><%= h membership.project.name %></td>
-        <td><%= h membership.created_at.german(:short) %></td>
-      </tr>
-    <% end %>
-  </table>
-</div>
-<br />
-<%= link_to (l :new_project), new_project_path %>

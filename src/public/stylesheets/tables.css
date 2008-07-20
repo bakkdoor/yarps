@@ -36,18 +36,45 @@
 }
 
 .my_projects{
-  margin-left: 10em;
-  margin-right: 10em;
+  margin-left: 5em;
+  margin-right: 5em;
 }
 .my_projects table{
   width: 100%;
+  text-align: center;
 }
 .my_projects tr{
   width:100%;
+  height: 2em;
+}
+.my_projects td{
+  width:33%;
+  height: 2em;
 }
 .my_projects .even{
-  background-color: #eee;
+  background-color: #a7d3ff;
+  color:#000;
 }
 .my_projects .odd{
-  background-color: #ccc;  
+  background-color: #ffe293;  
+  color:#000;
+}
+
+.my_projects .admin{
+  font-size: 90%;
+}
+
+.project_info{
+  padding-left: 5em;
+  text-align: left;
+}
+
+.project_info_even{
+  background-color: #a7d3ff;
+  font-weight: bold;
+}
+
+.project_info_odd{
+  background-color: #ffe293;  
+  font-weight: bold;
 }

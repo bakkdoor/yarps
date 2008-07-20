@@ -1,8 +1,8 @@
-<div class="headline"><%= "#{l :teams_beginning_with} <b><i>#{params[:id]}</i></b>" %></div>
+<div class="headline"><%= "#{l :projects_beginning_with} <b><i>#{params[:id]}</i></b>" %></div>
 
 <div class="alphabet_search">
 <% alphabet_letters.each do |letter| %>
-    <%= link_to "#{letter}", :controller => "search", :action => "teams", :id => letter %>
+    <%= link_to "#{letter}", :controller => "search", :action => "projects", :id => letter %>
 <% end %>
 </div>
 
@@ -15,13 +15,13 @@
     <th><%= l :invite_only %></th>
   </tr>
 
-<% for team in @teams %>
+<% for project in @projects %>
   <tr>
-    <td><%=link_to (h team.name), team %></td>
-    <td><%=textilize (h team.description) %></td>
-    <td><%=h team.website %></td>
-    <td><%=h team.public %></td>
-    <td><%=h team.invite_only %></td>
+    <td><%=link_to (h project.name), project %></td>
+    <td><%=textilize (h project.description) %></td>
+    <td><%=h project.website %></td>
+    <td><%=h project.public %></td>
+    <td><%=h project.invite_only %></td>
     <td><%=  %></td>
   </tr>
 <% end %>

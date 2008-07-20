@@ -1,6 +1,6 @@
-<h1>Editing team</h1>
+<h1>Editing project</h1>
 
-<% form_for(@team) do |f| %>
+<% form_for(@project) do |f| %>
   <%= f.error_messages %>
 
   <p>
@@ -28,5 +28,5 @@
   </p>
 <% end %>
 
-<%= link_to (l :show), @team %> |
-<%= link_to (l :back), teams_path %>
+<%= link_to (l :show), @project %> |
+<%= link_to (l :back), projects_path %>

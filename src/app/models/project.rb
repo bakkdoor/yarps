@@ -1,7 +1,7 @@
-class Team < ActiveRecord::Base
+class Project < ActiveRecord::Base
     
-    has_many :team_memberships
-    has_many :users, :through => :team_memberships
+    has_many :project_memberships
+    has_many :users, :through => :project_memberships
     
     validates_presence_of :name, :on => :create, :message => (l :please_enter_a_name)
     
@@ -12,6 +12,10 @@ class Team < ActiveRecord::Base
        else
          find(:all)
        end
+    end
+    
+    def self.all_public
+      find(:all, :conditions => ["public=?", true])
     end
     
     def self.search_first_letters(start_letters)
