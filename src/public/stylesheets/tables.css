@@ -34,3 +34,20 @@
 .alphabet_search a{
   padding-right: 0.6ex;
 }
+
+.my_projects{
+  margin-left: 10em;
+  margin-right: 10em;
+}
+.my_projects table{
+  width: 100%;
+}
+.my_projects tr{
+  width:100%;
+}
+.my_projects .even{
+  background-color: #eee;
+}
+.my_projects .odd{
+  background-color: #ccc;  
+}
