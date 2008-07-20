@@ -1,0 +1,25 @@
+<div class="headline"><%= l :projects_by_letter %></div>
+<div class="alphabet_search">
+  <% alphabet_letters.each do |letter| %>
+      <%= link_to "#{letter}", :controller => "search", :action => "projects", :id => letter %>
+  <% end %>
+</div>
+<div style="text-align:center;padding-bottom:1em">
+  Suche: <%= text_field_with_auto_complete :project, :name, {}, {:method => :get} %>
+</div>
+<div class="headline"><%= l :my_projects %></div>
+
+<div class="my_projects">
+  <table>
+    <th><%= l :name %></th>
+    <th><%= l :member_since %></th>
+    <% current_user.project_memberships.each do |membership| %>
+      <tr class="<%= cycle("even", "odd") %>">
+        <td><%= h membership.project.name %></td>
+        <td><%= h membership.created_at.german(:short) %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
+<br />
+<%= link_to (l :new_project), new_project_path %>
