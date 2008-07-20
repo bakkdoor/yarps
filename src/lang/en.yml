@@ -74,3 +74,6 @@ are_you_sure?: "Are you sure?"
 created_at: "Created at"
 updated_at: "Updated at"
 project_members: "Project members"
+search: Search
+search_term: "Search term"
+search_public_projects: "Search public projects"

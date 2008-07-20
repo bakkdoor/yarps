@@ -9,13 +9,13 @@ class ProjectsController < ApplicationController
   def index
     if logged_in?
       @memberships = current_user.project_memberships
-      
+      @projects = current_user.projects
       respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @projects }
     end
     else
-      redirect_to :action => :list, :id => :all
+      #redirect_to :action => :list, :id => :all
     end
   end
   
@@ -140,4 +140,13 @@ class ProjectsController < ApplicationController
     render :partial => 'auto_complete_results'
   end
   
+  def search_projects
+    if params[:search] != ""
+      @projects = Project.search(params[:search])
+      render :partial => "project_search_list", :object => @projects
+    else
+      render :text => ""
+    end
+  end
+    
 end

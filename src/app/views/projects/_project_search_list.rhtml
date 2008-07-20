@@ -1,0 +1,17 @@
+<% @projects.each do |project| %>
+    <div class="<%= cycle("project_info_even", "project_info_odd") %>" style="padding:1em">
+      <div id="header" style="padding-bottom:0.5em">
+        <div style="text-alig:left;float:left;font-size:120%">
+          <%= link_to project.name, :action => :show, :id => project.id %>
+        </div>
+        <div style="float:right;font-size:90%;padding-top:0.5em">
+          <%= project.updated_at.german %>
+        </div>
+      </div>
+      <div id="body" style="display:block">
+        <div style="text-align:left;font-size:80%;padding-top:1em;"><br>
+          <%= h project.description %>
+        </div>
+      </div>
+    </div>
+<% end %>

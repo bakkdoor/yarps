@@ -1,15 +1,5 @@
 <div class="headline">Alle öffentlichen Projekte</div>
-<div id="columns">
-  <div id="project_list" style="float:left">
-    <% @projects.each do |project| %>
-      <div class="<%= cycle("project_info_even", "project_info_odd") %>">
-        <%= link_to_remote  project.name, 
-                            :update => "project_info",
-                            :url => { :controller => "projects", 
-                            :action => "project_info", :id => project.id } %>
-      </div>
-    <% end %>
-  </div>
-  <div id="project_info" style="float:right">
-  </div>
+
+<div id="project_search_results" style="text-align:left;padding-left:4em;padding-right:4em">
+  <%= render :partial => "projects/project_search_list", :collection => @projects %>
 </div>

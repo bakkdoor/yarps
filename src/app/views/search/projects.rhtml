@@ -1,28 +1,13 @@
 <div class="headline"><%= "#{l :projects_beginning_with} <b><i>#{params[:id]}</i></b>" %></div>
 
 <div class="alphabet_search">
-<% alphabet_letters.each do |letter| %>
-    <%= link_to "#{letter}", :controller => "search", :action => "projects", :id => letter %>
-<% end %>
+  <span style="font-size:150%"><%= l :search %></span>
+  <% alphabet_letters.each do |letter| %>
+      <%= link_to "#{letter.capitalize}", :controller => :search, :action => :projects, :id => letter %>
+  <% end %>
+  <div style="padding-bottom:0.5em"></div>
+  <hr>
 </div>
-
-<table>
-  <tr>
-    <th><%= l :name %></th>
-    <th><%= l :description %></th>
-    <th><%= l :website %></th>
-    <th><%= l :public %></th>
-    <th><%= l :invite_only %></th>
-  </tr>
-
-<% for project in @projects %>
-  <tr>
-    <td><%=link_to (h project.name), project %></td>
-    <td><%=textilize (h project.description) %></td>
-    <td><%=h project.website %></td>
-    <td><%=h project.public %></td>
-    <td><%=h project.invite_only %></td>
-    <td><%=  %></td>
-  </tr>
-<% end %>
-</table>
+<div id="project_search_results" style="text-align:left;padding-left:4em;padding-right:4em">
+  <%= render :partial => "projects/project_search_list", :collection => @projects %>
+</div>

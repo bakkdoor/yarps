@@ -74,3 +74,6 @@ are_you_sure?: "Sind Sie sicher?"
 created_at: "Erstellt am"
 updated_at: "Aktualisiert am"
 project_members: "Projekt Mitglieder"
+search: Suche
+search_term: "Suchterm"
+search_public_projects: "Suche nach öffentliche Projekte"
