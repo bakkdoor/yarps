@@ -13,19 +13,19 @@
     <table>
         <tr>
             <td class="title"><%= "#{l :user}-#{l :name}" %></td>
-            <td><%= @profile_user.login %></td>
+            <td class="value"><%= @profile_user.login %></td>
         </tr>
         <tr>
             <td class="title"><%= l :email %></td>
-            <td><%= @profile_user.email %></td>
+            <td class="value"><%= @profile_user.email %></td>
         </tr>
         <tr>
             <td class="title"><%= l :user_level %></td>
-            <td><%= User.level_name(@profile_user.user_level).capitalize %></td>
+            <td class="value"><%= User.level_name(@profile_user.user_level).capitalize %></td>
         </tr>
         <tr>
             <td class="title"><%= l :member_since %></td>
-            <td><%= @profile_user.created_at.german(:long_clock) %></td>
+            <td class="value"><%= @profile_user.created_at.german(:long_clock) %></td>
         </tr>
     </table>
 </div>
