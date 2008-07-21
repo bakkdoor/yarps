@@ -26,7 +26,7 @@
 <div id="project_search_results" style="text-align:left;padding-bottom:5em">
 </div>
 <%= observe_field 'project_search',
-                  :frequency => 0.5, 
+                  :frequency => 1, 
                   :before => "Element.show('spinner')",
                   :success => "Element.hide('spinner')",
                   :update => 'project_search_results',

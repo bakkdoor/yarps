@@ -1,14 +1,14 @@
-<h1>New tag</h1>
+<h1><%= l :new_tag %></h1>
 
 <% form_for(@tag) do |f| %>
   <%= f.error_messages %>
 
   <p>
-    <%= f.label :name %><br />
+    <%= f.label :name, (l :name) %><br />
     <%= f.text_field :name %>
   </p>
   <p>
-    <%= f.submit "Create" %>
+    <%= f.submit (l :create) %>
   </p>
 <% end %>
 

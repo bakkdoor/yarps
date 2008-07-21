@@ -12,6 +12,30 @@
     <%= f.text_area :description %>
   </p>
   <p>
+    <%= f.label :tag_list, (l :tags) %>
+    <div id="project_tags" style="padding-bottom:0.5em">
+      <% @project.tags.each do |tag| %>
+        [<b><%= tag.name %></b>] &nbsp;
+      <% end %>
+    </div>
+    <%= l :search_term %>: <input id="tag_search" name="tag_search" type="text" value="" size="30">
+    <%= image_tag("spinner.gif",
+                  :align => "absmiddle",
+                  :border => 0,
+                  :id => "spinner",
+                  :style =>"display:none" ) %>
+    <div id="tag_search_results" style="text-align:left;padding-bottom:5em">
+    </div>
+    <%= observe_field 'tag_search',
+                    :frequency => 0.5, 
+                    :before => "Element.show('spinner')",
+                    :success => "Element.hide('spinner')",
+                    :update => 'tag_search_results',
+                    :url => { :controller => 'projects', :action=> 'search_tags' }, 
+                    :with => "'search=' + escape(value)" %>
+         
+  </p>
+  <p>
     <%= f.label :website, (l :website) %><br />
     <%= f.text_field :website %>
   </p>

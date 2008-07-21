@@ -1,6 +1,7 @@
 class ProjectsController < ApplicationController
   
   auto_complete_for :project, :name
+  auto_complete_for :project, :tags
   
   before_filter :login_required, :only => [:new, :create, :edit, :update, :destroy]
   
@@ -83,7 +84,7 @@ class ProjectsController < ApplicationController
   # PUT /projects/1.xml
   def update
     @project = Project.find(params[:id])
-
+    
     respond_to do |format|
       if @project.update_attributes(params[:project])
         flash[:notice] = (l :project_successful_update_notice)
@@ -140,6 +141,15 @@ class ProjectsController < ApplicationController
       :order => 'name ASC',
       :limit => 10)
     render :partial => 'auto_complete_results'
+  end
+  
+  def search_tags
+    if params[:search] != ""
+      @tags = Tag.find(:all, :order => "name ASC", :conditions => ["LOWER(name) LIKE ?", params[:search]+"%"])
+      render :partial => "tag_list", :object => @tags
+    else
+      render :text => ""
+    end
   end
   
   def search_projects

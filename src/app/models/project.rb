@@ -1,4 +1,6 @@
 class Project < ActiveRecord::Base
+
+    acts_as_taggable
     
     has_many :project_memberships
     has_many :users, :through => :project_memberships

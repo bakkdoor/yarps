@@ -10,7 +10,11 @@
       </div>
       <div id="body" style="display:block">
         <div style="text-align:left;font-size:80%;padding-top:1em;"><br>
-          <%= h project.description %>
+          <%= h project.description %><br>
+          <div style="padding-top:1em">
+            <span style="font-size: 130%;font-variant:small-caps">Tags:</span>
+            <% project.tags.each do |tag| %> <%= tag.name %> <% end %>
+          </div>
         </div>
       </div>
     </div>

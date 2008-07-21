@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!DOCTYPE html 
+     PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html>
+<head>
+  <title>test_text_field_with_auto_complete (AutoCompleteTest)</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+  <link rel="stylesheet" href="../.././rdoc-style.css" type="text/css" media="screen" />
+</head>
+<body class="standalone-code">
+  <pre><span class="ruby-comment cmt"># File test/auto_complete_test.rb, line 59</span>
+  <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">test_text_field_with_auto_complete</span>
+    <span class="ruby-identifier">assert_match</span> <span class="ruby-value str">%(&lt;style type=&quot;text/css&quot;&gt;)</span>,
+      <span class="ruby-identifier">text_field_with_auto_complete</span>(<span class="ruby-identifier">:message</span>, <span class="ruby-identifier">:recipient</span>)
+
+    <span class="ruby-identifier">assert_dom_equal</span> <span class="ruby-value str">%(&lt;input id=\&quot;message_recipient\&quot; name=\&quot;message[recipient]\&quot; size=\&quot;30\&quot; type=\&quot;text\&quot; /&gt;&lt;div class=\&quot;auto_complete\&quot; id=\&quot;message_recipient_auto_complete\&quot;&gt;&lt;/div&gt;&lt;script type=\&quot;text/javascript\&quot;&gt;\n//&lt;![CDATA[\nvar message_recipient_auto_completer = new Ajax.Autocompleter('message_recipient', 'message_recipient_auto_complete', 'http://www.example.com/auto_complete_for_message_recipient', {})\n//]]&gt;\n&lt;/script&gt;)</span>,
+      <span class="ruby-identifier">text_field_with_auto_complete</span>(<span class="ruby-identifier">:message</span>, <span class="ruby-identifier">:recipient</span>, {}, <span class="ruby-identifier">:skip_style</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-keyword kw">true</span>)
+  <span class="ruby-keyword kw">end</span></pre>
+</body>
+</html>
