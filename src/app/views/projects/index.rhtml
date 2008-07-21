@@ -17,11 +17,18 @@
 
 <div style="text-align:center;padding-bottom:1em">
   <%= l :search_term %>: <input id="project_search" name="project_search" type="text" value="" size="30">
+  <%= image_tag("spinner.gif",
+    :align => "absmiddle",
+    :border => 0,
+    :id => "spinner",
+    :style =>"display:none" ) %>
 </div>
 <div id="project_search_results" style="text-align:left;padding-bottom:5em">
 </div>
 <%= observe_field 'project_search',
                   :frequency => 0.5, 
+                  :before => "Element.show('spinner')",
+                  :success => "Element.hide('spinner')",
                   :update => 'project_search_results',
                   :url => { :controller => 'projects', :action=> 'search_projects' }, 
                   :with => "'search=' + escape(value)" %>
