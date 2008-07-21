@@ -1,0 +1,13 @@
+<ul class="tags">
+  <% for tag in @tags do -%>
+    <li class="tag" id="<%= tag.id %>_link">
+      <div style="text-align:left">
+        <%= link_to_remote (h tag.name),
+                          { :update => "project_tags",
+                            :url => { :action => "add_tag", :tag => tag.name },
+                            :success => "Element.hide('#{tag.id}_link')" }
+                            %>   
+      </div>
+    </li>
+  <% end -%>
+</ul>

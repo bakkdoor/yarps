@@ -1,0 +1,5 @@
+<div class="headline">
+  <%= l :projects_tagged_with %> <span style="font-weight:bold;font-style:italic;font-size:120%"><%= @tagname %></span>
+</div>
+  
+<%= render :partial => "project_list", :object => @projects %>

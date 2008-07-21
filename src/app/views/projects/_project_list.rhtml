@@ -13,7 +13,11 @@
           <%= h project.description %><br>
           <div style="padding-top:1em">
             <span style="font-size: 130%;font-variant:small-caps">Tags:</span>
-            <% project.tags.each do |tag| %> <%= tag.name %> <% end %>
+            <% tag_cloud  Project.tag_counts, tag_cloud_css_classes do |tag, css_class| %>
+              <% if project.tags.include? tag %>
+                <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
+              <% end %>
+            <% end %>
           </div>
         </div>
       </div>

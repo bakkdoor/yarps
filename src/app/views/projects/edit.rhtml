@@ -1,5 +1,5 @@
-<h1>Editing project</h1>
-
+<div class="headline">Editing project</div>
+<div class="form_edit">
 <% form_for(@project) do |f| %>
   <%= f.error_messages %>
 
@@ -13,12 +13,15 @@
   </p>
   <p>
     <%= f.label :tag_list, (l :tags) %>
-    <div id="project_tags" style="padding-bottom:0.5em">
-      <% @project.tags.each do |tag| %>
-        [<b><%= tag.name %></b>] &nbsp;
-      <% end %>
+    <div id="project_tags" style="padding-bottom:1em">
+      <%= render :partial => "tag_list_item", :collection => @project.tag_list %>
     </div>
-    <%= l :search_term %>: <input id="tag_search" name="tag_search" type="text" value="" size="30">
+    <%= l :new_tags %>: 
+    <%= text_field_tag  :new_tags, {}, :size => 30, 
+                        :autocomplete => "off" %> (<%= l :seperated_by_comma %>)<br><br>
+    <%= l :tag_search %>: 
+    <input id="tag_search" name="tag_search" type="text" value="" size="31" autocomplete="off">
+    
     <%= image_tag("spinner.gif",
                   :align => "absmiddle",
                   :border => 0,
@@ -51,6 +54,7 @@
     <%= f.submit (l :update) %>
   </p>
 <% end %>
+</div>
 
 <%= link_to (l :show), @project %> |
 <%= link_to (l :back), projects_path %>

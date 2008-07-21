@@ -11,7 +11,9 @@
   <% alphabet_letters.each do |letter| %>
       <%= link_to "#{letter.capitalize}", :controller => :search, :action => :projects, :id => letter %>
   <% end %>
-  <div style="padding-bottom:0.5em"></div>
+  <div style="padding-bottom:0.5em;padding-top:0.5em;font-size:110%">
+    <%= link_to (l :search_by_tags), :action => :tags, :id => :all %>
+  </div>
   <hr>
 </div>
 

@@ -53,6 +53,11 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+    session[:project_tags] = []
+    
+    @project.tags.each do |t|
+      session[:project_tags] << t.name
+    end
   end
 
   # POST /projects
@@ -85,8 +90,17 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     
+    # neue tags hinzufügen, nur falls welche angegeben
+    session[:project_tags] ||= []
+    params[:new_tags].split(",").each do |new_tag|
+      session[:project_tags] << new_tag
+    end
+    
+    @project.tag_list = session[:project_tags]
+    
     respond_to do |format|
       if @project.update_attributes(params[:project])
+        session[:project_tags] = nil
         flash[:notice] = (l :project_successful_update_notice)
         format.html { redirect_to(@project) }
         format.xml  { head :ok }
@@ -145,10 +159,44 @@ class ProjectsController < ApplicationController
   
   def search_tags
     if params[:search] != ""
-      @tags = Tag.find(:all, :order => "name ASC", :conditions => ["LOWER(name) LIKE ?", params[:search]+"%"])
-      render :partial => "tag_list", :object => @tags
+      @tags = Tag.find(:all,
+                       :order => "name ASC", 
+                       :conditions => ["LOWER(name) LIKE ?", params[:search]+"%"])
+      
+      if @tags.size > 0
+        render :partial => "add_tag_list", :object => @tags
+      else
+        render :text => "<br>Keine Tags gefunden."
+      end
     else
       render :text => ""
+    end
+  end
+  
+  def add_tag
+    session[:project_tags] = Array.new unless session[:new_tags]
+    session[:project_tags] << params[:tag]
+    
+    render :partial => "tag_list_item", :collection => session[:project_tags]
+  end
+  
+  def remove_tag
+    session[:project_tags].delete params[:tag]
+   
+    render :partial => "tag_list_item", :collection => session[:project_tags]
+  end
+  
+  # zeigt alle projekte eines tags an
+  def tag
+    @projects = Project.find_tagged_with(params[:id], :match_all => true)
+    @tagname = params[:id]
+  end
+  
+  def tags
+    if params[:id] == "all"
+      @tags = Project.tag_counts
+    else
+      redirect_to :action => :tags, :id => :all
     end
   end
   
