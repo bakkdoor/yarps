@@ -8,7 +8,6 @@ class ProjectsController < ApplicationController
   # GET /projects.xml
   def index
     if logged_in?
-      @memberships = current_user.project_memberships
       @projects = current_user.projects.sort_by { |p| p.name }
       respond_to do |format|
       format.html # index.html.erb
