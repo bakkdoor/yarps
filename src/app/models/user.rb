@@ -67,7 +67,7 @@ class User < ActiveRecord::Base
   # searching for users
   def self.search(query)
     if query
-       find(:all, :conditions => ["login LIKE ?", "%#{query}%"])
+       find(:all, :order => "login ASC", :conditions => ["login LIKE ?", "%#{query}%"])
      else
        find(:all)
      end

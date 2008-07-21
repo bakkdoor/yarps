@@ -76,7 +76,15 @@
   font-weight: bold;
 }
 
+.project_info_even:hover{
+  background-color: #88AFD6;
+}
+
 .project_info_odd{
   background-color: #D3E9FE;  
   font-weight: bold;
+}
+
+.project_info_odd:hover{
+  background-color: #88AFD6;
 }

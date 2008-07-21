@@ -1,14 +1,17 @@
 about: "Über uns"
 account: Profil
 account_successful_update_notice: "Profil wurde erfolgreich bearbeitet."
+administration: Administration
 adress: Adresse
 all_profiles: Alle Profile
 are_you_sure: "Sind Sie sicher?"
+are_you_sure?: "Sind Sie sicher?"
 back: "Zurück"
 confirm_password: "Passwort bestätigen"
 confirm_password: Passwort bestätigen
 contact: Kontakt
 create: Erstellen
+created_at: "Erstellt am"
 description: Beschreibung
 destroy: Löschen
 edit: Bearbeiten
@@ -19,8 +22,8 @@ german: Deutsch
 here_you_can_create_a_new_account: Hier kannst du ein neues Profil anlegen
 home: Start
 invite_only: "Nur via Einladung"
+is_not_a_letter: "ist kein Buchstabe."
 language: Sprache
-set_language: Deutsch
 last_login: Letzter login am
 logged_in_as: Du bist eingeloggt als
 login: Einloggen
@@ -31,7 +34,6 @@ member_since: Mitglied seit
 my_projects: Meine Projekte
 my_settings: Meine Einstellungen
 my_tasks: Meine Aufgaben
-my_projects: Meine Projekte
 name: Name
 new_project: Neues Projekt erstellen
 news: Neuigkeiten
@@ -44,20 +46,25 @@ please_enter_a_name: Bitte geben Sie einen Namen an
 please_enter_your_login_data: Bitte geben Sie ihre Logindaten ein
 profile: Profil
 project: Projekt
-projects: Projekte
-public: "Öffentlich"
-search_results_for: Suchergebnisse für
-show: Anzeigen
-sign_up: Anmelden
-signup_successful_notice: "Danke für deine Anmeldung!"
-project: Projekt
+project_members: "Projekt Mitglieder"
 project_successful_create_notice: "Projekt wurde erfolgreich erstellt."
 project_successful_update_notice: "Projekt wurde erfolgreich bearbeitet."
 projects: Projekte
+projects_beginning_with: "Projekte beginnend mit"
 projects_by_letter: "Projekte nach Buchstaben"
 projects_with_letter: "Projekte mit Buchstaben"
+public: "Öffentlich"
+search: Suche
+search_public_projects: "Suche nach öffentliche Projekte"
+search_results_for: Suchergebnisse für
+search_term: "Suchterm"
+set_language: Deutsch
+show: Anzeigen
+sign_up: Anmelden
+signup_successful_notice: "Danke für deine Anmeldung!"
 this_is_the_profile_of: Das hier ist das Profil von
 update: Aktualisieren
+updated_at: "Aktualisiert am"
 user: Benutzer
 user_level: Benutzerstatus
 username: Benutzername
@@ -67,13 +74,3 @@ welcome_message: Willkommen bei yarps!
 you_currently_have_a_user_status_of: Du hast derzeit einen User-Status als
 your_options: Deine Optionen
 your_profile_page: Deine Profilseite
-is_not_a_letter: "ist kein Buchstabe."
-projects_beginning_with: "Projekte beginnend mit"
-administration: Administration
-are_you_sure?: "Sind Sie sicher?"
-created_at: "Erstellt am"
-updated_at: "Aktualisiert am"
-project_members: "Projekt Mitglieder"
-search: Suche
-search_term: "Suchterm"
-search_public_projects: "Suche nach öffentliche Projekte"

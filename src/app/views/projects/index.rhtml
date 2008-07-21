@@ -2,49 +2,12 @@
   <div style="padding-bottom:0.5em"><%= link_to (l :new_project), new_project_path %></div>
   <div class="headline"><%= l :my_projects %></div>
   
-  <%= render :partial => "project_search_list", :collection => @projects %>
-  
-  <div class="my_projects">
-    <table>
-      <th><%= l :name %></th>
-      <th><%= l :member_since %></th>
-      <% if current_user.is_a_project_admin? %>
-        <th class="admin"><%= l :administration %></th>
-      <% end %>
-      <% current_user.project_memberships.each do |membership| %>
-        <tr class="<%= cycle("even", "odd") %>">
-          <td>
-            <%= link_to (h membership.project.name),
-                          :action => :show, 
-                          :id => membership.project.id %>              
-          </td>
-          <td>
-            <%= h membership.created_at.german(:short) %>
-          </td>
-          <td class="admin">
-            <%= link_to_remote  (l :show), 
-                                :update => "membership_info",
-                                :url => { :controller => "project_memberships", 
-                                          :action => "membership_info", :id => membership.id } %>
-            <% if membership.user_level == User.level_code(:project_admin) %>
-              <%= link_to (l :edit), edit_project_path(membership.project) %> 
-              <%= link_to 'Destroy',
-                          membership.project,
-                          :confirm => (l :are_you_sure?),
-                          :method => :delete %>
-            <% end %>
-          </td>
-        </tr>
-      <% end %>
-    </table>
-  </div>
-  <div id="membership_info">    
-  </div>
-  <br/>
+  <%= render :partial => "project_list", :object => @projects %>
+<br/>
 <% end %>
 <div class="headline"><%= l :search_public_projects %></div>
 <div class="alphabet_search">
-  <span style="font-size:150%"><%= l :search %></span>
+  <span style="font-size:180%"><%= l :search %></span>
   <% alphabet_letters.each do |letter| %>
       <%= link_to "#{letter.capitalize}", :controller => :search, :action => :projects, :id => letter %>
   <% end %>
@@ -55,7 +18,7 @@
 <div style="text-align:center;padding-bottom:1em">
   <%= l :search_term %>: <input id="project_search" name="project_search" type="text" value="" size="30">
 </div>
-<div id="project_search_results" style="text-align:left;padding-left:4em;padding-right:4em">
+<div id="project_search_results" style="text-align:left;padding-bottom:5em">
 </div>
 <%= observe_field 'project_search',
                   :frequency => 0.5, 

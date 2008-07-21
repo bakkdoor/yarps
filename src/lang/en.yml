@@ -1,14 +1,17 @@
 about: About us
 account: Account
 account_successful_update_notice: "Profile successfully updated."
+administration: Administration
 adress: Adress
 all_profiles: All profiles
 are_you_sure: "Are you sure?"
+are_you_sure?: "Are you sure?"
 back: Back
 confirm_password: "Confirm password"
 confirm_password: Confirm Password
 contact: Contact
 create: Create
+created_at: "Created at"
 description: Description
 destroy: Delete
 edit: Edit
@@ -19,8 +22,8 @@ german: German
 here_you_can_create_a_new_account: Here you can create a new account
 home: Home
 invite_only: Invite only
+is_not_a_letter: "is not a letter."
 language: Language
-set_language: English
 last_login: Last login
 logged_in_as: You are logged in as
 login: Login
@@ -31,7 +34,6 @@ member_since: Member since
 my_projects: My projects
 my_settings: My Settings
 my_tasks: My tasks
-my_projects: My projects
 name: Name
 new_project: Create a new project
 news: News
@@ -44,20 +46,25 @@ please_enter_a_name: Please enter a name
 please_enter_your_login_data: Please enter your login data
 profile: profile
 project: Project
-projects: Projects
-public: Public
-search_results_for: Search results for
-show: Show
-sign_up: Sign up
-signup_successful_notice: "Thanks for signing up!"
-project: Project
+project_members: "Project members"
 project_successful_create_notice: "Project was successfully created."
 project_successful_update_notice: "Project was successfully updated."
 projects: Projects
+projects_beginning_with: "Projects beginning with"
 projects_by_letter: "Projects by letter"
 projects_with_letter: "Projects with letter"
+public: Public
+search: Search
+search_public_projects: "Search public projects"
+search_results_for: Search results for
+search_term: "Search term"
+set_language: English
+show: Show
+sign_up: Sign up
+signup_successful_notice: "Thanks for signing up!"
 this_is_the_profile_of: This is the profile of
 update: Update
+updated_at: "Updated at"
 user: User
 user_level: User level
 username: Username
@@ -67,13 +74,3 @@ welcome_message: Welcome to yarps!
 you_currently_have_a_user_status_of: You currently have a user status of
 your_options: Your options
 your_profile_page: Your profile page
-is_not_a_letter: "is not a letter."
-projects_beginning_with: "Projects beginning with"
-administration: Administration
-are_you_sure?: "Are you sure?"
-created_at: "Created at"
-updated_at: "Updated at"
-project_members: "Project members"
-search: Search
-search_term: "Search term"
-search_public_projects: "Search public projects"

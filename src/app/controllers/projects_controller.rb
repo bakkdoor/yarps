@@ -9,7 +9,7 @@ class ProjectsController < ApplicationController
   def index
     if logged_in?
       @memberships = current_user.project_memberships
-      @projects = current_user.projects
+      @projects = current_user.projects.sort_by { |p| p.name }
       respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @projects }
@@ -28,11 +28,14 @@ class ProjectsController < ApplicationController
   # GET /projects/1
   # GET /projects/1.xml
   def show
-    @project = Project.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @project }
+    if ! Project.exists?(params[:id])
+      redirect_to :action => :index #unless Project.exists?(params[:id])
+    else
+      @project = Project.find(params[:id])
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @project }
+      end
     end
   end
 
@@ -143,7 +146,7 @@ class ProjectsController < ApplicationController
   def search_projects
     if params[:search] != ""
       @projects = Project.search(params[:search])
-      render :partial => "project_search_list", :object => @projects
+      render :partial => "project_list", :object => @projects
     else
       render :text => ""
     end

@@ -8,14 +8,14 @@ class Project < ActiveRecord::Base
     # searching for teams
     def self.search(query)
       if query
-         find(:all, :conditions => ["name LIKE ? AND public=?", "%#{query}%", true])
+         find(:all, :order => "name ASC", :conditions => ["name LIKE ? AND public=?", "%#{query}%", true])
        else
          find(:all)
        end
     end
     
     def self.all_public
-      find(:all, :conditions => ["public=?", true])
+      find(:all, :order => "name ASC", :conditions => ["public=?", true])
     end
     
     def self.search_first_letters(start_letters)
