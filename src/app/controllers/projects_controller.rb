@@ -186,9 +186,11 @@ class ProjectsController < ApplicationController
     render :partial => "tag_list_item", :collection => session[:project_tags]
   end
   
-  # zeigt alle projekte eines tags an
+  # zeigt alle (öffentlichen) projekte eines tags an
   def tag
-    @projects = Project.find_tagged_with(params[:id], :match_all => true)
+    @projects = Project.find_tagged_with( params[:id], 
+                                          :match_all => true,
+                                          :conditions => ["public=?", true])
     @tagname = params[:id]
   end
   

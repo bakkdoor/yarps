@@ -11,6 +11,7 @@ class Menu
 	            ["account", (l :account)],
 	            ["users", (l :users)],
 	            ["projects", (l :projects)],
+	            ["tags", (l :tags)],
 	            ["about", (l :about)],
 	            ["contact", (l :contact)]
             ]
