@@ -88,3 +88,24 @@
 .project_info_odd:hover{
   background-color: #88AFD6;
 }
+
+
+.even{
+  background-color: #a7d3ff;
+  font-weight: bold;
+  padding: 1em;
+}
+
+.even:hover{
+  background-color: #88AFD6;
+}
+
+.odd{
+  background-color: #D3E9FE;  
+  font-weight: bold;
+  padding: 1em;
+}
+
+.odd:hover{
+  background-color: #88AFD6;
+}

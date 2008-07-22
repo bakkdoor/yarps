@@ -1,4 +1,36 @@
-.tag_cloud_1{ font-size: 1.0em; }
-.tag_cloud_2{ font-size: 1.2em; }
-.tag_cloud_3{ font-size: 1.4em; }
-.tag_cloud_4{ font-size: 1.6em; }
+.tag_cloud_1{
+  font-size: 0.8em;
+}
+.tag_cloud_1 a{
+  color: #2C3D62;
+}
+.tag_cloud_1 a:hover{
+  color: #6F84B1;
+}
+.tag_cloud_2{
+  font-size: 1.1em;
+}
+.tag_cloud_2 a{
+  color: #2C3D62;
+}
+.tag_cloud_2 a:hover{
+  color: #6F84B1;
+}
+.tag_cloud_3{
+  font-size: 1.4em; 
+}
+.tag_cloud_3 a{
+  color: #2C3D62;
+}
+.tag_cloud_3 a:hover{
+  color: #6F84B1;
+}
+.tag_cloud_4{
+  font-size: 1.7em;
+}
+.tag_cloud_4 a{
+  color: #2C3D62;
+}
+.tag_cloud_4 a:hover{
+  color: #6F84B1;
+}

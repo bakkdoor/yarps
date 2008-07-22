@@ -1,5 +1,4 @@
 ActionController::Routing::Routes.draw do |map|
-  map.resources :messages
     
   # The priority is based upon order of creation: first created -> highest priority.
 
@@ -38,10 +37,21 @@ ActionController::Routing::Routes.draw do |map|
   # See how all your routes lay out with "rake routes"
 
   # Install the default routes as the lowest priority.
+  map.resources :messages,
+                :collection => {
+                  :inbox => :get,
+                  :sent => :get,
+                  :auto_complete_for_receiver_login => :get,
+                  :reply => :get
+                }
   
-  map.resources :projects, :collection => {:auto_complete_for_project_name => :get }
-  #map.connect '/projects/list', :controller => 'projects', :action => 'list'
-  
+  map.resources :projects, 
+                :collection => {
+                  :auto_complete_for_project_name => :get,
+                  :list => :get,
+                  :tags => :get
+                 }
+                 
   map.resources 'project_memberships'
   
   map.resources :users, :collection => {:auto_complete_for_user_login => :get }

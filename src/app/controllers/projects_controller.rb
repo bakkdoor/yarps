@@ -20,9 +20,7 @@ class ProjectsController < ApplicationController
   end
   
   def list
-    if params[:id] == "all"
-      @projects = Project.all_public
-    end
+    @projects = Project.all_public
   end
 
   # GET /projects/1
@@ -164,6 +162,16 @@ class ProjectsController < ApplicationController
                        :conditions => ["LOWER(name) LIKE ?", params[:search]+"%"])
       
       if @tags.size > 0
+        
+        # gehe projekt-tags-session durch (falls existent)
+        # und nimm alle tags raus, die ohnehin schon dem projekt zugeordnet sind
+        # => nur tags als suchergebnis zurückgeben, die noch nicht aufgenommen wurden
+        if session[:project_tags]
+          @tags = @tags.select do |tag|
+            not session[:project_tags].include? tag.name
+          end
+        end
+            
         render :partial => "add_tag_list", :object => @tags
       else
         render :text => "<br>Keine Tags gefunden."
@@ -174,8 +182,8 @@ class ProjectsController < ApplicationController
   end
   
   def add_tag
-    session[:project_tags] = Array.new unless session[:new_tags]
-    session[:project_tags] << params[:tag]
+    #session[:project_tags] = Array.new unless session[:new_tags]
+    session[:project_tags] << params[:tag] unless session[:project_tags].include? params[:tag]
     
     render :partial => "tag_list_item", :collection => session[:project_tags]
   end
@@ -195,11 +203,7 @@ class ProjectsController < ApplicationController
   end
   
   def tags
-    if params[:id] == "all"
-      @tags = Project.tag_counts
-    else
-      redirect_to :action => :tags, :id => :all
-    end
+    @tags = Project.tag_counts
   end
   
   def search_projects

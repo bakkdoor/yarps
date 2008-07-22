@@ -84,3 +84,12 @@ welcome_message: Welcome to yarps!
 you_currently_have_a_user_status_of: You currently have a user status of
 your_options: Your options
 your_profile_page: Your profile page
+new_message: "Write new message"
+receiver: Empfänger
+author: Author
+date: Datum
+title: Titel
+message: Message
+reply: Reply
+reply_to_message: "Reply to message"
+send: Send

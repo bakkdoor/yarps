@@ -1,19 +1,19 @@
-<div class="headline"><%= l :new_message %></div>
+<div class="headline"><%= l :reply_to_message %> '<%= @old_message.title %>'</div>
 <div class="form_new">
   <% form_for(@message) do |f| %>
     <%= f.error_messages %>
     
     <p>
       <%= f.label :receiver_id, (l :receiver)%><br />
-      <%= text_field_with_auto_complete :receiver, :login, {}, {:method => :get, :skip_style => true} %>
+      <%= text_field_with_auto_complete :receiver, :login, {:value => @old_message.author.login}, {:method => :get, :skip_style => true} %>
     </p>
     <p>
       <%= f.label :title, (l :title) %><br />
-      <%= f.text_field :title %>
+      <%= f.text_field :title, :value => @old_message.title %>
     </p>
     <p>
       <%= f.label :body, (l :message) %><br />
-      <%= f.text_area :body %>
+      <%= f.text_area :body, :value => reply_message(@old_message) %>
     </p>
     <p>
       <%= f.submit (l :send) %>

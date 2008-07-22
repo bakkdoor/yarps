@@ -64,6 +64,16 @@ class User < ActiveRecord::Base
     false
   end
   
+  # gibt alle empfangenen nachrichten zurück
+  def received_messages
+    Message.find(:all, :order => "created_at DESC", :conditions => ["receiver_id = ?", self.id])
+  end
+  
+  # gibt alle verschickten nachrichten zurück
+  def sent_messages
+    Message.find(:all, :order => "created_at DESC", :conditions => ["author_id = ?", self.id])
+  end
+  
   # searching for users
   def self.search(query)
     if query

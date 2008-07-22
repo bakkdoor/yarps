@@ -4,18 +4,18 @@
 </p>
 
 <p>
-  <b>Body:</b>
-  <%=h @message.body %>
+  <b>Date:</b>
+  <%=h @message.created_at.german :long %>
 </p>
 
 <p>
   <b>Author:</b>
-  <%=h @message.author_id %>
+  <%=h @message.author.login %>
 </p>
 
 <p>
-  <b>Receiver:</b>
-  <%=h @message.receiver_id %>
+  <b>Body:</b>
+  <%= textilize (h @message.body) %>
 </p>
 
 

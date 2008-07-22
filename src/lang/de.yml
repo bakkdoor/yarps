@@ -84,3 +84,12 @@ welcome_message: Willkommen bei yarps!
 you_currently_have_a_user_status_of: Du hast derzeit einen User-Status als
 your_options: Deine Optionen
 your_profile_page: Deine Profilseite
+new_message: "Neue Nachricht verfassen"
+receiver: Empfänger
+author: Absender
+date: Datum
+title: Titel
+message: Nachricht
+reply: Antworten
+reply_to_message: "Antwort auf Nachricht"
+send: Abschicken

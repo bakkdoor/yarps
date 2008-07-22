@@ -1,9 +1,13 @@
 class MessagesController < ApplicationController
+  
+  auto_complete_for :receiver, :login
+  
   # GET /messages
   # GET /messages.xml
   def index
-    @messages = Message.find(:all)
-
+    #@messages = Message.find(:all)
+    @messages = current_user.received_messages
+    
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @messages }
@@ -41,7 +45,9 @@ class MessagesController < ApplicationController
   # POST /messages.xml
   def create
     @message = Message.new(params[:message])
-
+    @message.author_id = current_user.id
+    @message.receiver_id = User.find_by_login(params[:receiver][:login], :limit => 1).id
+    
     respond_to do |format|
       if @message.save
         flash[:notice] = 'Message was successfully created.'
@@ -82,4 +88,35 @@ class MessagesController < ApplicationController
       format.xml  { head :ok }
     end
   end
+  
+  # auf vorhandene nachricht antworten
+  def reply
+    @message = Message.new
+    @old_message = Message.find(params[:id])
+    
+    respond_to do |format|
+      format.html # reply.rhtml
+    end
+  end
+  
+  # nachrichten inbox
+  def inbox
+    @messages = current_user.received_messages
+  end
+  
+  # gesendete nachrichten
+  def sent
+    @messages = current_user.sent_messages
+  end
+  
+  def auto_complete_for_receiver_login
+    @receivers = User.find(:all, 
+      :conditions => [ 'LOWER(login) LIKE ?',
+      '%' + params[:receiver][:login].downcase + '%' ], 
+      :order => 'login ASC',
+      :limit => 10)
+    render :inline => "<%= auto_complete_result(@receivers, 'login') %>"
+  end
+  
+  
 end
