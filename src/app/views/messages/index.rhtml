@@ -1,4 +1,4 @@
-<h1>Listing messages</h1>
+<div class="headline"><%= l :messages %></div>
 
 <table>
   <tr>
@@ -6,6 +6,8 @@
     <th>Body</th>
     <th>Author</th>
     <th>Receiver</th>
+    <th>Created at</th>
+    <th>Updated at</th>
   </tr>
 
 <% for message in @messages %>
@@ -14,6 +16,8 @@
     <td><%=h message.body %></td>
     <td><%=h message.author_id %></td>
     <td><%=h message.receiver_id %></td>
+    <td><%=h message.created_at.german :long_hour %></td>
+    <td><%=h message.updated_at.german :long_hour %></td>
     <td><%= link_to 'Show', message %></td>
     <td><%= link_to 'Edit', edit_message_path(message) %></td>
     <td><%= link_to 'Destroy', message, :confirm => 'Are you sure?', :method => :delete %></td>
