@@ -1,9 +1,11 @@
 about: "Über uns"
 account: Profil
 account_successful_update_notice: "Profil wurde erfolgreich bearbeitet."
+add: Hinzufuegen
 administration: Administration
 adress: Adresse
 all_profiles: Alle Profile
+all_tags: Alle Tags
 are_you_sure: "Sind Sie sicher?"
 are_you_sure?: "Sind Sie sicher?"
 back: "Zurück"
@@ -31,11 +33,14 @@ login_failed_error: "Login fehlgeschlagen - Bitte erneut versuchen"
 login_successful_notice: Erfolgreich eingeloggt
 logout_successful_notice: "Sie wurden ausgeloggt."
 member_since: Mitglied seit
+messages: Nachrichten
 my_projects: Meine Projekte
 my_settings: Meine Einstellungen
 my_tasks: Meine Aufgaben
 name: Name
 new_project: Neues Projekt erstellen
+new_tag: Neues Tag erstellen
+new_tags: Neue Tags
 news: Neuigkeiten
 no_projects_found: Keine Projekte gefunden
 no_users_found: Keine Benutzer gefunden
@@ -52,16 +57,21 @@ project_successful_update_notice: "Projekt wurde erfolgreich bearbeitet."
 projects: Projekte
 projects_beginning_with: "Projekte beginnend mit"
 projects_by_letter: "Projekte nach Buchstaben"
+projects_tagged_with: Projekte getagged mit
 projects_with_letter: "Projekte mit Buchstaben"
 public: "Öffentlich"
 search: Suche
+search_by_tags: Nach Tags suchen
 search_public_projects: "Suche nach öffentliche Projekte"
 search_results_for: Suchergebnisse für
 search_term: "Suchterm"
+seperated_by_comma: durch Komma getrennt
 set_language: Deutsch
 show: Anzeigen
 sign_up: Anmelden
 signup_successful_notice: "Danke für deine Anmeldung!"
+tag_search: Tag suche
+tags: Tags
 this_is_the_profile_of: Das hier ist das Profil von
 update: Aktualisieren
 updated_at: "Aktualisiert am"
@@ -74,12 +84,3 @@ welcome_message: Willkommen bei yarps!
 you_currently_have_a_user_status_of: Du hast derzeit einen User-Status als
 your_options: Deine Optionen
 your_profile_page: Deine Profilseite
-new_tag: Neues Tag erstellen
-all_tags: Alle Tags
-tags: Tags
-add: Hinzufuegen
-tag_search: Tag suche
-new_tags: Neue Tags
-seperated_by_comma: durch Komma getrennt
-projects_tagged_with: Projekte getagged mit
-search_by_tags: Nach Tags suchen

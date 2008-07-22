@@ -30,6 +30,7 @@ class Menu
 	            ["news",(l :news)], 
 	            ["tasks", (l :my_tasks)],
 	            ["projects", (l :my_projects)],
+	            ["messages", (l :messages)],
 	            ["account/settings", (l :my_settings)]
             ]
             

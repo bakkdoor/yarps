@@ -1,9 +1,11 @@
 about: About us
 account: Account
 account_successful_update_notice: "Profile successfully updated."
+add: Add
 administration: Administration
 adress: Adress
 all_profiles: All profiles
+all_tags: All tags
 are_you_sure: "Are you sure?"
 are_you_sure?: "Are you sure?"
 back: Back
@@ -31,11 +33,14 @@ login_failed_error: "Login failed - Please try again"
 login_successful_notice: Logged in successfully
 logout_successful_notice: "You have been logged out."
 member_since: Member since
+messages: Messages
 my_projects: My projects
 my_settings: My Settings
 my_tasks: My tasks
 name: Name
 new_project: Create a new project
+new_tag: Create a new tag
+new_tags: New Tags
 news: News
 no_projects_found: No projects found
 no_users_found: No users found
@@ -52,16 +57,21 @@ project_successful_update_notice: "Project was successfully updated."
 projects: Projects
 projects_beginning_with: "Projects beginning with"
 projects_by_letter: "Projects by letter"
+projects_tagged_with: Projects tagged with
 projects_with_letter: "Projects with letter"
 public: Public
 search: Search
+search_by_tags: Search by tags
 search_public_projects: "Search public projects"
 search_results_for: Search results for
 search_term: "Search term"
+seperated_by_comma: seperated by comma
 set_language: English
 show: Show
 sign_up: Sign up
 signup_successful_notice: "Thanks for signing up!"
+tag_search: Tag search
+tags: Tags
 this_is_the_profile_of: This is the profile of
 update: Update
 updated_at: "Updated at"
@@ -74,12 +84,3 @@ welcome_message: Welcome to yarps!
 you_currently_have_a_user_status_of: You currently have a user status of
 your_options: Your options
 your_profile_page: Your profile page
-new_tag: Create a new tag
-all_tags: All tags
-tags: Tags
-add: Add
-tag_search: Tag search
-new_tags: New Tags
-seperated_by_comma: seperated by comma
-projects_tagged_with: Projects tagged with
-search_by_tags: Search by tags
