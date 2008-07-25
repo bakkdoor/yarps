@@ -1,5 +1,7 @@
 class MessagesController < ApplicationController
   
+  before_filter :login_required<
+  
   auto_complete_for :receiver, :login
   
   # GET /messages

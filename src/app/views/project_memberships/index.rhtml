@@ -1,21 +1,19 @@
 <h1>Listing project_memberships</h1>
 
-<table>
+<table width="100%" style="text-align:left">
   <tr>
     <th>user</th>
-    <th>team</th>
+    <th>project</th>
     <th>user_level</th>
     <th>created_at</th>
-    <th>updated_at</th>
   </tr>
 
 <% for project_membership in @project_memberships %>
   <tr>
     <td><%=h project_membership.user.login %></td>
-    <td><%=h project_membership.team.name %></td>
+    <td><%=h project_membership.project.name %></td>
     <td><%=h project_membership.user_level %></td>
-    <td><%=h project_membership.created_at.german :long_clock %></td>
-    <td><%=h project_membership.updated_at.german :long_clock %></td>
+    <td><%=h project_membership.created_at.german :long %></td>
     <td><%= link_to 'Show', project_membership %></td>
     <td><%= link_to 'Edit', edit_project_membership_path(project_membership) %></td>
     <td><%= link_to 'Destroy', project_membership, :confirm => 'Are you sure?', :method => :delete %></td>
