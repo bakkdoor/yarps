@@ -157,22 +157,24 @@ class ProjectsController < ApplicationController
   
   def search_tags
     if params[:search] != ""
-      @tags = Tag.find(:all,
-                       :order => "name ASC", 
-                       :conditions => ["LOWER(name) LIKE ?", params[:search]+"%"])
+      @tags = Tag.search(params[:search])
       
       if @tags.size > 0
         
         # gehe projekt-tags-session durch (falls existent)
-        # und nimm alle tags raus, die ohnehin schon dem projekt zugeordnet sind
-        # => nur tags als suchergebnis zurückgeben, die noch nicht aufgenommen wurden
+        # und merke alle tags, die ohnehin schon dem projekt zugeordnet sind
+        # => nur tags als suchergebnis anzeigen, die noch nicht aufgenommen wurden
+        # die anderen werden in der view, durch abfrage von schlüssel :in_project erstmal nicht angezeigt
+        # via css: style="display:none"
+        @tag_used_pairs = []
         if session[:project_tags]
-          @tags = @tags.select do |tag|
-            not session[:project_tags].include? tag.name
+          @tags = @tags.each do |tag|
+            #not session[:project_tags].include? tag.name
+            @tag_used_pairs << { :tag => tag, :in_project => session[:project_tags].include?(tag.name) }
           end
         end
             
-        render :partial => "add_tag_list", :object => @tags
+        render :partial => "add_tag_list", :object => @tag_used_pairs
       else
         render :text => "<br>Keine Tags gefunden."
       end

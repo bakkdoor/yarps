@@ -1,5 +1,7 @@
 [<b>
 <%= link_to_remote (h tag_list_item),
                     :update => "project_tags",
-                    :url => { :action => "remove_tag", :tag => tag_list_item } %>   
+                    :url => { :action => "remove_tag", :tag => tag_list_item },
+                    :success => visual_effect(:blind_down, "#{tag_list_item}_link", :duration => 0.2),
+                    :complete => visual_effect(:highlight, "project_tags", :duration => 0.5, :startcolor => "#ff0000") %>   
 </b>] &nbsp;
