@@ -160,16 +160,16 @@ class ProjectsController < ApplicationController
       @tags = Tag.search(params[:search])
       
       if @tags.size > 0
-        
         # gehe projekt-tags-session durch (falls existent)
         # und merke alle tags, die ohnehin schon dem projekt zugeordnet sind
         # => nur tags als suchergebnis anzeigen, die noch nicht aufgenommen wurden
         # die anderen werden in der view, durch abfrage von schlüssel :in_project erstmal nicht angezeigt
         # via css: style="display:none"
-        @tag_used_pairs = []
+        
+        # eine liste von hashes, bestehend aus dem tag sowie der angabe, ob bereits im projekt vorhanden
+        @tag_used_pairs = [] 
         if session[:project_tags]
           @tags = @tags.each do |tag|
-            #not session[:project_tags].include? tag.name
             @tag_used_pairs << { :tag => tag, :in_project => session[:project_tags].include?(tag.name) }
           end
         end
