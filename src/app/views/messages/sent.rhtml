@@ -1,6 +1,6 @@
 <div style="padding-bottom:0.5em"><%= link_to (l :new_message), new_message_path %></div>
-<div style="text-align:right"><%= l :go_to %> <%= link_to (l :sent_messages), :action => :sent %></div>
-<div class="headline"><%= l :messages %></div>
+<div style="text-align:right"><%= l :go_to %> <%= link_to (l :inbox), :action => :index %></div>
+<div class="headline"><%= l :sent_messages %></div>
 
 <div style="text-align:left">
   <table width="100%">
@@ -17,7 +17,6 @@
       <td><%= link_to (h message.author.login), message.author %></td>
       <td><%= link_to (h message.receiver.login), message.receiver %></td>
       <td><%=h message.created_at.german :long %></td>
-      <td><%= link_to (l :reply), :action => :reply, :id => message %></td>
       <td><%= link_to (l :destroy), message, :confirm => (l :are_you_sure?), :method => :delete %></td>
     </tr>
   <% end %>

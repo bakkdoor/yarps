@@ -25,6 +25,9 @@ class MessagesController < ApplicationController
       format.html # show.html.erb
       format.xml  { render :xml => @message }
     end
+    
+    @message.is_read = true
+    @message.save
   end
 
   # GET /messages/new
@@ -52,7 +55,7 @@ class MessagesController < ApplicationController
     
     respond_to do |format|
       if @message.save
-        flash[:notice] = 'Message was successfully created.'
+        flash[:notice] = 'Message was successfully sent.'
         format.html { redirect_to(@message) }
         format.xml  { render :xml => @message, :status => :created, :location => @message }
       else
@@ -83,7 +86,20 @@ class MessagesController < ApplicationController
   # DELETE /messages/1.xml
   def destroy
     @message = Message.find(params[:id])
-    @message.destroy
+    
+    if @message.author_id == current_user.id
+      @message.author_deleted = true
+      @message.save
+    elsif @message.receiver_id == current_user.id
+      @message.receiver_deleted = true
+      @message.save
+    else
+      flash[:error] = "Fehler beim Löschen. Operation unmöglich!"
+    end
+    
+    if @message.all_deleted?
+      @message.destroy
+    end
 
     respond_to do |format|
       format.html { redirect_to(messages_url) }
@@ -115,8 +131,7 @@ class MessagesController < ApplicationController
     @receivers = User.find(:all, 
       :conditions => [ 'LOWER(login) LIKE ?',
       '%' + params[:receiver][:login].downcase + '%' ], 
-      :order => 'login ASC',
-      :limit => 10)
+      :order => 'login ASC')
     render :inline => "<%= auto_complete_result(@receivers, 'login') %>"
   end
   

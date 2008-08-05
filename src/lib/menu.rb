@@ -1,45 +1,44 @@
 class Menu
-    
-    # für l() methode
-    include GLoc
-    
-    # main menu list...
+  # für l() methode
+  include GLoc  
+
+  # main menu list...
 	# wird irgendwann evtl aus datenbank kommen (dynamisch anpassbar...)
 	def self.main_menu_list
-	    menu_items = [ 
-	            ["home",(l :home)], 
-	            ["account", (l :account)],
-	            ["users", (l :users)],
-	            ["projects", (l :projects)],
-	            ["tags", (l :tags)],
-	            ["about", (l :about)],
-	            ["contact", (l :contact)]
-            ]
-            
-        # lauf durch alle einträge (jeweils arrays) im array und pack in ein hash
-        hashes = Array.new    
-        menu_items.each do |item|
-            hashes << { :controller => item[0], :link_text => item[1] }
-        end
-	       
-        hashes # hash-array wird zurückgegeben
+	  menu_items = [ 
+            ["home",(l :home)], 
+            ["account", (l :account)],
+            ["users", (l :users)],
+            ["projects", (l :projects)],
+            ["tags", (l :tags)],
+            ["about", (l :about)],
+            ["contact", (l :contact)]
+          ]
+          
+    # lauf durch alle einträge (jeweils arrays) im array und pack in ein hash
+    hashes = Array.new    
+    menu_items.each do |item|
+        hashes << { :controller => item[0], :link_text => item[1] }
     end
-    
-    def self.private_menu_list
-	    menu_items = [ 
-	            ["news",(l :news)], 
-	            ["tasks", (l :my_tasks)],
-	            ["projects", (l :my_projects)],
-	            ["messages", (l :messages)],
-	            ["account/settings", (l :my_settings)]
-            ]
-            
-        # lauf durch alle einträge (jeweils arrays) im array und pack in ein hash
-        hashes = Array.new    
-        menu_items.each do |item|
-            hashes << { :controller => item[0], :link_text => item[1] }
-        end
-	       
-        hashes # hash-array wird zurückgegeben    
+     
+    hashes # hash-array wird zurückgegeben
+  end
+  
+  def self.private_menu_list(current_user)
+    menu_items = [ 
+            ["news",(l :news)], 
+            ["tasks", (l :my_tasks)],
+            ["projects", (l :my_projects)],
+            ["messages", "#{l :messages} (#{current_user.amount_new_messages})"],
+            ["account/settings", (l :my_settings)]
+          ]
+          
+    # lauf durch alle einträge (jeweils arrays) im array und pack in ein hash
+    hashes = Array.new    
+    menu_items.each do |item|
+        hashes << { :controller => item[0], :link_text => item[1] }
     end
+     
+    hashes # hash-array wird zurückgegeben    
+  end
 end

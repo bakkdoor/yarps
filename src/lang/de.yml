@@ -34,6 +34,7 @@ login_successful_notice: Erfolgreich eingeloggt
 logout_successful_notice: "Sie wurden ausgeloggt."
 member_since: Mitglied seit
 messages: Nachrichten
+sent_messages: Gesendete Nachrichten
 my_projects: Meine Projekte
 my_settings: Meine Einstellungen
 my_tasks: Meine Aufgaben
@@ -93,3 +94,5 @@ message: Nachricht
 reply: Antworten
 reply_to_message: "Antwort auf Nachricht"
 send: Abschicken
+inbox: Empfangene Nachrichten
+go_to: "Gehe zu:"

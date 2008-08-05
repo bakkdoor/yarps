@@ -16,13 +16,23 @@ module StringEnhancement
     end
   end
   
+  # gibt in zum jeweiligen sprachnamen den sprachcode zurück
+  # beispiele: 
+  # "deutsch" -> "de"
+  # "english" -> "en"
+  # "francais" -> "fr"
+  # usw...
   def lang_code
     case self
       when "de": :de
       when "en" : :en
+      when (l :german): :de
+      when (l :english): :en
     end
   end
   
+  # ist die umkehrung von lang_code
+  # gibt den sprachnamen (in der jeweiligen sprache) abhängig vom sprachcode zurück
   def lang_word
     case self
       when "de" : (l :german)

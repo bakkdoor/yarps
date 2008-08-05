@@ -13,4 +13,8 @@ class Message < ActiveRecord::Base
     User.find(self.author_id)
   end
   
+  def all_deleted?
+    self.receiver_deleted && self.author_deleted
+  end
+  
 end

@@ -1,7 +1,7 @@
     <fieldset>
     <legend class="private_menu"><%= l :personal_menu %></legend>
     <ul>
-    <% Menu.private_menu_list.each do |item| %>
+    <% Menu.private_menu_list(current_user).each do |item| %>
         <% if item[:controller] ==  controller.controller_name %>
             <li class="private_current"><%= link_to item[:link_text], :controller => item[:controller] %></li>
         <% else %>
