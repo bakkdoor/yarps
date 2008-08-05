@@ -1,3 +1,6 @@
-<% tag_cloud @tags, %w(tag_cloud_1 tag_cloud_2 tag_cloud_3 tag_cloud_4) do |tag, css_class| %>
-  <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
+<div class="headline"><%= l :projects %>: <%= l :all_tags %></div>
+<% tag_cloud @tags, tag_cloud_css_classes do |tag, css_class| %>
+  <span class="<%= css_class %>" style="padding:0.5em">
+    <%= link_to tag.name, { :action => :tag, :id => tag.name } %>
+  </span>
 <% end %>

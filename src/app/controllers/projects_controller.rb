@@ -202,10 +202,6 @@ class ProjectsController < ApplicationController
     @tagname = params[:id]
   end
   
-  def tags
-    @tags = Project.tag_counts
-  end
-  
   def search_projects
     if params[:search] != ""
       @projects = Project.search(params[:search])
