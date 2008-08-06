@@ -57,7 +57,7 @@
                 evalScripts:true, 
                 onComplete:function(request){new Effect.Highlight("project_tags",{duration:0.5})},
                 onSuccess:function(request){$('tag_name').value=""; $('tag_name').focus()}, 
-                parameters:'tag=' + escape($('tag_name').value) + '&authenticity_token=' + encodeURIComponent('88308cae9014c25a7dd8628bacbf646b244d440e')})
+                parameters:'tag=' + escape($('tag_name').value) + '&authenticity_token=' + encodeURIComponent('<%= form_authenticity_token %>')})
         }
   </script>
   
