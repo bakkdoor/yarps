@@ -8,12 +8,14 @@ all_profiles: All profiles
 all_tags: All tags
 are_you_sure: "Are you sure?"
 are_you_sure?: "Are you sure?"
+author: Author
 back: Back
 confirm_password: "Confirm password"
 confirm_password: Confirm Password
 contact: Contact
 create: Create
 created_at: "Created at"
+date: Datum
 description: Description
 destroy: Delete
 edit: Edit
@@ -21,8 +23,10 @@ email: Email
 english: English
 failed_logins: Failed logins
 german: German
+go_to: "Go to:"
 here_you_can_create_a_new_account: Here you can create a new account
 home: Home
+inbox: Inbox
 invite_only: Invite only
 is_not_a_letter: "is not a letter."
 language: Language
@@ -33,12 +37,13 @@ login_failed_error: "Login failed - Please try again"
 login_successful_notice: Logged in successfully
 logout_successful_notice: "You have been logged out."
 member_since: Member since
+message: Message
 messages: Messages
-sent_messages: Sent messages
 my_projects: My projects
 my_settings: My Settings
 my_tasks: My tasks
 name: Name
+new_message: "Write new message"
 new_project: Create a new project
 new_tag: Create a new tag
 new_tags: New Tags
@@ -61,11 +66,17 @@ projects_by_letter: "Projects by letter"
 projects_tagged_with: Projects tagged with
 projects_with_letter: "Projects with letter"
 public: Public
+public_projects: "Public projects"
+receiver: Empfänger
+reply: Reply
+reply_to_message: "Reply to message"
 search: Search
 search_by_tags: Search by tags
 search_public_projects: "Search public projects"
 search_results_for: Search results for
 search_term: "Search term"
+send: Send
+sent_messages: Sent messages
 seperated_by_comma: seperated by comma
 set_language: English
 show: Show
@@ -74,6 +85,7 @@ signup_successful_notice: "Thanks for signing up!"
 tag_search: Tag search
 tags: Tags
 this_is_the_profile_of: This is the profile of
+title: Titel
 update: Update
 updated_at: "Updated at"
 user: User
@@ -85,14 +97,3 @@ welcome_message: Welcome to yarps!
 you_currently_have_a_user_status_of: You currently have a user status of
 your_options: Your options
 your_profile_page: Your profile page
-new_message: "Write new message"
-receiver: Empfänger
-author: Author
-date: Datum
-title: Titel
-message: Message
-reply: Reply
-reply_to_message: "Reply to message"
-send: Send
-inbox: Inbox
-go_to: "Go to:"

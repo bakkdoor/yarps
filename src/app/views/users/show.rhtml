@@ -5,7 +5,7 @@
 <% if logged_in? %>
     Hi there, <%= current_user.login %>!<br>
 <% end %>
-<%= l(:this_is_the_profile_of) %> <%= @profile_user.login %>.<br>
+<%= l(:this_is_the_profile_of) %> <b><%= @profile_user.login %></b>.<br>
 <br>
 <br><br>
 
@@ -29,3 +29,6 @@
         </tr>
     </table>
 </div>
+<br>
+<div class="headline"><%= @profile_user.login.his_her %> <%= l :public_projects %></div>
+<%= render :partial => "projects/project_list", :object => @profile_user.public_projects  %>

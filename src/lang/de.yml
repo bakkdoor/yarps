@@ -8,12 +8,14 @@ all_profiles: Alle Profile
 all_tags: Alle Tags
 are_you_sure: "Sind Sie sicher?"
 are_you_sure?: "Sind Sie sicher?"
+author: Absender
 back: "Zurück"
 confirm_password: "Passwort bestätigen"
 confirm_password: Passwort bestätigen
 contact: Kontakt
 create: Erstellen
 created_at: "Erstellt am"
+date: Datum
 description: Beschreibung
 destroy: Löschen
 edit: Bearbeiten
@@ -21,8 +23,10 @@ email: Email
 english: Englisch
 failed_logins: Fehlgeschlagene Logins
 german: Deutsch
+go_to: "Gehe zu:"
 here_you_can_create_a_new_account: Hier kannst du ein neues Profil anlegen
 home: Start
+inbox: Empfangene Nachrichten
 invite_only: "Nur via Einladung"
 is_not_a_letter: "ist kein Buchstabe."
 language: Sprache
@@ -33,12 +37,13 @@ login_failed_error: "Login fehlgeschlagen - Bitte erneut versuchen"
 login_successful_notice: Erfolgreich eingeloggt
 logout_successful_notice: "Sie wurden ausgeloggt."
 member_since: Mitglied seit
+message: Nachricht
 messages: Nachrichten
-sent_messages: Gesendete Nachrichten
 my_projects: Meine Projekte
 my_settings: Meine Einstellungen
 my_tasks: Meine Aufgaben
 name: Name
+new_message: "Neue Nachricht verfassen"
 new_project: Neues Projekt erstellen
 new_tag: Neues Tag erstellen
 new_tags: Neue Tags
@@ -61,11 +66,17 @@ projects_by_letter: "Projekte nach Buchstaben"
 projects_tagged_with: Projekte getagged mit
 projects_with_letter: "Projekte mit Buchstaben"
 public: "Öffentlich"
+public_projects: "Öffentliche Projekte"
+receiver: Empfänger
+reply: Antworten
+reply_to_message: "Antwort auf Nachricht"
 search: Suche
 search_by_tags: Nach Tags suchen
 search_public_projects: "Suche nach öffentliche Projekte"
 search_results_for: Suchergebnisse für
 search_term: "Suchterm"
+send: Abschicken
+sent_messages: Gesendete Nachrichten
 seperated_by_comma: durch Komma getrennt
 set_language: Deutsch
 show: Anzeigen
@@ -74,6 +85,7 @@ signup_successful_notice: "Danke für deine Anmeldung!"
 tag_search: Tag suche
 tags: Tags
 this_is_the_profile_of: Das hier ist das Profil von
+title: Titel
 update: Aktualisieren
 updated_at: "Aktualisiert am"
 user: Benutzer
@@ -85,14 +97,3 @@ welcome_message: Willkommen bei yarps!
 you_currently_have_a_user_status_of: Du hast derzeit einen User-Status als
 your_options: Deine Optionen
 your_profile_page: Deine Profilseite
-new_message: "Neue Nachricht verfassen"
-receiver: Empfänger
-author: Absender
-date: Datum
-title: Titel
-message: Nachricht
-reply: Antworten
-reply_to_message: "Antwort auf Nachricht"
-send: Abschicken
-inbox: Empfangene Nachrichten
-go_to: "Gehe zu:"

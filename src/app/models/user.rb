@@ -95,6 +95,13 @@ class User < ActiveRecord::Base
      end
   end
   
+  # alle öffentlichen projekte
+  def public_projects
+    self.projects.select do |p|
+      p.public
+    end
+  end
+  
   # gibt den user_level_code in abhängigkeit von einem level_namen-symbol zurück
   # bsp: :admin -> 100
   def self.level_code(level_name)

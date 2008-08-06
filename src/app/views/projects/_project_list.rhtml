@@ -1,4 +1,4 @@
-<% @projects.each do |project| %>
+<% project_list.each do |project| %>
     <div class="<%= cycle("project_info_even", "project_info_odd") %>" style="padding:1em">
       <div id="header" style="padding-bottom:0.5em">
         <div style="text-alig:left;float:left;font-size:120%">
@@ -13,7 +13,7 @@
           <%= h project.description %><br>
           <div style="padding-top:1em">
             <span style="font-size: 130%;font-variant:small-caps">Tags:</span>
-            <% tag_cloud  Project.tag_counts, tag_cloud_css_classes do |tag, css_class| %>
+            <% tag_cloud Project.tag_counts, tag_cloud_css_classes do |tag, css_class| %>
               <% if project.tags.include? tag %>
                 <%= link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class %>
               <% end %>
