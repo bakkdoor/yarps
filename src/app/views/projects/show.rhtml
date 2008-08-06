@@ -30,4 +30,5 @@
 
 
 <%= link_to (l :edit), edit_project_path(@project) %> |
+<%= link_to (l :destroy), @project, :confirm => (l :are_you_sure?), :method => :delete %> |
 <%= link_to (l :back), projects_path %>

@@ -48,6 +48,7 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :projects, 
                 :collection => {
                   :auto_complete_for_project_name => :get,
+                  :auto_complete_for_tag_name => :get,
                   :list => :get,
                   :tags => :get
                  }

@@ -1,7 +1,7 @@
 class ProjectsController < ApplicationController
   
   auto_complete_for :project, :name
-  auto_complete_for :project, :tags
+  auto_complete_for :tag, :name
   
   before_filter :login_required, :only => [:new, :create, :edit, :update, :destroy]
   
@@ -41,7 +41,10 @@ class ProjectsController < ApplicationController
   # GET /projects/new.xml
   def new
     @project = Project.new
-
+    @project.tag_list = session[:project_tags]
+    
+    session[:project_tags] = []
+    
     respond_to do |format|
       format.html # new.html.erb
       format.xml  { render :xml => @project }
@@ -51,6 +54,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
+    
     session[:project_tags] = []
     
     @project.tags.each do |t|
@@ -62,13 +66,18 @@ class ProjectsController < ApplicationController
   # POST /projects.xml
   def create
     @project = Project.new(params[:project])
+    
+    # tags hinzufügen, nur falls welche angegeben
+    session[:project_tags] ||= []
+    @project.tag_list = session[:project_tags]
 
     respond_to do |format|
       if @project.save
         @project_membership = ProjectMembership.new :user_id => current_user.id,
                                                     :project_id => @project.id,
                                                     :user_level => User.level_code(:project_admin)
-        if @project_membership.save                                          
+        if @project_membership.save       
+          session[:project_tags] = nil # zurücksetzen                                   
           flash[:notice] = (l :project_successful_create_notice)
           format.html { redirect_to(@project) }
           format.xml  { render :xml => @project, :status => :created, :location => @project }
@@ -98,7 +107,7 @@ class ProjectsController < ApplicationController
     
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        session[:project_tags] = nil
+        session[:project_tags] = nil # zurücksetzen
         flash[:notice] = (l :project_successful_update_notice)
         format.html { redirect_to(@project) }
         format.xml  { head :ok }
@@ -112,7 +121,7 @@ class ProjectsController < ApplicationController
   # DELETE /projects/1
   # DELETE /projects/1.xml
   def destroy
-    if request.post?
+    if request.delete?
       @project = Project.find(params[:id])
       
       # alle project-memberships mitlöschen
@@ -147,13 +156,27 @@ class ProjectsController < ApplicationController
   end
   
   def auto_complete_for_project_name
-    @projects = Project.find(:all, 
-      :conditions => [ 'LOWER(name) LIKE ?',
-      '%' + params[:project][:name].downcase + '%' ], 
-      :order => 'name ASC',
-      :limit => 10)
-    render :partial => 'auto_complete_results'
+    @tags = Tag.find(:all, 
+      :conditions => [ 'LOWER(name) LIKE ? ',
+      '%' + params[:tag][:name].downcase + '%' ], 
+      :order => 'name ASC')
+    render :inline => "<%= auto_complete_result(@tags, 'name') %>"
   end
+  
+  def auto_complete_for_tag_name
+    @tags = Tag.find(:all, 
+      :conditions => [ 'LOWER(name) LIKE ?',
+      '%' + params[:tag][:name].downcase + '%' ], 
+      :order => 'name ASC')
+      
+    # nur die tags zurückgeben, die noch nicht verwendet werden...
+    @tags = @tags.select do |t|
+      not session[:project_tags].include? t.name
+    end
+    render :inline => "<%= auto_complete_result(@tags, 'name') %>"
+  end
+  
+  
   
   def search_tags
     if params[:search] != ""
