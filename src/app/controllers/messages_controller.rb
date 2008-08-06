@@ -26,8 +26,10 @@ class MessagesController < ApplicationController
       format.xml  { render :xml => @message }
     end
     
-    @message.is_read = true
-    @message.save
+    if @message.receiver == current_user
+      @message.is_read = true
+      @message.save
+    end
   end
 
   # GET /messages/new
@@ -129,8 +131,8 @@ class MessagesController < ApplicationController
   
   def auto_complete_for_receiver_login
     @receivers = User.find(:all, 
-      :conditions => [ 'LOWER(login) LIKE ?',
-      '%' + params[:receiver][:login].downcase + '%' ], 
+      :conditions => [ 'LOWER(login) LIKE ? AND login <> ?',
+      '%' + params[:receiver][:login].downcase + '%', current_user.login ], 
       :order => 'login ASC')
     render :inline => "<%= auto_complete_result(@receivers, 'login') %>"
   end
