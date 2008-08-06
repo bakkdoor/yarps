@@ -4,6 +4,7 @@ class ProjectsController < ApplicationController
   auto_complete_for :tag, :name
   
   before_filter :login_required, :only => [:new, :create, :edit, :update, :destroy]
+  before_filter :init_project_tags_session, :only => [:create, :update]
   
   # GET /projects
   # GET /projects.xml
@@ -11,11 +12,9 @@ class ProjectsController < ApplicationController
     if logged_in?
       @projects = current_user.projects.sort_by { |p| p.name }
       respond_to do |format|
-      format.html # index.html.erb
-      format.xml  { render :xml => @projects }
-    end
-    else
-      #redirect_to :action => :list, :id => :all
+        format.html # index.html.erb
+        format.xml  { render :xml => @projects }
+      end
     end
   end
   
@@ -27,7 +26,7 @@ class ProjectsController < ApplicationController
   # GET /projects/1.xml
   def show
     if ! Project.exists?(params[:id])
-      redirect_to :action => :index #unless Project.exists?(params[:id])
+      redirect_to :action => :index
     else
       @project = Project.find(params[:id])
       respond_to do |format|
@@ -57,6 +56,7 @@ class ProjectsController < ApplicationController
     
     session[:project_tags] = []
     
+    # namen der projekt-tags in session speichern
     @project.tags.each do |t|
       session[:project_tags] << t.name
     end
@@ -68,7 +68,6 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     
     # tags hinzufügen, nur falls welche angegeben
-    session[:project_tags] ||= []
     @project.tag_list = session[:project_tags]
 
     respond_to do |format|
@@ -98,7 +97,6 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     
     # neue tags hinzufügen, nur falls welche angegeben
-    session[:project_tags] ||= []
     params[:new_tags].split(",").each do |new_tag|
       session[:project_tags] << new_tag
     end
@@ -207,7 +205,6 @@ class ProjectsController < ApplicationController
   end
   
   def add_tag
-    #session[:project_tags] = Array.new unless session[:new_tags]
     session[:project_tags] << params[:tag] unless session[:project_tags].include? params[:tag]
     
     render :partial => "tag_list_item", :collection => session[:project_tags]
@@ -235,5 +232,11 @@ class ProjectsController < ApplicationController
       render :text => ""
     end
   end
-    
+  
+  private
+  
+  def init_project_tags_session
+    session[:project_tags] ||= []
+  end
+  
 end
