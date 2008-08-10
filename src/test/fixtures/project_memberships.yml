@@ -2,10 +2,10 @@
 
 one:
   user_id: 1
-  team_id: 1
+  project_id: 1
   user_level: 1
 
 two:
   user_id: 1
-  team_id: 1
-  user_level: 1
+  project_id: 1
+  user_level: 100

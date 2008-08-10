@@ -1,0 +1,22 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: Test project one
+  description: First test project
+  website: http://www.google.de
+  public: false
+  invite_only: false
+
+two:
+  name: Test project two
+  description: Second test project
+  website: http://www.amazon.de
+  public: true
+  invite_only: true
+
+three:
+  name: Test project three
+  description: Third test project
+  website: http://www.ebay.de
+  public: true
+  invite_only: false
