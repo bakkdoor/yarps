@@ -24,6 +24,6 @@ def german(long_date = false)
 		else
 			"#{day}.#{month}.#{year}"
 		end
-	end
+end
 	
 end
