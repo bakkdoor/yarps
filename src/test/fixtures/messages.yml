@@ -1,13 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
 one:
-  title: MyString
-  body: MyText
+  title: Test Message one
+  body: First test message!
   author_id: 1
-  receiver_id: 1
+  receiver_id: 2
 
 two:
-  title: MyString
-  body: MyText
-  author_id: 1
+  title: Test Message two
+  body: Second test message!
+  author_id: 2
   receiver_id: 1
