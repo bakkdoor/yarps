@@ -66,7 +66,7 @@ class User < ActiveRecord::Base
   
   # gibt an, ob user projekt beitreten kann
   def can_join?(project)
-    (project.public && !project.invite_only) || (project.public && project.invite_only && self.has_invitation_for?(project))
+       (project.public && !project.invite_only) || (self.has_invitation_for?(project))
   end
   
   # tritt einem projekt bei, falls möglich
