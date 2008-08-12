@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080805180945) do
+ActiveRecord::Schema.define(:version => 20080812004118) do
 
   create_table "messages", :force => true do |t|
     t.string   "title"
@@ -21,6 +21,14 @@ ActiveRecord::Schema.define(:version => 20080805180945) do
     t.boolean  "receiver_deleted", :default => false
     t.boolean  "author_deleted",   :default => false
     t.boolean  "is_read",          :default => false
+  end
+
+  create_table "project_invitations", :force => true do |t|
+    t.integer  "project_id", :null => false
+    t.integer  "user_id",    :null => false
+    t.text     "message"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "project_memberships", :force => true do |t|

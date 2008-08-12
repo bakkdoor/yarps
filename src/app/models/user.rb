@@ -64,6 +64,24 @@ class User < ActiveRecord::Base
     false
   end
   
+  # gibt an, ob user projekt beitreten kann
+  def can_join?(project)
+    (project.public && !project.invite_only) || (project.public && project.invite_only && self.has_invitation_for?(project))
+  end
+  
+  # tritt einem projekt bei, falls möglich
+  def join(project)
+    if self.can_join?(project)
+      membership = ProjectMembership.new(:project_id => project.id, :user_id => self.id, :user_level => User.level_code(:new_member))
+      membership.save
+    end
+  end
+  
+  # gibt an, ob eine einladung vorliegt, einem projekt beizutreten
+  def has_invitation_for?(project)
+    ProjectInvitation.find(:first, :conditions => ["user_id = ? AND project_id = ?", self.id, project.id])
+  end
+  
   # gibt alle empfangenen nachrichten zurück
   def received_messages
     Message.find(:all, :order => "created_at DESC", :conditions => ["receiver_id = ? AND receiver_deleted = ?", self.id, false])
@@ -125,7 +143,8 @@ class User < ActiveRecord::Base
     when :waitin_for_auth
       0
     else
-      -1 # das hier ist ungültig!
+      #-1 # das hier ist ungültig, sollte eigentlich nicht auftreten!
+      raise InvalidUserLevelError.new("Userlevel unknown: '#{level_name}'")
     end
   end
 

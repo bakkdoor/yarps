@@ -1,20 +1,20 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+non_private_and_none_invite_only:
   name: Test project one
   description: First test project
   website: http://www.google.de
   public: false
   invite_only: false
 
-two:
+public_and_invite_only:
   name: Test project two
   description: Second test project
   website: http://www.amazon.de
   public: true
   invite_only: true
 
-three:
+public_and_non_invite_only:
   name: Test project three
   description: Third test project
   website: http://www.ebay.de

@@ -1,9 +1,7 @@
 require File.dirname(__FILE__) + '/../test_helper'
 
 class UserTest < Test::Unit::TestCase
-  # Be sure to include AuthenticatedTestHelper in test/test_helper.rb instead.
-  # Then, you can remove it from this and the functional test.
-  include AuthenticatedTestHelper
+  
   fixtures :users
 
   def test_should_create_user
@@ -67,7 +65,17 @@ class UserTest < Test::Unit::TestCase
     users(:quentin).forget_me
     assert_nil users(:quentin).remember_token
   end
-
+  
+  # user sollte invalid sein, wenn keine werte angegeben
+  def test_invalid_with_empty_attributes
+    user = User.new
+    assert !user.valid?
+    assert user.errors.invalid?(:login)
+    assert user.errors.invalid?(:email)
+    assert user.errors.invalid?(:password)
+    assert user.errors.invalid?(:password_confirmation)
+  end
+  
   protected
     def create_user(options = {})
       User.create({ :login => 'quire', :email => 'quire@example.com', :password => 'quire', :password_confirmation => 'quire' }.merge(options))

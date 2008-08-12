@@ -27,4 +27,8 @@ class Project < ActiveRecord::Base
             []
         end
     end
+    
+    def viewable_by?(user)
+      ProjectMembership.find(:first, :conditions => ["user_id = ? AND project_id = ?", user.id, self.id])
+    end
 end
