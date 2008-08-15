@@ -10,7 +10,7 @@
       </div>
       <div id="body" style="display:block">
         <div style="text-align:left;font-size:80%;padding-top:1em;"><br>
-          <%= h project.description %><br>
+          <%= textilize(h project.description) %><br>
           <div style="padding-top:1em">
             <span style="font-size: 130%;font-variant:small-caps">Tags:</span>
             <% tag_cloud Project.tag_counts, tag_cloud_css_classes do |tag, css_class| %>
