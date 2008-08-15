@@ -52,13 +52,15 @@
     function remote_add_tag(tagname)
     {
         new Ajax.Updater('project_tags', '/projects/add_tag', 
-        { 
+            { 
                 asynchronous:true, 
                 evalScripts:true, 
                 onComplete:function(request){new Effect.Highlight("project_tags",{duration:0.5})},
                 onSuccess:function(request){$('tag_name').value=""; $('tag_name').focus()}, 
-                parameters:'tag=' + escape($('tag_name').value) + '&authenticity_token=' + encodeURIComponent('<%= form_authenticity_token %>')})
-        }
+                parameters:'tag=' + escape($('tag_name').value) + '&authenticity_token=' + encodeURIComponent('<%= form_authenticity_token %>')
+            }
+        )
+    }
   </script>
   
   

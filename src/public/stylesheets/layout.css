@@ -41,6 +41,10 @@
   right:3em;
 }
 
+.search input{
+  font-size: 80%;
+}
+
 body{
   background: #fff url(../images/menu_bg.gif) center top repeat-x;
   font-family: "Lucida Sans","Lucida Grande",Tahoma,"Bitstream Vera Sans",Arial,sans-serif;

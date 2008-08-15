@@ -1,9 +1,45 @@
+.form_new{
+  font-size: 120%;
+}
+
 .form_new table{
   width: 80%;
   padding-left: 20%;
 }
 
+.form_new input{
+  font-size:100%;
+}
+
+.form_new textarea{
+  font-size: 100%;
+}
+
 .form_edit label{
   font-weight:bold;
   font-size: 120%;
+}
+
+.form_edit input{
+  font-size:100%;
+}
+
+.form_edit textarea{
+  font-size: 100%;
+}
+
+.search_form{
+  font-size: 120%;
+}
+
+.search_form input{
+  font-size:100%;
+}
+
+.account_form{
+  font-size:110%;
+}
+
+.account_form input{
+  font-size: 90%;
 }

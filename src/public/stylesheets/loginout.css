@@ -23,4 +23,9 @@
 .loginarea{
   text-align: center;
   float: middle;
+  font-size:130%;
+}
+
+.loginarea input{
+  font-size:100%;
 }
