@@ -1,0 +1,26 @@
+role :yarps, "yarps@www.flasht.de"
+
+set(:lib_term) do
+  Capistrano::CLI.ui.ask "Gimme a search term: "
+end
+
+namespace :libs do
+  desc "Durchsuche libs ordner"
+  task :search do
+    run "ls -x1 /usr/lib | grep -i #{lib_term}"
+  end
+end
+ 
+namespace :disc do
+  desc "Zeige freien speicherplatz an"
+  task :space do
+    run "df -h /"
+  end
+end
+
+namespace :app do
+  desc "Restart app (fcgi process)"
+  task :restart do
+    run "httpdocs/restart.rb"
+  end
+end
