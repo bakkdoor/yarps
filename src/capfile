@@ -1,5 +1,7 @@
 role :yarps, "yarps@www.flasht.de"
 
+git = "/usr/local/bin/git"
+
 set(:lib_term) do
   Capistrano::CLI.ui.ask "Gimme a search term: "
 end
@@ -22,5 +24,10 @@ namespace :app do
   desc "Restart app (fcgi process)"
   task :restart do
     run "httpdocs/restart.rb"
+  end
+
+  desc "Update and restart application from git-repos"
+  task :update do
+    run "cd httpdocs/rails-app; #{git} fetch origin; #{git} merge origin/master; ../restart.rb"
   end
 end
