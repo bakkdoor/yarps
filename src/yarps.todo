@@ -5,6 +5,6 @@ YARPS v0.1:
   - Tasks realisieren
   - Bugreports/Ticketsystem (gekoppelt an Tasks)
   - Tests fertigstellen
-    - Fixtures
-    - Unit-Tests
+    ✓ Fixtures
+    ✓ Unit-Tests
     - Functional-Tests

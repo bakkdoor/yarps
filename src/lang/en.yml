@@ -69,6 +69,7 @@ projects_with_letter: "Projects with letter"
 public: Public
 public_projects: "Public projects"
 receiver: Empfänger
+remember_me: Remember me
 reply: Reply
 reply_to_message: "Reply to message"
 search: Search

@@ -69,6 +69,7 @@ projects_with_letter: "Projekte mit Buchstaben"
 public: "Öffentlich"
 public_projects: "Öffentliche Projekte"
 receiver: Empfänger
+remember_me: Eingeloggt bleiben
 reply: Antworten
 reply_to_message: "Antwort auf Nachricht"
 search: Suche
