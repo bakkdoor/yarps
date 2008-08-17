@@ -31,3 +31,16 @@ namespace :app do
     run "cd httpdocs/rails-app; #{git} fetch origin; #{git} merge origin/master; ../restart.rb"
   end
 end
+
+
+namespace :tests do
+  desc "Run unit-tests on application-server"
+  task :units do
+    run "cd httpdocs/rails-app/src; rake test:units"
+  end
+  
+  desc "Run functional-tests on application-server"
+  task :functionals do
+    run "cd httpdocs/rails-app/src; rake test:functionals"
+  end
+end
