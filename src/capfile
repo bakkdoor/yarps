@@ -1,6 +1,6 @@
-role :yarps, "yarps@www.flasht.de"
+role :yarps, "yarps@flasht.de"
 
-git = "/usr/local/bin/git"
+set :git, "/usr/local/bin/git"
 
 set(:lib_term) do
   Capistrano::CLI.ui.ask "Gimme a search term: "
