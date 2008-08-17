@@ -1,11 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+inv_for_quentin:
   user_id: 1
   project_id: 1
-  message: MyText
+  message: Invitation 1
 
-two:
-  user_id: 1
-  project_id: 1
-  message: MyText
+inv_for_aaron:
+  user_id: 2
+  project_id: 3
+  message: Invitation 2
+
+inv_for_chris:
+  user_id: 3
+  project_id: 4
+  message: Invitation 2

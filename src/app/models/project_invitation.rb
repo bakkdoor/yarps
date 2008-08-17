@@ -10,4 +10,8 @@ class ProjectInvitation < ActiveRecord::Base
     "You have been invited to the following project:"
   end
   
+  def viewable_by?(user)
+    self.user_id == user.id
+  end
+  
 end

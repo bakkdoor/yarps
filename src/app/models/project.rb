@@ -4,6 +4,7 @@ class Project < ActiveRecord::Base
     
     has_many :project_memberships
     has_many :users, :through => :project_memberships
+    has_many :project_invitations
     
     validates_presence_of :name, :on => :create, :message => (l :please_enter_a_name)
     

@@ -38,6 +38,7 @@ login_successful_notice: Logged in successfully
 logout_successful_notice: "You have been logged out."
 member_since: Member since
 message: Message
+message_cant_be_deleted: "Message can't be deleted."
 messages: Messages
 my_projects: My projects
 my_settings: My Settings

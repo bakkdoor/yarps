@@ -1,12 +1,12 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+quentin_to_aaron:
   title: Test Message one
   body: First test message!
   author_id: 1
   receiver_id: 2
 
-two:
+aaron_to_quentin:
   title: Test Message two
   body: Second test message!
   author_id: 2

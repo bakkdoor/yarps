@@ -3,7 +3,8 @@ class User < ActiveRecord::Base
   
   has_many :project_memberships
   has_many :projects, :through => :project_memberships
-  
+  has_many :project_invitations
+   
   # Virtual attribute for the unencrypted password
   attr_accessor :password
 
@@ -74,6 +75,18 @@ class User < ActiveRecord::Base
     if self.can_join?(project)
       membership = ProjectMembership.new(:project_id => project.id, :user_id => self.id, :user_level => User.level_code(:new_member))
       membership.save
+      
+      # suche nach einladung und falls vorhanden => löschen
+      if self.has_invitation_for?(project)
+        invitation = ProjectInvitation.find_by_user_id_and_project_id(self.id, project.id)
+        
+        if invitation
+          invitation.destroy
+        else
+          raise ActiveRecord::RecordNotFound, "Invitation doesn't seem to exist. Something is wrong here!"
+        end
+        
+      end
     end
   end
   
@@ -102,6 +115,20 @@ class User < ActiveRecord::Base
   
   def has_new_messages?
     self.new_messages.size > 0
+  end
+  
+  def can_delete_message?(message)
+    (message.author_id == self.id) || (message.receiver_id == self.id)
+  end
+  
+  def delete_message(message)
+    if message.author_id == self.id
+      message.author_deleted = true
+      message.save
+    elsif message.receiver_id == self.id
+      message.receiver_deleted = true
+      message.save
+    end
   end
   
   # searching for users

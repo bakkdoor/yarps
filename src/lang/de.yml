@@ -38,6 +38,7 @@ login_successful_notice: Erfolgreich eingeloggt
 logout_successful_notice: "Sie wurden ausgeloggt."
 member_since: Mitglied seit
 message: Nachricht
+message_cant_be_deleted: "Nachricht kann nicht gelöscht werden."
 messages: Nachrichten
 my_projects: Meine Projekte
 my_settings: Meine Einstellungen

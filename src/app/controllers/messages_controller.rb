@@ -89,14 +89,10 @@ class MessagesController < ApplicationController
   def destroy
     @message = Message.find(params[:id])
     
-    if @message.author_id == current_user.id
-      @message.author_deleted = true
-      @message.save
-    elsif @message.receiver_id == current_user.id
-      @message.receiver_deleted = true
-      @message.save
+    if current_user.can_delete_message?(@message)
+      current_user.delete_message(@message)
     else
-      flash[:error] = "Fehler beim Löschen. Operation unmöglich!"
+      flash[:error] = (l :message_cant_be_deleted)
     end
     
     if @message.all_deleted?

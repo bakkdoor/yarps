@@ -17,4 +17,8 @@ class Message < ActiveRecord::Base
     self.receiver_deleted && self.author_deleted
   end
   
+  def readable_by?(user)
+    (self.author_id == user.id) || (self.receiver_id == user.id)
+  end
+  
 end

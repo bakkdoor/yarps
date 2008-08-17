@@ -23,7 +23,7 @@ class ProjectTest < ActiveSupport::TestCase
     assert !project.viewable_by?(user)
     
     # set up new invitation => user can now join
-    proj_inv = ProjectInvitation.new(:user_id => user.id, :project_id => project.id)
+    proj_inv = ProjectInvitation.new(:user_id => user.id, :project_id => project.id, :message => "ProjectInvitation test :)")
     proj_inv.save
     
     assert proj_inv.valid?
@@ -39,7 +39,7 @@ class ProjectTest < ActiveSupport::TestCase
     
     assert user.can_join?(project)
     project = projects(:public_and_invite_only)
-    assert !user.can_join?(project)
+    assert(!user.can_join?(project), "User shouldn't be able to join project!")
     
     # set up new invitation => user can now join
     proj_inv = ProjectInvitation.new(:user_id => user.id, :project_id => project.id)
