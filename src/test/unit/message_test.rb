@@ -13,6 +13,20 @@ class MessageTest < ActiveSupport::TestCase
     assert !message.readable_by?(users(:chris))
   end
   
+  def test_user_can_read_message
+    message = messages(:quentin_to_aaron)
+    quentin = users(:quentin)
+    aaron = users(:aaron)
+    chris = users(:chris)
+    assert(!chris.can_read_message?(message), "Chris shouldn't be able to read this message!")
+    assert(aaron.can_read_message?(message) && quentin.can_read_message?(message), "Users should be able to read message!")
+    assert(!message.is_read, "Message shouldn't be read yet!")
+    quentin.read_message(message)
+    assert(!message.is_read, "Message shouldn't be read yet!")
+    aaron.read_message(message)
+    assert(message.is_read, "Message should be read by now!")
+  end
+  
   def test_message_deletion
     message = messages(:aaron_to_quentin)
     aaron = users(:aaron)

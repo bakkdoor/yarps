@@ -65,18 +65,19 @@ class User < ActiveRecord::Base
     false
   end
   
-  # gibt an, ob user projekt beitreten kann
+  # indicates, if a user can join a project
   def can_join?(project)
        (project.public && !project.invite_only) || (self.has_invitation_for?(project))
   end
   
-  # tritt einem projekt bei, falls möglich
+  # joins a project, if possible
   def join(project)
     if self.can_join?(project)
       membership = ProjectMembership.new(:project_id => project.id, :user_id => self.id, :user_level => User.level_code(:new_member))
       membership.save
       
-      # suche nach einladung und falls vorhanden => löschen
+      # search for project_invitation and delete it, if available
+      # if not => error, since something obviously went wrong!
       if self.has_invitation_for?(project)
         invitation = ProjectInvitation.find_by_user_id_and_project_id(self.id, project.id)
         
@@ -90,21 +91,22 @@ class User < ActiveRecord::Base
     end
   end
   
-  # gibt an, ob eine einladung vorliegt, einem projekt beizutreten
+  # indicates, if the user has an invitation for a given project
   def has_invitation_for?(project)
     ProjectInvitation.find(:first, :conditions => ["user_id = ? AND project_id = ?", self.id, project.id])
   end
   
-  # gibt alle empfangenen nachrichten zurück
+  # returns all received messages
   def received_messages
     Message.find(:all, :order => "created_at DESC", :conditions => ["receiver_id = ? AND receiver_deleted = ?", self.id, false])
   end
   
-  # gibt alle verschickten nachrichten zurück
+  # returns all sent messages
   def sent_messages
     Message.find(:all, :order => "created_at DESC", :conditions => ["author_id = ? AND author_deleted = ?", self.id, false])
   end
   
+  # returns all unread (new) messages
   def new_messages
     Message.find(:all, :conditions => ["receiver_id = ? AND receiver_deleted = ? AND is_read = ?", self.id, false, false])
   end
@@ -113,6 +115,7 @@ class User < ActiveRecord::Base
     self.new_messages.size
   end
   
+  # indicates, if there are any new messages
   def has_new_messages?
     self.new_messages.size > 0
   end
@@ -131,6 +134,17 @@ class User < ActiveRecord::Base
     end
   end
   
+  def can_read_message?(message)
+    (message.author_id == self.id) || (message.receiver_id == self.id)
+  end
+  
+  def read_message(message)
+    if can_read_message?(message) && message.receiver_id == self.id
+      message.is_read = true
+      message.save
+    end
+  end
+  
   # searching for users
   def self.search(query)
     if query
@@ -140,15 +154,15 @@ class User < ActiveRecord::Base
      end
   end
   
-  # alle öffentlichen projekte
+  # returns all public projects of a user
   def public_projects
     self.projects.select do |p|
       p.public
     end
   end
   
-  # gibt den user_level_code in abhängigkeit von einem level_namen-symbol zurück
-  # bsp: :admin -> 100
+  # returns a user_level_code based on a given level_name-symbol
+  # for example: :admin => 100
   def self.level_code(level_name)
     case level_name
     when :admin
@@ -170,13 +184,13 @@ class User < ActiveRecord::Base
     when :waitin_for_auth
       0
     else
-      #-1 # das hier ist ungültig, sollte eigentlich nicht auftreten!
+      #-1 # this is not valid, normally this shouldn't happen!
       raise InvalidUserLevelError.new("Userlevel unknown: '#{level_name}'")
     end
   end
 
-  # gibt einen string passend zum user_level_code zurück
-  # bsp: 100 -> "admin"
+  # returns a string based on a given user_level_code
+  # for example: 100 -> "admin"
   def self.level_name(level_code)
     case level_code
     when 100
@@ -198,9 +212,9 @@ class User < ActiveRecord::Base
     when 0
       "Waiting for authorization"
     when -1
-      "No rights at all!" # entspricht 0
+      "No rights at all!" # corresponds to 0
     else
-      "Unknown" # das hier sollte eigentlich nicht auftreten!
+      "Unknown" # normally this shouldn't happen!
     end
   end
   

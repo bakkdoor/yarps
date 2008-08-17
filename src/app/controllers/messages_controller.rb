@@ -7,7 +7,6 @@ class MessagesController < ApplicationController
   # GET /messages
   # GET /messages.xml
   def index
-    #@messages = Message.find(:all)
     @messages = current_user.received_messages
     
     respond_to do |format|
@@ -20,15 +19,17 @@ class MessagesController < ApplicationController
   # GET /messages/1.xml
   def show
     @message = Message.find(params[:id])
-
-    respond_to do |format|
-      format.html # show.html.erb
-      format.xml  { render :xml => @message }
-    end
     
-    if @message.receiver == current_user
-      @message.is_read = true
-      @message.save
+    if current_user.can_read_message?(@message)
+      respond_to do |format|
+        format.html # show.html.erb
+        format.xml  { render :xml => @message }
+      end
+      
+      current_user.read_message(@message)
+    else
+      flash[:error] = "Cannot read this message"
+      redirect_to :action => :index
     end
   end
 
@@ -71,16 +72,21 @@ class MessagesController < ApplicationController
   # PUT /messages/1.xml
   def update
     @message = Message.find(params[:id])
-
-    respond_to do |format|
-      if @message.update_attributes(params[:message])
-        flash[:notice] = 'Message was successfully updated.'
-        format.html { redirect_to(@message) }
-        format.xml  { head :ok }
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
+    
+    if @message.readable_by?(current_user)
+      respond_to do |format|
+        if @message.update_attributes(params[:message])
+          flash[:notice] = 'Message was successfully updated.'
+          format.html { redirect_to(@message) }
+          format.xml  { head :ok }
+        else
+          format.html { render :action => "edit" }
+          format.xml  { render :xml => @message.errors, :status => :unprocessable_entity }
+        end
       end
+    else
+      flash[:error] = "You're not allowed to change/update this message!"
+      redirect_to :action => :index
     end
   end
 
@@ -105,7 +111,7 @@ class MessagesController < ApplicationController
     end
   end
   
-  # auf vorhandene nachricht antworten
+  # reply to given message
   def reply
     @message = Message.new
     @old_message = Message.find(params[:id])
@@ -115,12 +121,12 @@ class MessagesController < ApplicationController
     end
   end
   
-  # nachrichten inbox
+  # messages inbox
   def inbox
     @messages = current_user.received_messages
   end
   
-  # gesendete nachrichten
+  # sent messages
   def sent
     @messages = current_user.sent_messages
   end

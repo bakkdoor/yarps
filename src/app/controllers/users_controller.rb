@@ -2,12 +2,12 @@ class UsersController < ApplicationController
   
   auto_complete_for :user, :login
   
-  # nach profile von usern suchen oder so...
+  # search for user-profiles or so... 
   def index
     @users = User.find(:all)
   end
   
-  # profilseite eines accounts
+  # profile-page of an account
   def show
     begin
       @profile_user = User.find(params[:id])

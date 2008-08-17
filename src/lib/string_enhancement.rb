@@ -4,8 +4,9 @@ module StringEnhancement
   
   include GLoc
   
-  # fügt, je nachdem ob ein string mit 's' endet oder nicht, nur ' bzw 's an
-  # gebrauch z.B.: login_name.his_her Profilseite
+  # adjusts string's ending with an 's or just a '
+  # depending on if theres no 's' at the end or not
+  # usage for example: login_name.his_her Profile page 
   # chris ==> chris' Profilseite 
   # mark  ==> mark's Profilseite
   def his_her
@@ -16,12 +17,12 @@ module StringEnhancement
     end
   end
   
-  # gibt in zum jeweiligen sprachnamen den sprachcode zurück
-  # beispiele: 
+  # returns a language-code based on a given language-name
+  # examples: 
   # "deutsch" -> "de"
   # "english" -> "en"
   # "francais" -> "fr"
-  # usw...
+  # etc...
   def lang_code
     case self
       when "de": :de
@@ -31,8 +32,8 @@ module StringEnhancement
     end
   end
   
-  # ist die umkehrung von lang_code
-  # gibt den sprachnamen (in der jeweiligen sprache) abhängig vom sprachcode zurück
+  # reverse of lang_code
+  # returns the language-name (in that language) based on a given language-code
   def lang_word
     case self
       when "de" : (l :german)

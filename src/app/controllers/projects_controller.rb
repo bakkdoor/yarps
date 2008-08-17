@@ -67,7 +67,7 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
     
-    # tags hinzufügen, nur falls welche angegeben
+    # add tags, only if there are any specified
     @project.tag_list = session[:project_tags]
 
     respond_to do |format|
@@ -76,7 +76,7 @@ class ProjectsController < ApplicationController
                                                     :project_id => @project.id,
                                                     :user_level => User.level_code(:project_admin)
         if @project_membership.save       
-          session[:project_tags] = nil # zurücksetzen                                   
+          session[:project_tags] = nil # reset                                   
           flash[:notice] = (l :project_successful_create_notice)
           format.html { redirect_to(@project) }
           format.xml  { render :xml => @project, :status => :created, :location => @project }
@@ -96,7 +96,7 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     
-    # neue tags hinzufügen, nur falls welche angegeben
+    # add new tags, only if any specified
     params[:new_tags].split(",").each do |new_tag|
       session[:project_tags] << new_tag
     end
@@ -122,12 +122,12 @@ class ProjectsController < ApplicationController
     if request.delete?
       @project = Project.find(params[:id])
       
-      # alle project-memberships mitlöschen
+      # also delete all project-memberships
       @project.project_memberships.each do |membership|
         membership.destroy
       end
       
-      # und anschließend projekt löschen...
+      # and finally the project itself...
       @project.destroy
       
       respond_to do |format|
@@ -167,7 +167,7 @@ class ProjectsController < ApplicationController
       '%' + params[:tag][:name].downcase + '%' ], 
       :order => 'name ASC')
       
-    # nur die tags zurückgeben, die noch nicht verwendet werden...
+    # only return tags, that aren't used yet...
     @tags = @tags.select do |t|
       not session[:project_tags].include? t.name
     end
@@ -181,13 +181,13 @@ class ProjectsController < ApplicationController
       @tags = Tag.search(params[:search])
       
       if @tags.size > 0
-        # gehe projekt-tags-session durch (falls existent)
-        # und merke alle tags, die ohnehin schon dem projekt zugeordnet sind
-        # => nur tags als suchergebnis anzeigen, die noch nicht aufgenommen wurden
-        # die anderen werden in der view, durch abfrage von schlüssel :in_project erstmal nicht angezeigt
+        # loop through project-tags-session (if exists)
+        # and mark all tags, which are already added to the project
+        # => only show remaining tags as searchresult, which haven't been added to project yet
+        # the used tags won't be shown in the view, by checking boolean value of :in_project in hash
         # via css: style="display:none"
         
-        # eine liste von hashes, bestehend aus dem tag sowie der angabe, ob bereits im projekt vorhanden
+        # a list of hashes, each having a tag and a boolean, if it's already used
         @tag_used_pairs = [] 
         if session[:project_tags]
           @tags = @tags.each do |tag|
@@ -216,7 +216,7 @@ class ProjectsController < ApplicationController
     render :partial => "tag_list_item", :collection => session[:project_tags]
   end
   
-  # zeigt alle (öffentlichen) projekte eines tags an
+  # shows all (public) projects of a given tag
   def tag
     @projects = Project.find_tagged_with( params[:id], 
                                           :match_all => true,

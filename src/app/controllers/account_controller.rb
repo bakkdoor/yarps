@@ -1,6 +1,7 @@
 class AccountController < ApplicationController
   
-  before_filter :login_required, :except => [:login, :signup] # alle methoden außer login/signup brauchen login, da wir im account-controller sind...
+  # all methods except login/signup need a valid login, since we are in the account-controller
+  before_filter :login_required, :except => [:login, :signup] 
   
   # say something nice, you goof!  something sweet.
   def index
@@ -45,7 +46,7 @@ class AccountController < ApplicationController
   end
   
   #######################################
-  # => Login/logout spezifische actions #
+  # => Login/logout specific actions #
   #######################################
   
   def login

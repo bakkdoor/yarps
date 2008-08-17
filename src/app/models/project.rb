@@ -8,7 +8,7 @@ class Project < ActiveRecord::Base
     
     validates_presence_of :name, :on => :create, :message => (l :please_enter_a_name)
     
-    # searching for teams
+    # searching for projects
     def self.search(query)
       if query
          find(:all, :order => "name ASC", :conditions => ["name LIKE ? AND public=?", "%#{query}%", true])

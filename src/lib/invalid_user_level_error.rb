@@ -1,5 +1,5 @@
 # custom exception
-# wird geworfen, wenn unbekannter userlevel abgefragt wird etc. (siehe User model)
+# gets raised if theres a unknown/invalid userlevel being requested (=> user model)
 class InvalidUserLevelError < Exception
   
   def initialize(message)

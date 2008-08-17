@@ -1,28 +1,28 @@
 class SearchController < ApplicationController
   
-  # nach allem suchen
+  # search for everything
   def index
     #@posts = Post.find(:all, :conditions => ["text LIKE ? or title LIKE ?", search_query, search_query])
     @users = User.search(params[:search_query])
     @projects = Project.search(params[:search_query])
   end
   
-  # nach projects suchen
+  # search for projects
   def projects
     redirect_back_or_default(:controller => "projects") unless params[:id]
     
-    # falls komischer buchstabe angegeben, gehe zurück
+    # if weird letter given, go back
     if params[:id].to_i > 0
       begin
         redirect_back_or_default :controller => "projects"
       ensure
-          # auf jeden fall fehlermeldung ausgeben
+          # show error-message whatsoever
           flash[:error] = "'#{params[:id]}' #{l :is_not_a_letter}"
       end
     end
     
-      # ansonsten scheint alles ok verlaufen zu sein
-      # buchstabe ist da, also los:
+      # otherwhise everything seems to be ok
+      # letter is there, so lets go:
       @projects = Project.search_first_letters(params[:id])
   end
   

@@ -3,7 +3,7 @@ class Menu
   include GLoc  
 
   # main menu list...
-	# wird irgendwann evtl aus datenbank kommen (dynamisch anpassbar...)
+	# maybe sometime get this from a database (dynamically adjustable...)
 	def self.main_menu_list
 	  menu_items = [ 
             ["home",(l :home)], 
@@ -15,13 +15,9 @@ class Menu
             ["contact", (l :contact)]
           ]
           
-    # lauf durch alle einträge (jeweils arrays) im array und pack in ein hash
-    hashes = Array.new    
-    menu_items.each do |item|
-        hashes << { :controller => item[0], :link_text => item[1] }
-    end
-     
-    hashes # hash-array wird zurückgegeben
+    # loop through all entries (each an array) and put in a hash
+    # and return hash-array
+    put_menu_items_in_hash(menu_items)
   end
   
   def self.private_menu_list(current_user)
@@ -33,12 +29,18 @@ class Menu
             ["account/settings", (l :my_settings)]
           ]
           
-    # lauf durch alle einträge (jeweils arrays) im array und pack in ein hash
+    # loop through all entries (each an array) and put in a hash
+    # and return hash-array    
+    put_menu_items_in_hash(menu_items)
+  end
+  
+  def self.put_menu_items_in_hash(menu_items)
     hashes = Array.new    
     menu_items.each do |item|
         hashes << { :controller => item[0], :link_text => item[1] }
     end
-     
-    hashes # hash-array wird zurückgegeben    
+    
+    hashes
   end
+  
 end

@@ -1,4 +1,4 @@
-# nur eine kleine helper-klasse für sprachen
+# just a small helper-class for languages
 class Language
   
   # gibt standard-sprache zurück.
