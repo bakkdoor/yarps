@@ -13,8 +13,9 @@ class AccountController < ApplicationController
     
     @last_login = session[:last_login] ? session[:last_login] : Time.now
       
-      #TODO hier evtl. dann daten rausholen, die sich seit letztem login geändert haben (Posts, Aufgaben usw...)
+    #TODO hier evtl. dann daten rausholen, die sich seit letztem login geändert haben (Posts, Aufgaben usw...)
     @project_memberships = current_user.project_memberships
+    @changed_projects = current_user.changed_projects_since(@last_login)
   end
   
   

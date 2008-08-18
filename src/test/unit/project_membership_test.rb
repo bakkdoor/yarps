@@ -4,12 +4,12 @@ class ProjectMembershipTest < ActiveSupport::TestCase
   fixtures :project_memberships
   
   def test_timestamps
-    membership = project_memberships(:one)
+    membership = project_memberships(:quentins_membership)
     assert(membership.created_at <= membership.updated_at, "membership.updated_at should be greater/equal than membership.created_at!")
   end
   
   def test_memberships
-    membership = project_memberships(:one)
+    membership = project_memberships(:quentins_membership)
     project = membership.project
     users_without_memberships = User.find(:all).select do |user|
       user.projects.all? { |p| p.id != project.id }

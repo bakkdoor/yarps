@@ -50,4 +50,25 @@ class ProjectTest < ActiveSupport::TestCase
     
   end
   
+  def test_changed_projects_since_of_user
+    chris = users(:chris)
+    
+    # create some project-memberships to work with
+    ProjectMembership.create(:user_id => chris.id, :project_id => 1)
+    ProjectMembership.create(:user_id => chris.id, :project_id => 2)
+    ProjectMembership.create(:user_id => chris.id, :project_id => 3)
+    
+    chris.projects.each_with_index do |p, i|
+      p.updated_at = (i*10).minutes.ago
+    end
+    
+    chris.last_login = 25.minutes.ago # simulate last login
+    chris.save
+    
+    assert(chris.last_login, "user.last_login shouldn't be nil!")
+    assert_equal(chris.projects.size - 1, chris.changed_projects_since(chris.last_login).size)
+    chris.changed_projects_since(chris.last_login).each do |project|
+    assert(project.updated_at <= Time.now, "project.updated_at should be smaller/equal than Time.now!")
+    end
+  end
 end

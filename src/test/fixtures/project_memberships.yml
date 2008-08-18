@@ -1,16 +1,16 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
+quentins_membership:
   user_id: 1
   project_id: 1
   user_level: 1
 
-two:
+aarons_membership:
   user_id: 2
   project_id: 4
   user_level: 100
 
-three:
+chris_membership:
   user_id: 3
   project_id: 4
   user_level: 80

@@ -1,6 +1,17 @@
 <div class="headline"><%= l :account %>: <%= current_user.login %> - <%= l :last_login %>: <%= @last_login.german(:long_clock) %></div>
 <%= l :you_currently_have_a_user_status_of %>: <%= User.level_name(current_user.user_level).capitalize %><br>
 <br>
+<div class="headline"><%= l :news %></div>
+<div id="news">
+    <!--
+        TODO hier muss noch mehr hin!
+    -->
+    Changed Projects:<br><br>
+    <% @changed_projects.each do |p| %>
+      <%= link_to p.name, p %>  
+    <% end %>
+</div>
+<br><br>
 <%= l :your_options %>:
 <ul>
     <li>

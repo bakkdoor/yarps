@@ -55,6 +55,11 @@ class User < ActiveRecord::Base
     save(false)
   end
   
+  # returns all projects which have changed since a given date_time
+  def changed_projects_since(date_time)
+    @projects = self.projects.select{|p| p.updated_at >= date_time}
+  end
+  
   def is_a_project_admin?
     self.project_memberships.each do |m|
       if m.user_level == User.level_code(:project_admin)
@@ -87,6 +92,28 @@ class User < ActiveRecord::Base
           raise ActiveRecord::RecordNotFound, "Invitation doesn't seem to exist. Something is wrong here!"
         end
         
+      end
+    end
+  end
+  
+  def can_invite_users_to_project?(project)
+    membership = ProjectMembership.find_by_user_id_and_project_id(self.id, project.id)
+    if membership
+      membership.user_level >= 80
+    else
+      false
+    end
+  end
+  
+  # invite a user to a project
+  # if no message is given, a standard message will be sent.
+  def invite_user_to_project(user, project, message = nil)
+    if can_invite_users_to_project?(project)
+      message ||= ProjectInvitation.default_message(project.name, self.login)
+      if user && project
+        ProjectInvitation.create(:user_id => user.id, :project_id => project.id, :message => message)
+      else
+        logger.error "error while trying to invite user to project: user_id => #{user.id}, project_id => #{project.id}, message => #{message}"
       end
     end
   end
