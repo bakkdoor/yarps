@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
     
     session[:project_tags] = []
     
-    # namen der projekt-tags in session speichern
+    # save names of project-tags in session
     @project.tags.each do |t|
       session[:project_tags] << t.name
     end
