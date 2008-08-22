@@ -23,7 +23,7 @@ class ProjectInvitation < ActiveRecord::Base
   
   # indicates, if project_invitation is viewable by a given user
   def viewable_by?(user)
-    self.user_id == user.id
+    self.user == user
   end
   
 end

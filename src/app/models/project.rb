@@ -18,7 +18,7 @@ class Project < ActiveRecord::Base
     end
     
     def self.all_public
-      find(:all, :order => "name ASC", :conditions => ["public=?", true])
+      find_all_by_public(true, :order => "name ASC")
     end
     
     def self.search_first_letters(start_letters)
@@ -30,6 +30,6 @@ class Project < ActiveRecord::Base
     end
     
     def viewable_by?(user)
-      ProjectMembership.find(:first, :conditions => ["user_id = ? AND project_id = ?", user.id, self.id])
+      ProjectMembership.find_by_user_id_and_project_id(user.id, self.id)
     end
 end

@@ -18,7 +18,7 @@ class Message < ActiveRecord::Base
   end
   
   def readable_by?(user)
-    (self.author_id == user.id) || (self.receiver_id == user.id)
+    (user == self.author) || (user == self.receiver)
   end
   
 end
