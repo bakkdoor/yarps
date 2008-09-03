@@ -3,7 +3,6 @@ class AccountController < ApplicationController
   # all methods except login/signup need a valid login, since we are in the account-controller
   before_filter :login_required, :except => [:login, :signup] 
   
-  # say something nice, you goof!  something sweet.
   def index
     if ((not logged_in?) && User.count == 0)
       redirect_to :action => 'signup'
@@ -11,9 +10,9 @@ class AccountController < ApplicationController
       redirect_to :action => 'login'
     end
     
-    @last_login = session[:last_login] ? session[:last_login] : Time.now
-      
-    #TODO hier evtl. dann daten rausholen, die sich seit letztem login geändert haben (Posts, Aufgaben usw...)
+    @last_login = session[:last_login] || Time.now
+     
+    #TODO get stuff, that has changed since last login (Posts, Tasks etc...)
     @project_memberships = current_user.project_memberships
     @changed_projects = current_user.changed_projects_since(@last_login)
   end
@@ -21,8 +20,6 @@ class AccountController < ApplicationController
   
   # account settings
   def settings
-      @project_memberships = current_user.project_memberships
-      @projects = current_user.projects
   end
   
   # GET /account/edit

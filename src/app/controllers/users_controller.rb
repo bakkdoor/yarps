@@ -13,7 +13,7 @@ class UsersController < ApplicationController
       @profile_user = User.find(params[:id])
     rescue
       flash[:error] = "Profile for UserID '#{params[:id]}' has not been found. "
-      redirect_to :controller => "users", :action => "index"  
+      redirect_to :controller => :users, :action => :index  
     end
   end
   

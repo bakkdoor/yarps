@@ -10,7 +10,7 @@ class ProjectsController < ApplicationController
   # GET /projects.xml
   def index
     if logged_in?
-      @projects = current_user.projects.sort_by { |p| p.name }
+      @projects = current_user.projects.sort_by(&:name)
       respond_to do |format|
         format.html # index.html.erb
         format.xml  { render :xml => @projects }

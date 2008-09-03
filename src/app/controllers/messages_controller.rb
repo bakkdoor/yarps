@@ -139,5 +139,4 @@ class MessagesController < ApplicationController
     render :inline => "<%= auto_complete_result(@receivers, 'login') %>"
   end
   
-  
 end

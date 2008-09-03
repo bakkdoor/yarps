@@ -9,12 +9,12 @@ class SearchController < ApplicationController
   
   # search for projects
   def projects
-    redirect_back_or_default(:controller => "projects") unless params[:id]
+    redirect_back_or_default(:controller => :projects) unless params[:id]
     
     # if weird letter given, go back
     if params[:id].to_i > 0
       begin
-        redirect_back_or_default :controller => "projects"
+        redirect_back_or_default :controller => :projects
       ensure
           # show error-message whatsoever
           flash[:error] = "'#{params[:id]}' #{l :is_not_a_letter}"
