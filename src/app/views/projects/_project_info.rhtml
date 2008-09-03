@@ -12,11 +12,11 @@
           </tr>
           <tr>
               <td class="title"><%= l :created_at %></td>
-              <td class="value"><%= @project.created_at.german %></td>
+              <td class="value"><%= @project.created_at.format :lang => current_user.language, :format =>  %></td>
           </tr>
           <tr>
               <td class="title"><%= l :updated_at %></td>
-              <td class="value"><%= @project.updated_at.german %></td>
+              <td class="value"><%= @project.updated_at.format :lang => current_user.language, :format =>  %></td>
           </tr>
           <tr>
               <td class="title"><%= l :project_members %></td>
