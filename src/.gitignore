@@ -5,3 +5,4 @@ config/database.yml
 .eprj
 capfile
 config/initializers/mail.rb
+app/models/user_mailer.rb
