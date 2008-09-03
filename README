@@ -9,13 +9,12 @@ YARPS is licensed under the terms of the GNU GPL v2.
 YARPS was started by Christopher Bertels (bakkdoor) and Denis Meyer (CallToPower) in July 2008.
 ====================================================================================================
 
-== How to start:
+=========================================== How to start ===========================================
 Check out the src/ folder and play around with it. It's just another rails app, so you should get going pretty fast.
 It was started as a german-documented project but there has been done some work to make it all in english, including comments etc.
-If you find any stuff thats still in german, let me now or change it yourself (if you understand german).
+If you find any stuff that's still in german, let me know or change it yourself (if you understand german).
   
 
-====================================================================================================
 ====================================================================================================
 
 More information coming soon. Any questions? Send a message!
