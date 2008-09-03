@@ -14,6 +14,10 @@ class CreateUsers < ActiveRecord::Migration
       t.column :activated_at,              :datetime
       t.column :state,                     :string, :null => :no, :default => 'passive'
       t.column :deleted_at,                :datetime
+      t.column :last_login,                :datetime
+      t.column :failed_logins,             :integer
+      t.column :user_level,                :integer, :default => User.level_code(:new_member) #new_member
+      t.column :language,                  :string, :default => Language.default
     end
     add_index :users, :login, :unique => true
   end
