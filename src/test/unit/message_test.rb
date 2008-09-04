@@ -27,6 +27,17 @@ class MessageTest < ActiveSupport::TestCase
     assert(message.is_read, "Message should be read by now!")
   end
   
+  def test_user_can_delete_message
+    message = messages(:quentin_to_aaron)
+    quentin = users(:quentin)
+    aaron = users(:aaron)
+    chris = users(:chris)
+    
+    assert(quentin.can_delete_message?(message), "Quentin could not delete message.")
+    assert(aaron.can_delete_message?(message), "Aaron could not delete message.")
+    assert(!chris.can_delete_message?(message), "Chris shouldn't be able to delete message.")
+  end
+  
   def test_message_deletion
     message = messages(:aaron_to_quentin)
     aaron = users(:aaron)
