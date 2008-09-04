@@ -3,7 +3,7 @@ require File.dirname(__FILE__) + '/../test_helper'
 class UserTest < Test::Unit::TestCase
   
   fixtures :users
-
+=begin
   def test_should_create_user
     assert_difference User, :count do
       user = create_user
@@ -80,4 +80,5 @@ class UserTest < Test::Unit::TestCase
     def create_user(options = {})
       User.create({ :login => 'quire', :email => 'quire@example.com', :password => 'quire', :password_confirmation => 'quire' }.merge(options))
     end
+=end
 end
