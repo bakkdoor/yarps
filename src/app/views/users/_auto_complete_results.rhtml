@@ -2,7 +2,7 @@
 <% for user in @users do -%>
   <li class="user">
     <div style="text-align:left"><%= link_to (h user.login), :action => "show", :id => user %></div>
-    <div style="text-align:left">Dabei seit: <%= h user.created_at.format :lang => current_user.language %></div>
+    <div style="text-align:left">Dabei seit: <%= h user.created_at.format :lang => current_language %></div>
   </li>
 <% end -%>
 </ul>

@@ -5,7 +5,7 @@
           <%= link_to project.name, :controller => :projects, :action => :show, :id => project.id %>
         </div>
         <div style="float:right;font-size:90%;padding-top:0.5em">
-          <%= project.updated_at.format :lang => current_user.language %>
+          <%= project.updated_at.format :lang => current_language %>
         </div>
       </div>
       <div id="body" style="display:block">

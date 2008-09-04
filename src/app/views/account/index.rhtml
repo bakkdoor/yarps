@@ -1,5 +1,5 @@
 <div class="headline">
-  <%= l :account %>: <%= current_user.login %> - <%= l :last_login %>: <%= @last_login.format(:lang => current_user.language, :format => :long) %>
+  <%= l :account %>: <%= current_user.login %> - <%= l :last_login %>: <%= @last_login.format(:lang => current_language, :format => :long) %>
 </div>
 <%= l :you_currently_have_a_user_status_of %>: <%= User.level_name(current_user.user_level).capitalize %><br>
 <br>

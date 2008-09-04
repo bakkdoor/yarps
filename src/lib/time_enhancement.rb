@@ -24,9 +24,9 @@ module TimeEnhancement
 	  format = options[:format]
 	 
 	  output = case lang
-      when "de"
+      when :de
         german(format)
-      when "en"
+      when :en
         english(format)
     end  
 	end

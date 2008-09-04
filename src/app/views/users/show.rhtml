@@ -25,7 +25,7 @@
         </tr>
         <tr>
             <td class="title"><%= l :member_since %></td>
-            <td class="value"><%= @profile_user.created_at.format :lang => current_user.language, :format => :long %></td>
+            <td class="value"><%= @profile_user.created_at.format :lang => current_language, :format => :long %></td>
         </tr>
     </table>
 </div>

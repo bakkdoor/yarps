@@ -13,7 +13,7 @@
     <td><%=h project_membership.user.login %></td>
     <td><%=h project_membership.project.name %></td>
     <td><%=h project_membership.user_level %></td>
-    <td><%=h project_membership.created_at.format :lang => current_user.language, :format => :long %></td>
+    <td><%=h project_membership.created_at.format :lang => current_language, :format => :long %></td>
     <td><%= link_to 'Show', project_membership %></td>
     <td><%= link_to 'Edit', edit_project_membership_path(project_membership) %></td>
     <td><%= link_to 'Destroy', project_membership, :confirm => 'Are you sure?', :method => :delete %></td>

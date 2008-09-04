@@ -16,7 +16,7 @@
       <td><%= link_to (h message.title), message %></td>
       <td><%= link_to (h message.author.login), message.author %></td>
       <td><%= link_to (h message.receiver.login), message.receiver %></td>
-      <td><%=h message.created_at.format :lang => current_user.language, :format => :long %></td>
+      <td><%=h message.created_at.format :lang => current_language, :format => :long %></td>
       <td><%= link_to (l :destroy), message, :confirm => (l :are_you_sure?), :method => :delete %></td>
     </tr>
   <% end %>
