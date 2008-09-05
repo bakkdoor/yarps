@@ -1,0 +1,29 @@
+--- 
+default: &default
+  yarps_version: 0.1
+  host: localhost:3000
+  time_zone: Berlin
+  email: mail@example.com
+  session:
+    session_key: "_projmgr_session"
+    secret: eb012faf46e5c22bf557b2019a7bd16c8fa1fb18530829355a2482d45bbc3cb5e1031a1ef4654c0bb37e1b355483a948b3959d3b202938efe59dadbc5fafe54b
+  mailer:
+    address: smtp.example.com
+    domain: localhost:3000
+    port: 25
+    from: mail@example.com
+    user_name: user
+    password: password
+    authentication: login
+    
+development:
+  <<: *default
+
+test:
+  <<: *default
+
+production:
+  <<: *default
+  use_ssl: true
+  ssl_certificate_common_name: openid.flasht.de
+  ssl_certificate_sha1: D2:1B:D8:C4:39:B7:EE:10:DA:E2:4E:0A:65:98:8E:27:C9:32:4B:F0

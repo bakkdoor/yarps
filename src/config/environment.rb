@@ -10,6 +10,10 @@ RAILS_GEM_VERSION = '2.1.0' unless defined? RAILS_GEM_VERSION
 # Bootstrap the Rails environment, frameworks, and default configuration
 require File.join(File.dirname(__FILE__), 'boot')
 
+# Load custom config file for current environment
+require 'yaml'
+YARPS_CONFIG = YAML.load(File.read(RAILS_ROOT + "/config/yarps_config.yml"))[RAILS_ENV]
+
 Rails::Initializer.run do |config|
   # Settings in config/environments/* take precedence over those specified here.
   # Application configuration should go into files in config/initializers
@@ -41,16 +45,23 @@ Rails::Initializer.run do |config|
   # Make Time.zone default to the specified zone, and make Active Record store time values
   # in the database in UTC, and return them converted to the specified local zone.
   # Run "rake -D time" for a list of tasks for finding time zone names. Uncomment to use default local time.
-  config.time_zone = 'UTC'
-
+  #config.time_zone = 'UTC'
+  config.time_zone = YARPS_CONFIG[:time_zone] || 'UTC'
+  
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    :address => YARPS_CONFIG['mailer']['address'],
+    :domain => YARPS_CONFIG['mailer']['domain'],
+    :port => YARPS_CONFIG['mailer']['port'],
+    :user_name => YARPS_CONFIG['mailer']['user_name'],
+    :password => YARPS_CONFIG['mailer']['password'],
+    :authentication => YARPS_CONFIG['mailer']['authentication'] }
+  
   # Your secret key for verifying cookie session data integrity.
   # If you change this key, all old sessions will become invalid!
   # Make sure the secret is at least 30 characters and all random, 
   # no regular words or you'll be exposed to dictionary attacks.
-  config.action_controller.session = {
-    :session_key => '_projmgr_session',
-    :secret      => 'eb012faf46e5c22bf557b2019a7bd16c8fa1fb18530829355a2482d45bbc3cb5e1031a1ef4654c0bb37e1b355483a948b3959d3b202938efe59dadbc5fafe54b'
-  }
+  config.action_controller.session = YARPS_CONFIG['session']
   
   # ruby-gem dependencies
   config.gem "RedCloth", :version => ">= 3.301", :source => "http://code.whytheluckystiff.net/"
