@@ -1,0 +1,18 @@
+<div class="headline">
+    <%= l :please_enter_your_login_data %>:
+</div>
+<div class="loginarea">
+  <% form_tag session_path do -%>
+  <p><%= label_tag 'login', (l :username) %><br />
+  <%= text_field_tag 'login', @login %></p>
+
+  <p><%= label_tag 'password', (l :password) %><br/>
+  <%= password_field_tag 'password', nil %></p>
+
+  <p><%= label_tag 'remember_me', (l :remember_me) %>
+  <%= check_box_tag 'remember_me', '1', @remember_me %></p>
+
+
+  <p><%= submit_tag 'Log in' %></p>
+  <% end -%>
+</div>
