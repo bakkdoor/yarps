@@ -33,6 +33,11 @@ class AccountController < ApplicationController
 
     respond_to do |format|
       if @user.update_attributes(params[:user])
+        language = params[:user][:language]
+        if GLoc.valid_language?(language)
+          @user.language = language 
+          @user.save
+        end
         flash[:notice] = (l :account_successful_update_notice)
         format.html { redirect_to :action => "index" }
         format.xml  { head :ok }
