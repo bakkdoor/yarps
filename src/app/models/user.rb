@@ -40,7 +40,18 @@ class User < ActiveRecord::Base
   def self.authenticate(login, password)
     return nil if login.blank? || password.blank?
     u = find_in_state :first, :active, :conditions => {:login => login} # need to get the salt
-    u && u.authenticated?(password) ? u : nil
+    loggeg_in_user = u && u.authenticated?(password) ? u : nil
+    
+    # if not correctly logged in, increase failed_logins counter 
+    unless (loggeg_in_user)
+      failed_user = User.find_by_login(login)
+      if failed_user
+        failed_user.failed_logins += 1
+        failed_user.save
+      end
+    end
+        
+    loggeg_in_user # return logged_in user
   end
 
   def login=(value)

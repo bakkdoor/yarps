@@ -43,6 +43,7 @@ class AccountController < ApplicationController
     end
   end
   
+=begin (old, now taken care of in SessionsController)
   #######################################
   # => Login/logout specific actions #
   #######################################
@@ -111,5 +112,6 @@ class AccountController < ApplicationController
     flash[:notice] = (l :logout_successful_notice)
     redirect_back_or_default(:controller => '/', :action => 'index')
   end
+=end
   
 end
