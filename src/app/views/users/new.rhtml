@@ -1,19 +1,21 @@
-<h1>Sign up as a new user</h1>
-<% @user.password = @user.password_confirmation = nil %>
+<div class="headline"><%= l(:here_you_can_create_a_new_account) %></div>
+<div class="loginarea">
+  <% @user.password = @user.password_confirmation = nil %>
 
-<%= error_messages_for :user %>
-<% form_for :user, :url => users_path do |f| -%>
-<p><%= label_tag 'login' %><br/>
-<%= f.text_field :login %></p>
+  <%= error_messages_for :user %>
+  <% form_for :user, :url => users_path do |f| -%>
+  <p><%= label_tag 'login', (l :username) %><br/>
+  <%= f.text_field :login %></p>
 
-<p><%= label_tag 'email' %><br/>
-<%= f.text_field :email %></p>
+  <p><%= label_tag 'email', (l :email) %><br/>
+  <%= f.text_field :email %></p>
 
-<p><%= label_tag 'password' %><br/>
-<%= f.password_field :password %></p>
+  <p><%= label_tag 'password', (l :password) %><br/>
+  <%= f.password_field :password %></p>
 
-<p><%= label_tag 'password_confirmation', 'Confirm Password' %><br/>
-<%= f.password_field :password_confirmation %></p>
+  <p><%= label_tag 'password_confirmation', (l :confirm_password) %><br/>
+  <%= f.password_field :password_confirmation %></p>
 
-<p><%= submit_tag 'Sign up' %></p>
-<% end -%>
+  <p><%= submit_tag (l :sign_up) %></p>
+  <% end -%>
+</div>

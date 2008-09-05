@@ -56,8 +56,8 @@ ActiveRecord::Schema.define(:version => 20080903223558) do
     t.datetime "created_at"
   end
 
-  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
   add_index "taggings", ["taggable_id", "taggable_type"], :name => "index_taggings_on_taggable_id_and_taggable_type"
+  add_index "taggings", ["tag_id"], :name => "index_taggings_on_tag_id"
 
   create_table "tags", :force => true do |t|
     t.string "name"
@@ -78,7 +78,7 @@ ActiveRecord::Schema.define(:version => 20080903223558) do
     t.string   "state",                                    :default => "passive"
     t.datetime "deleted_at"
     t.datetime "last_login"
-    t.integer  "failed_logins"
+    t.integer  "failed_logins",                            :default => 0
     t.integer  "user_level",                               :default => 1
     t.string   "language",                                 :default => "en"
   end
