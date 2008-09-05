@@ -1,6 +1,6 @@
 --- 
 default: &default
-  yarps_version: 0.1
+  yarps_version: 0.0.2
   host: localhost:3000
   time_zone: Berlin
   email: mail@example.com

@@ -9,7 +9,7 @@ module ApplicationHelper
 	end
 	
 	def yarps_version
-	    0.1
+	    YARPS_CONFIG['yarps_version']
 	end
 	
 	def alphabet_letters
