@@ -27,7 +27,7 @@
             <% end %>
             </div>
             <div id="menu" class="menu">
-                <%= render :file => "layouts/_menu" %>
+                <%= render :partial => "layouts/menu" %>
             </div>
         </div>
         <div class="search">
@@ -61,7 +61,7 @@
             </div>
             <% if logged_in? %>
             <div id="right" class="menu-right">
-                <%= render :file => "layouts/_submenu" %>
+                <%= render :partial => "layouts/submenu" %>
             </div>
             <% end %>
             
