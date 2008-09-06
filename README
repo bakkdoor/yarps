@@ -13,8 +13,8 @@ YARPS was started by Christopher Bertels (bakkdoor) and Denis Meyer (CallToPower
 =========================================== How to start ===========================================
 
 Check out the src/ folder and play around with it. It's just another rails app, so you should get going pretty fast.
-Just make sure to change the yarps-configuration (src/config/yarps_config.yml) accordingly to your host & mail settings,
-since you'll want to make sure, your mailer works correctly (and some other stuff as well).
+Just make sure to change the yarps-configuration (src/config/yarps_config.yml) accordingly to your host & mail
+settings, since you'll want to make sure, your mailer works correctly (and some other stuff as well).
 
 You'll also need the latest version of rails, which was released Sep. 05 2008.
 Get it via rubygems: sudo gem install rails --version 2.1.1
