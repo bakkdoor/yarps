@@ -18,6 +18,7 @@ date: Datum
 description: Beschreibung
 destroy: Löschen
 edit: Bearbeiten
+edit_project: Projekt bearbeiten
 email: Email
 english: Englisch
 failed_logins: Fehlgeschlagene Logins

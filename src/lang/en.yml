@@ -18,6 +18,7 @@ date: Datum
 description: Description
 destroy: Delete
 edit: Edit
+edit_project: Edit project
 email: Email
 english: English
 failed_logins: Failed logins

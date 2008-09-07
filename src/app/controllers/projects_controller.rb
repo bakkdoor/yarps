@@ -4,7 +4,6 @@ class ProjectsController < ApplicationController
   auto_complete_for :tag, :name
   
   before_filter :login_required, :only => [:new, :create, :edit, :update, :destroy]
-  before_filter :init_project_tags_session, :only => [:create, :update]
   
   # GET /projects
   # GET /projects.xml
@@ -40,9 +39,6 @@ class ProjectsController < ApplicationController
   # GET /projects/new.xml
   def new
     @project = Project.new
-    @project.tag_list = session[:project_tags]
-    
-    session[:project_tags] = []
     
     respond_to do |format|
       format.html # new.html.erb
@@ -53,13 +49,6 @@ class ProjectsController < ApplicationController
   # GET /projects/1/edit
   def edit
     @project = Project.find(params[:id])
-    
-    session[:project_tags] = []
-    
-    # save names of project-tags in session
-    @project.tags.each do |t|
-      session[:project_tags] << t.name
-    end
   end
 
   # POST /projects
@@ -67,17 +56,12 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
     
-    # add tags, only if there are any specified
-    #@project.tag_list += session[:project_tags]
-    #params[:project][]
-
     respond_to do |format|
       if @project.save
         @project_membership = ProjectMembership.new :user_id => current_user.id,
                                                     :project_id => @project.id,
                                                     :user_level => User.level_code(:project_admin)
         if @project_membership.save       
-          session[:project_tags] = nil # reset                                   
           flash[:notice] = (l :project_successful_create_notice)
           format.html { redirect_to(@project) }
           format.xml  { render :xml => @project, :status => :created, :location => @project }
@@ -97,16 +81,8 @@ class ProjectsController < ApplicationController
   def update
     @project = Project.find(params[:id])
     
-    # add new tags, only if any specified
-    params[:new_tags].split(" ").each do |new_tag|
-      session[:project_tags] << new_tag
-    end
-    
-    @project.tag_list = session[:project_tags]
-    
     respond_to do |format|
       if @project.update_attributes(params[:project])
-        session[:project_tags] = nil # zurücksetzen
         flash[:notice] = (l :project_successful_update_notice)
         format.html { redirect_to(@project) }
         format.xml  { head :ok }
@@ -166,9 +142,7 @@ class ProjectsController < ApplicationController
     input_tags = params[:project][:tag_list].split(" ")
     tag_name = input_tags.last
     used_tags = input_tags - [input_tags.last]
-    session[:project_tags] = used_tags
     
-    #session[:project_tags] = used_tags
     @tags = Tag.find(:all, 
       :conditions => [ 'LOWER(name) LIKE ?',
       '%' + tag_name.downcase + '%' ], 
@@ -176,53 +150,11 @@ class ProjectsController < ApplicationController
       
     # only return tags, that aren't used yet...
     @tags = @tags.select do |t|
-      not session[:project_tags].include? t.name
+      not used_tags.include? t.name
     end
     render :inline => "<%= auto_complete_result(@tags, 'name') %>"
   end
-  
-  
-  
-  def search_tags
-    if params[:search] != ""
-      @tags = Tag.search(params[:search])
-      
-      if @tags.size > 0
-        # loop through project-tags-session (if exists)
-        # and mark all tags, which are already added to the project
-        # => only show remaining tags as searchresult, which haven't been added to project yet
-        # the used tags won't be shown in the view, by checking boolean value of :in_project in hash
-        # via css: style="display:none"
-        
-        # a list of hashes, each having a tag and a boolean, if it's already used
-        @tag_used_pairs = [] 
-        if session[:project_tags]
-          @tags = @tags.each do |tag|
-            @tag_used_pairs << { :tag => tag, :in_project => session[:project_tags].include?(tag.name) }
-          end
-        end
-            
-        render :partial => "add_tag_list", :object => @tag_used_pairs
-      else
-        render :text => "<br>Keine Tags gefunden."
-      end
-    else
-      render :text => ""
-    end
-  end
-  
-  def add_tag
-    session[:project_tags] << params[:tag] unless session[:project_tags].include? params[:tag]
-    
-    render :partial => "tag_list_item", :collection => session[:project_tags]
-  end
-  
-  def remove_tag
-    session[:project_tags].delete params[:tag]
-   
-    render :partial => "tag_list_item", :collection => session[:project_tags]
-  end
-  
+
   # shows all (public) projects of a given tag
   def tag
     @projects = Project.find_tagged_with( params[:id], 
@@ -241,9 +173,5 @@ class ProjectsController < ApplicationController
   end
   
   private
-  
-  def init_project_tags_session
-    session[:project_tags] ||= []
-  end
   
 end

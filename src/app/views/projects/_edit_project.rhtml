@@ -1,0 +1,52 @@
+<div class="headline"><%= title %></div>
+<div class="form_new">
+  <% form_for(@project) do |f| %>
+  <%= f.error_messages %>
+  <table>
+    <tr>
+      <td><%= f.label :name, (l :name) %></td>
+      <td><%= f.text_field :name %></td>  
+    </tr>
+    <tr>
+      <td><%= f.label :description, (l :description) %></td>
+      <td><%= f.text_area :description %></td>
+    </tr>
+    <tr>
+     <td><%= f.label :website, (l :website) %></td>
+      <td><%= f.text_field :website %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :tag_name, (l :tags)%></td>
+      <td>
+        <%= f.text_field :tag_list, :size => 50 %>
+        <div class="auto_complete" id="tag_name_auto_complete"></div>
+        <script type="text/javascript">
+          var tag_name_auto_completer = new Ajax.Autocompleter('project_tag_list', 'tag_name_auto_complete', 
+                    '/projects/auto_complete_for_tag_name', 
+                    {
+                      method:'get', 
+                      updateElement: function(item){
+                        var tags = $('project_tag_list').value.split(" ");
+                        tags.pop();
+                        tags.push(item.innerText)
+                        $('project_tag_list').value = tags.join(" ") + " "}}
+                    )
+        </script>
+      </td>
+    </tr>
+    <tr>
+      <td><%= f.label :public, (l :public) %><br /></td>
+      <td><%= f.check_box :public %></td>
+    </tr>
+    <tr>
+      <td><%= f.label :invite_only, (l :invite_only) %><br /></td>
+      <td><%= f.check_box :invite_only %></td>
+    </tr>
+    <tr>
+      <td><%= f.submit (l :create) %></td>
+    </tr>
+  </table>
+  <% end %>
+  
+  <%= link_to 'Back', projects_path %>
+</div>
