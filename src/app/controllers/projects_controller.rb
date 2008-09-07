@@ -145,7 +145,7 @@ class ProjectsController < ApplicationController
     
     @tags = Tag.find(:all, 
       :conditions => [ 'LOWER(name) LIKE ?',
-      '%' + tag_name.downcase + '%' ], 
+      tag_name.downcase + '%' ], 
       :order => 'name ASC')
       
     # only return tags, that aren't used yet...
