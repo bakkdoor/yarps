@@ -97,7 +97,7 @@ class ProjectsController < ApplicationController
     @project = Project.find(params[:id])
     
     # add new tags, only if any specified
-    params[:new_tags].split(",").each do |new_tag|
+    params[:new_tags].split(" ").each do |new_tag|
       session[:project_tags] << new_tag
     end
     
