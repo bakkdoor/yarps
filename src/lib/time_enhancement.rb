@@ -20,7 +20,7 @@ module TimeEnhancement
   end
 	
 	def format(options = {})
-	  lang = options[:lang] || Language.default
+	  lang = options[:lang] || options[:language] || Language.default
 	  format = options[:format]
 	 
 	  output = case lang

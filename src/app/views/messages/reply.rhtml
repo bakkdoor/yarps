@@ -9,7 +9,7 @@
     </p>
     <p>
       <%= f.label :title, (l :title) %><br />
-      <%= f.text_field :title, :value => @old_message.title %>
+      <%= f.text_field :title, :value => "Re: #{@old_message.title}" %>
     </p>
     <p>
       <%= f.label :body, (l :message) %><br />

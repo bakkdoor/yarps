@@ -46,7 +46,7 @@ class MessagesController < ApplicationController
 
   # GET /messages/1/edit
   def edit
-    @message = Message.find(params[:id])
+    #@message = Message.find(params[:id])
   end
 
   # POST /messages
@@ -59,7 +59,7 @@ class MessagesController < ApplicationController
     respond_to do |format|
       if @message.save
         flash[:notice] = 'Message was successfully sent.'
-        format.html { redirect_to(@message) }
+        format.html { redirect_to(messages_url) }
         format.xml  { render :xml => @message, :status => :created, :location => @message }
       else
         format.html { render :action => "new" }
@@ -71,6 +71,7 @@ class MessagesController < ApplicationController
   # PUT /messages/1
   # PUT /messages/1.xml
   def update
+=begin
     @message = Message.find(params[:id])
     
     if @message.readable_by?(current_user)
@@ -88,6 +89,7 @@ class MessagesController < ApplicationController
       flash[:error] = "You're not allowed to change/update this message!"
       redirect_to :action => :index
     end
+=end
   end
 
   # DELETE /messages/1
@@ -106,7 +108,7 @@ class MessagesController < ApplicationController
     end
 
     respond_to do |format|
-      format.html { redirect_to(messages_url) }
+      format.html { redirect_back_or_default(messages_url) }
       format.xml  { head :ok }
     end
   end
@@ -134,7 +136,7 @@ class MessagesController < ApplicationController
   def auto_complete_for_receiver_login
     @receivers = User.find(:all, 
       :conditions => [ 'LOWER(login) LIKE ? AND login <> ?',
-      '%' + params[:receiver][:login].downcase + '%', current_user.login ], 
+      params[:receiver][:login].downcase + '%', current_user.login ], 
       :order => 'login ASC')
     render :inline => "<%= auto_complete_result(@receivers, 'login') %>"
   end
