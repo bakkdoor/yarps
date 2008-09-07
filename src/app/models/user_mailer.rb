@@ -1,7 +1,7 @@
 class UserMailer < ActionMailer::Base
   def signup_notification(user)
     setup_email(user)
-    @subject    += 'Please activate your new account'
+    @subject    += (l :please_activate_your_account)
   
     @body[:url]  = "http://#{YARPS_CONFIG['mailer']['domain']}/activate/#{user.activation_code}"
   
@@ -9,19 +9,19 @@ class UserMailer < ActionMailer::Base
   
   def activation(user)
     setup_email(user)
-    @subject    += 'Your account has been activated!'
+    @subject    += (l :your_account_has_been_activated)
     @body[:url]  = "http://#{YARPS_CONFIG['mailer']['domain']}/"
   end
   
   def forgot_password(user)
       setup_email(user)
-      @subject    += 'You have requested to change your password'
+      @subject    += (l :you_have_requested_to_change_your_password)
       @body[:url]  = "http://#{YARPS_CONFIG['mailer']['domain']}/reset_password/#{user.password_reset_code}"
   end
 
   def reset_password(user)
     setup_email(user)
-    @subject    += 'Your password has been reset.'
+    @subject    += (l :your_password_has_been_reset)
   end
   
   protected

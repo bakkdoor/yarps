@@ -11,7 +11,6 @@ are_you_sure?: "Are you sure?"
 author: Author
 back: Back
 confirm_password: "Confirm password"
-confirm_password: Confirm Password
 contact: Contact
 create: Create
 created_at: "Created at"
@@ -54,6 +53,7 @@ no_users_found: No users found
 not_sufficient_rights: "You don't have sufficient rights for this operation."
 password: Password
 personal_menu: Personal menu
+please_activate_your_account: "Please activate your new account."
 please_enter_a_name: Please enter a name
 please_enter_your_login_data: Please enter your login data
 profile: profile
@@ -83,7 +83,7 @@ seperated_by_comma: seperated by comma
 set_language: English
 show: Show
 sign_up: Sign up
-signup_successful_notice: "Thanks for signing up!"
+signup_successful_notice: "Thanks for signing up! We're sending you an email with your activation code."
 tag_search: Tag search
 tags: Tags
 this_is_the_profile_of: This is the profile of
@@ -97,5 +97,8 @@ users: Users
 website: Website
 welcome_message: Welcome to yarps!
 you_currently_have_a_user_status_of: You currently have a user status of
+you_have_requested_to_change_your_password: "You have requested to change your password."
+your_account_has_been_activated: "Your account has been activated!"
 your_options: Your options
+your_password_has_been_reset: "Your password has been reset."
 your_profile_page: Your profile page

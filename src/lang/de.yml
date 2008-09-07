@@ -11,7 +11,6 @@ are_you_sure?: "Sind Sie sicher?"
 author: Absender
 back: "Zurück"
 confirm_password: "Passwort bestätigen"
-confirm_password: Passwort bestätigen
 contact: Kontakt
 create: Erstellen
 created_at: "Erstellt am"
@@ -54,6 +53,7 @@ no_users_found: Keine Benutzer gefunden
 not_sufficient_rights: "Sie haben nicht die benötigten Rechte für diese Operation."
 password: Passwort
 personal_menu: Persönliches Menü
+please_activate_your_account: "Bitte aktiviere dein neues Profil."
 please_enter_a_name: Bitte geben Sie einen Namen an
 please_enter_your_login_data: Bitte geben Sie ihre Logindaten ein
 profile: Profil
@@ -83,7 +83,7 @@ seperated_by_comma: durch Komma getrennt
 set_language: Deutsch
 show: Anzeigen
 sign_up: Anmelden
-signup_successful_notice: "Danke für deine Anmeldung!"
+signup_successful_notice: "Danke für deine Anmeldung! Wir schicken dir eine Email mit deinem Aktivierungscode."
 tag_search: Tag suche
 tags: Tags
 this_is_the_profile_of: Das hier ist das Profil von
@@ -97,5 +97,8 @@ users: Benutzer
 website: Webseite
 welcome_message: Willkommen bei yarps!
 you_currently_have_a_user_status_of: Du hast derzeit einen User-Status als
+you_have_requested_to_change_your_password: "Du hast beantragt, dein Passwort zu ändern."
+your_account_has_been_activated: "Dein Profil wurde aktiviert!"
 your_options: Deine Optionen
+your_password_has_been_reset: "Dein Passwort wurde zurückgesetzt."
 your_profile_page: Deine Profilseite
