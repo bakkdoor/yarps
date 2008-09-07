@@ -22,7 +22,7 @@
       <p>
         <%= f.label :language, (l :language) %><br />
         
-        <%= collection_select(:user, :language, Language.list, :to_s, :lang_word, {:prompt => true}) %>
+        <%= collection_select(:user, :language, Language.list.map(&:to_s), :to_s, :lang_word, {:prompt => true}) %>
       </p>
       <p>
         <%= f.submit (l :update) %>

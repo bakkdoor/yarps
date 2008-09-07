@@ -3,11 +3,11 @@ class Language
   
   # gibt standard-sprache zurück.
   def self.default
-    "en"
+    :en
   end
   
   def self.list
-    ["en", "de"]
+    [:en, :de]
   end
   
 end

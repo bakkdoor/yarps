@@ -17,7 +17,7 @@ class CreateUsers < ActiveRecord::Migration
       t.column :last_login,                :datetime
       t.column :failed_logins,             :integer, :default => 0
       t.column :user_level,                :integer, :default => User.level_code(:new_member) #new_member
-      t.column :language,                  :string, :default => Language.default
+      t.column :language,                  :string, :default => Language.default.to_s
     end
     add_index :users, :login, :unique => true
   end
