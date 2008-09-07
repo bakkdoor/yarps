@@ -68,7 +68,8 @@ class ProjectsController < ApplicationController
     @project = Project.new(params[:project])
     
     # add tags, only if there are any specified
-    @project.tag_list = session[:project_tags]
+    #@project.tag_list += session[:project_tags]
+    #params[:project][]
 
     respond_to do |format|
       if @project.save
@@ -162,9 +163,15 @@ class ProjectsController < ApplicationController
   end
   
   def auto_complete_for_tag_name
+    input_tags = params[:project][:tag_list].split(" ")
+    tag_name = input_tags.last
+    used_tags = input_tags - [input_tags.last]
+    session[:project_tags] = used_tags
+    
+    #session[:project_tags] = used_tags
     @tags = Tag.find(:all, 
       :conditions => [ 'LOWER(name) LIKE ?',
-      '%' + params[:tag][:name].downcase + '%' ], 
+      '%' + tag_name.downcase + '%' ], 
       :order => 'name ASC')
       
     # only return tags, that aren't used yet...

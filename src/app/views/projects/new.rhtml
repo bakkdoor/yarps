@@ -16,18 +16,23 @@
       <td><%= f.text_field :website %></td>
     </tr>
     <tr>
-      <td><%= f.label :tag_list, (l :tags) %></td>
-      <td>
-        <div id="project_tags" style="padding-bottom:1em">
-            <%= render :partial => "tag_list_item", :collection => @project.tag_list %>
-        </div>
-      </td>
-    </tr>
-    <tr>
       <td><%= f.label :tag_name, (l :tag_search)%></td>
       <td>
-        <%= text_field_with_auto_complete :tag, :name, {}, {:method => :get, :skip_style => true} %>
-        <button id="add_tag_button" type="button" onclick="remote_add_tag($('tag_name').value)"><%= l :add %></button>
+        <% text_field_with_auto_complete :tag, :name, {}, {:method => :get, :skip_style => true} %>
+        <input id="tag_list" name="project[tag_list]" size="30" type="text" />
+        <div class="auto_complete" id="tag_name_auto_complete"></div>
+        <script type="text/javascript">
+          var tag_name_auto_completer = new Ajax.Autocompleter('tag_list', 'tag_name_auto_complete', 
+                    '/projects/auto_complete_for_tag_name', 
+                    {
+                      method:'get', 
+                      updateElement: function(item){
+                        var tags = $('tag_list').value.split(" ");
+                        tags.pop();
+                        tags.push(item.innerText)
+                        $('tag_list').value = tags.join(" ") + " "}}
+                    )
+        </script>
       </td>
     </tr>
     <tr>
@@ -43,27 +48,6 @@
     </tr>
   </table>
   <% end %>
-  
-  <script type="text/javascript" charset="utf-8">
-    /* 
-        this code is responsible for adding the tags in the background
-        when you click on the 'add'-button
-    */
-    function remote_add_tag(tagname)
-    {
-        new Ajax.Updater('project_tags', '/projects/add_tag', 
-            { 
-                asynchronous:true, 
-                evalScripts:true, 
-                onComplete:function(request){new Effect.Highlight("project_tags",{duration:0.5})},
-                onSuccess:function(request){$('tag_name').value=""; $('tag_name').focus()}, 
-                parameters:'tag=' + escape($('tag_name').value) + '&authenticity_token=' + encodeURIComponent('<%= form_authenticity_token %>')
-            }
-        )
-    }
-  </script>
-  
-  
   
   <%= link_to 'Back', projects_path %>
 </div>
